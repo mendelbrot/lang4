@@ -14,13 +14,17 @@ here's my folder structure so far, showing the columns for the files in the data
 
 my idea is that the language is just a list of words, but to understand and shape it, i project it into views. the views arent part of the language itself, but necessary for me to understand and interact with it conceptually
 
-there will be a desktop web application that, given a selected word, will show a grid of modified words. the view itself is just a grid of modifier word ids. for example the genders one might be a for column by two row grid of genders. the app projects a selected word into that, and it then shows a grid of text fields to view and edit the definitions of the related words (three fields per word in the case of compounds, in case a compound might mean more than one thing). changes are saved to 02-elements.csv
+there will be a desktop web application that, given a selected word, will show a grid of modified words. the view itself is just a grid of modifier word ids. for example the genders one might be a for column by two row grid of genders. the app projects a selected word into that, and it then shows a grid of text fields to view and edit the definitions of the related words (three fields per word in the case of compounds, in case a compound might mean more than one thing). changes are saved to 02-elements.csv or 03-compounds.csv depending if the edited word is an element or a compound
 
 likewise there will be a view group with the modifiers very, not, un etc...
 
 in data/04-semantic-network-groups.csv thats where well get the list of words we want to translate to work backward from. all the words will be listed in this file but the the app will show a graph for each of the categories 
 
-all of the categories, elements, compounds and semantic words to work backward from will have ids, i think they will just be numbered like @001, @002, @003 etc. 
+all of the categories, elements, compounds and semantic words to work backward from (target concepts) will have ids, they we be numeric and prefixed by a letter representing the file they're from
+- categories: @C001
+- elements: @E001
+- compounds: @W001
+- target concept: @T001
 
 what are the categories? every word in the language will belong to a category, for example a semantic role, a grammatical gender word, or a 'physical world, materials and weather' word category etc. every element word belongs to a category, but generally not every category has a element word that represents it (the gender modifiers by definition represent their grammatical gender category but thats a special case, but the way, im open to using an alternative name for 'grammatical gender' and in general open to improving my category names)
 
