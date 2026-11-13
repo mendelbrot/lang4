@@ -1,1 +1,23 @@
 id|category|spelling|definition|notes
+e001|c01||matter lens|shifts root to c12 (physical substance, natural phenomenon, raw material); 3.0: mo
+e002|c01||biology lens|shifts root to c13 (living organism, body part, biological process); 3.0: gi
+e003|c01||motion lens|shifts root to c14 (kinetic action, physical force, mechanical movement); new 8th lens
+e004|c01||artifact lens|shifts root to c15 (human-made tool, vessel, shelter, technology); 3.0: ta
+e005|c01||sense lens|shifts root to c16 (sensory quality, texture, perceptible state); 3.0: na
+e006|c01||mind lens|shifts root to c17 (cognition, emotion, volition, internal state); 3.0: bi
+e007|c01||society lens|shifts root to c18 (person/role, social relationship, cultural/artistic practice); 3.0: lu
+e008|c01||form lens|shifts root to c19 (spatial/temporal relation, geometry, quantity, abstract system); 3.0: re
+e009|c02||high degree, very, augment, large amount|high pole on neutral scales; 3.1: jo
+e010|c02||low degree, little, diminish, small amount|low pole on neutral scales; 3.1: vi
+e011|c02||moderate degree, medium, average, somewhat|middle point on scales; 3.1: tav
+e012|c02||excessive degree, too much, over-|beyond desirable/functional threshold; 3.1: zev
+e013|c02||absence, -less, without, zero degree|privative state (e.g. moisture-less = dry); 3.1: se
+e014|c02||opposite, inverse, counter-, anti-|polar reversal for evaluative/directional roots; 3.1: je
+e015|c02||negation, not, non-|logical negation of a property or action; 3.1: ma
+e016|c03||of, compound head-modifier divider|links head to modifier inside a compound; 3.1: mo
+e017|c03||blend, concept-mixing compound linker|merges two clouds symmetrically; 3.1: zo
+e018|c03||and, coordinate compound linker|pairs two elements equally inside a word; 3.1: no
+e019|c03||quality of, -ness, abstract state nominalizer|turns root into abstract quality noun; 3.1: wu
+e020|c03||characterized by, -ful, having quality|turns root into descriptive modifier; 3.1: da
+e021|c03||-able, capable of being, potential passive|from Tokui vud; e.g. eat-able, move-able
+e022|c03||proper name marker|marks a word as a proper name/loan; 3.1: ti
