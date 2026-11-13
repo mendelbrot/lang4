@@ -106,7 +106,7 @@ def main():
 
             # Weight Question (1) 3x higher so core domain concepts are well-represented
             is_q1 = idx == 0 or raw_q.strip().startswith("(1)")
-            weight = 3.0 if is_q1 else 1.0
+            weight = 2.0 if is_q1 else 1.0
 
             pools[cat_id].append(
                 {
