@@ -5,7 +5,7 @@ from pathlib import Path
 
 # Configuration
 INPUT_JSON = Path("semdom.json")
-OUTPUT_PSV = Path("data/04-target-concepts.psv")
+OUTPUT_PSV = Path("random-target-concepts.psv")
 SAMPLES_PER_CATEGORY = 200
 RANDOM_SEED = 42  # Change or set to None for a different random draw each run
 

@@ -1,20 +1,19 @@
 id|type|name|notes
-c01|grammar|lens|the 8 ontological domain-shifting prefixes
-c02|grammar|degree|scale, grading, negation-polarity modifiers
-c03|grammar|derivation|word-building connectors, derivational affixes
-c04|grammar|role|case, semantic roles
-c05|grammar|possession|possessive relationships
-c06|grammar|valency|verb transitivity, voice
-c07|grammar|aspect|temporal flow, tense, internal event structure
-c08|grammar|modality|desire, ability, obligation, necessity
-c09|grammar|evidential|information source
-c10|grammar|mood|speech acts, questions, commands, interactionals
-c11|grammar|reference|pronouns, demonstratives, grammatical number, quantifiers
-c12|domain|matter|physical world, materials, elements, weather
-c13|domain|biology|living organisms, anatomy, bodily functions
-c14|domain|motion|motion, mechanics, physical forces, actions
-c15|domain|artifact|artifacts, tools, technology, built spaces
-c16|domain|sense|perception, sensory qualities, textures, evaluation
-c17|domain|mind|cognition, emotion, volition, internal states
-c18|domain|society|society, kinship, culture, communication, art
-c19|domain|form|space, geometry, time, quantity, abstract relations
+c01|grammar|lens|the 8 ontological domain-shifting postfixes (1-place: X-op)
+c02|grammar|modifier|scale, grading, polarity, and state-shifting postfixes (1-place: X-op)
+c03|grammar|connector|word-building linkers and possessive infixes (2-place: X-op-Y)
+c04|grammar|role|case, semantic roles (word-final on nouns)
+c05|grammar|valency|verb transitivity, voice (word-final on verbs)
+c06|grammar|aspect|temporal flow, tense, internal event structure (verb/clause suffix)
+c07|grammar|modality|desire, ability, obligation, necessity (verb/clause suffix)
+c08|grammar|evidential|information source (verb/clause suffix)
+c09|grammar|mood|speech acts, questions, commands, interactionals (clause/standalone)
+c10|grammar|reference|pronouns, discourse pointers, grammatical number, quantifiers
+c11|domain|matter|physical world, materials, elements, weather
+c12|domain|biology|living organisms, anatomy, bodily functions
+c13|domain|motion|motion, mechanics, physical forces, actions
+c14|domain|artifact|artifacts, tools, technology, built spaces
+c15|domain|sense|perception, sensory qualities, textures, evaluation
+c16|domain|mind|cognition, emotion, volition, internal states
+c17|domain|society|society, kinship, culture, communication, art
+c18|domain|form|space, geometry, time, quantity, abstract relations
