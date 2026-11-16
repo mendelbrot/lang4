@@ -32,7 +32,7 @@ LOW_CONS = set("bgdmw")
 INWARD_CONS = set("mn")
 BREATH_CONS = set("hfswp")
 
-VN_CATEGORIES = {"c004", "c04", "c005", "c05"}
+VN_CATEGORIES = {"c1.04", "c1.05"}
 
 
 def parse_tags(tag_str: str) -> Set[str]:

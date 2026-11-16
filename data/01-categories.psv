@@ -1,19 +1,20 @@
 id|type|name|notes
-c01|grammar|lens|the 8 ontological domain-shifting postfixes (1-place: X-op)
-c02|grammar|modifier|scale, grading, polarity, and state-shifting postfixes (1-place: X-op)
-c03|grammar|connector|word-building linkers and possessive infixes (2-place: X-op-Y)
-c04|grammar|role|case, semantic roles (word-final on nouns)
-c05|grammar|valency|verb transitivity, voice (word-final on verbs)
-c06|grammar|aspect|temporal flow, tense, internal event structure (verb/clause suffix)
-c07|grammar|modality|desire, ability, obligation, necessity (verb/clause suffix)
-c08|grammar|evidential|information source (verb/clause suffix)
-c09|grammar|mood|speech acts, questions, commands, interactionals (clause/standalone)
-c10|grammar|reference|pronouns, discourse pointers, grammatical number, quantifiers
-c11|domain|matter|physical world, materials, elements, weather
-c12|domain|biology|living organisms, anatomy, bodily functions
-c13|domain|motion|motion, mechanics, physical forces, actions
-c14|domain|artifact|artifacts, tools, technology, built spaces
-c15|domain|sense|perception, sensory qualities, textures, evaluation
-c16|domain|mind|cognition, emotion, volition, internal states
-c17|domain|society|society, kinship, culture, communication, art
-c18|domain|form|space, geometry, time, quantity, abstract relations
+c1.01|grammar|lens|the 8 ontological domain-shifting postfixes (1-place: X-op)
+c1.02|grammar|modifier|scale, grading, polarity, and state-shifting postfixes (1-place: X-op)
+c1.03|grammar|connector|word-building linkers and possessive infixes (2-place: X-op-Y)
+c1.04|grammar|role|case, semantic roles (word-final on nouns)
+c1.05|grammar|valency|verb transitivity, voice (word-final on verbs)
+c1.06|grammar|aspect|temporal flow, tense, internal event structure (verb/clause suffix)
+c1.07|grammar|modality|desire, ability, obligation, necessity (verb/clause suffix)
+c1.08|grammar|evidential|information source (verb/clause suffix)
+c1.09|grammar|mood|speech acts, questions, commands, interactionals (clause/standalone)
+c1.10|grammar|reference|pronouns, discourse pointers, quantifiers
+c1.11|grammar|number|mathematical (and grammatical) number, numerals
+c2.01|domain|matter|physical world, materials, elements, weather
+c2.02|domain|biology|living organisms, anatomy, bodily functions
+c2.03|domain|motion|motion, mechanics, physical forces, actions
+c2.04|domain|artifact|artifacts, tools, technology, built spaces
+c2.05|domain|sense|perception, sensory qualities, textures, evaluation
+c2.06|domain|mind|cognition, emotion, volition, internal states
+c2.07|domain|society|society, kinship, culture, communication, art
+c2.08|domain|form|space, geometry, time, quantity, abstract relations
