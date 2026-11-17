@@ -32,7 +32,7 @@ g03.12|c1.03|hu||of (inalienable possession)|head (left) is body part, kin, or i
 g03.13|c1.03|po||of (transient possession)|head (left) is currently held/used by right; 2-place infix; 3.1: pa
 g03.14|c1.03|vi||of (associative possession)|head (left) is socially/contextually affiliated with right; 2-place infix; 3.1: hu
 g03.15|c1.03|hi||of (abstract possession)|head (left) is abstract trait/thought/state of right; 2-place infix; 3.1: tu
-g03.16|c1.03|bi||and|general insertion between two subjects
+g03.16|c1.03|ge||and|general insertion between two subjects
 g04.01|c1.04|es||nominative role, agent, actor, comparee|initiates action (or comparee in comparative clause); 3.1: ob
 g04.02|c1.04|om||accusative role, patient, theme, standard of comparison|undergoes action, stative subject, or 'than' object in comparison; 3.1: um
 g04.03|c1.04|os||recipient role, dative, receiver|receives transfer or communication; 3.1: ip
@@ -61,7 +61,7 @@ g05.04|c1.05|ak||comparative valency, compares A-ob to B-um|marks comparative pr
 g05.05|c1.05|ul||reflexive voice, acts on self|subject acts upon itself; 3.1: hi
 g05.06|c1.05|uk||reciprocal voice, acts on each other|subjects act mutually upon one another; 3.1: ji
 g06.01|c1.06|fu||perfective aspect, completed whole|action viewed as a bounded/completed unit; 3.1: va
-g06.02|c1.06|mi||imperfective aspect, ongoing, open-ended|action lacking a defined endpoint; 3.1: mu
+g06.02|c1.06|wu||imperfective aspect, ongoing, open-ended|action lacking a defined endpoint; 3.1: mu
 g06.03|c1.06|ma||progressive aspect, actively in progress|action occurring right at reference time; 3.1: pe
 g06.04|c1.06|je||habitual aspect, regular routine, custom|action occurring regularly/habitually; 3.1: za
 g06.05|c1.06|gu||past tense|before reference/speech time; 3.1: ki
@@ -79,7 +79,7 @@ g07.09|c1.07|na||hypothetical modality, suppose, would|counterfactual or hypothe
 g08.01|c1.08|ta||direct perception evidential, witnessed|known via direct sensory experience; 3.1: ze
 g08.02|c1.08|ci||inferential evidential, inferred from evidence|known by deducing from clues/results; 3.1: cu
 g08.03|c1.08|jo||reportative evidential, hearsay, told|known via others' speech/reports; 3.1: ta
-g08.04|c1.08|fi||memory evidential, remembered, recalled|known from personal memory; 3.1: ho
+g08.04|c1.08|ha||memory evidential, remembered, recalled|known from personal memory; 3.1: ho
 g08.05|c1.08|yo||authoritative evidential, documented, established|known from reliable records/authority; 3.1: sa
 g08.06|c1.08|sa||speculative evidential, assumed, guessed|known via intuition/assumption; 3.1: ke
 g09.01|c1.09|zi||imperative mood, command, request, let's|directs listener to act; 3.1: me
@@ -87,10 +87,10 @@ g09.02|c1.09|du||prohibitive mood, negative imperative, don't|directs listener n
 g09.03|c1.09|zo||content question mood, asks for information|pairs with question pronoun ka; 3.1: zu
 g09.04|c1.09|le||polar question mood, yes/no question|asks for confirmation or tentative request; 3.1: ca
 g09.05|c1.09|ji||affirmative, yes, agreed, true|affirmative answer/interactional; 3.1: si / re
-g09.06|c1.09|to||negative, no, disagreed|negative answer/interactional; 3.1: ko / mi
-g09.07|c1.09|pu||compliant interactional, okay, will do, gladly|accepts a request/command; 3.1: ge
+g09.06|c1.09|pu||negative, no, disagreed|negative answer/interactional; 3.1: ko / mi
+g09.07|c1.09|to||compliant interactional, okay, will do, gladly|accepts a request/command; 3.1: ge
 g09.08|c1.09|ki||greeting interactional, hello, goodbye|social opening/closing; 3.1: po
-g10.01|c1.10|wu||1st person exclusive pronoun (I, me, we excl.)|speaker(s) excluding addressee; 3.1: fu
+g10.01|c1.10|mi||1st person exclusive pronoun (I, me, we excl.)|speaker(s) excluding addressee; 3.1: fu
 g10.02|c1.10|ze||1st person inclusive pronoun (we, us incl.)|speaker(s) including addressee; 3.1: yi
 g10.03|c1.10|ke||2nd person pronoun (you)|addressee(s); 3.1: li
 g10.04|c1.10|yu||3rd person pronoun proximate (he, she, they, it)|3.1: so, bu, proximate is the 3rd person closest to the speakers point of view or default (in contrast with obviate)
@@ -111,4 +111,4 @@ g11.03|c1.11|tu||number 2|3.0: tu
 g11.04|c1.11|gi||number 3|3.0: gi
 g11.05|c1.11|so||number 4|3.0: so
 g11.06|c1.11|lu||number 5|3.0: lu
-g11.07|c1.11|ha||number *6^|3.0: ha
+g11.07|c1.11|fi||number *6^|3.0: ha
