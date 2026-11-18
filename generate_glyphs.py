@@ -115,6 +115,13 @@ def main() -> None:
                 )
             segments.extend(display_map[(pos, char)])
 
+        # Balancing lines for empty right or left sides
+        endpoints = {pt for seg in segments for pt in seg.split(".")}
+        if not (endpoints & {"02", "12", "22"}):
+            segments.append("12.21")
+        if not (endpoints & {"00", "10", "20"}):
+            segments.append("01.10")
+
         svg_content = render_svg(segments)
         out_file = output_dir / f"{spelling}.svg"
         out_file.write_text(svg_content, encoding="utf-8")
