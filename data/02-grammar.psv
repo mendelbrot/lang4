@@ -15,8 +15,16 @@ g02.05|c1.02|go||excessive degree, too much, over-|beyond desirable/functional t
 g02.06|c1.02|co||insufficient degree, too little, under-, lacking|below desirable/functional threshold; counterpart to g013
 g02.07|c1.02|si||opposite, inverse, un-, counter-, anti-|polar reversal (e.g. unhappy, unsatisfactory); 3.1: je
 g02.08|c1.02|te||negation, not, non-|logical negation (e.g. not happy); 3.1: ma
-g02.09|c1.02|do||-able, capable of being, potential passive|e.g. eat-able, move-able; 3.0: vud
-g02.10|c1.02|ya||proper name marker|marks preceding stem as a proper name/loan; 3.1: ti
+g02.09|c1.02|ya||proper name marker|marks preceding stem as a proper name/loan; 3.1: ti
+g02.10|c1.02|do||completive version|new ithkuil search -> find
+g02.11|c1.02|bu||proximal extension|new ithkuil loaf of bread -> slice of bread
+g02.12|c1.02|vu||inceptive extension|new ithkuil fire -> spark
+g02.13|c1.02|de||terminative extension|new ithkuil fire -> embers
+g02.14|c1.02|yi||coalescent affiliation|new ithkuil tree -> forest
+g02.15|c1.02|ra||representative essence|new ithkuil imagined or depicted things she died-X = died onstage or in a game. monster-X = imagined monster, monster in a dream.
+g02.16|c1.02|vo||process target|lojban participant conversion love -> beloved
+g02.17|c1.02|ho||other than|lojban 4-way negation human -> non-human, self -> other
+g02.18|c1.02|ko||metaphor|lojban explicit metaphor she died-X = was exhausted, humiliated. monster-X = horrible person 'you monster'
 g03.01|c1.03|pi||of, general compound divider (pi)|links head (left) to modifier group (right); 2-place infix; 3.1: mo
 g03.02|c1.03|ve||blend, concept-mixing compound connector|merges two clouds symmetrically; 2-place infix; 3.1: zo
 g03.03|c1.03|bi||logical and (conjunction: TT)|both A and B; 2-place truth gate; 3.1: no
@@ -54,8 +62,8 @@ g04.18|c1.04|ib||concessive role, despite, in spite of, although, however|obstac
 g04.19|c1.04|as||vocative role, direct address, O|identifies addressee; 3.1: al
 g04.20|c1.04|uv||affective role, speaker's emotional attitude|marks speaker's feeling toward clause; 3.1: ug
 g04.21|c1.04|ic||assessive role, speaker's evaluation/judgment|marks speaker's assessment of clause; 3.1: iv
-g05.01|c1.05|uc||intransitive valency, process (SV)|marks intransitive verb; 3.1: vo
-g05.02|c1.05|id||intransitive valency, state (SV)|marks intransitive state predicate; 3.1: vo
+g05.01|c1.05|uc||intransitive process valency (SV)|marks intransitive verb; 3.1: vo
+g05.02|c1.05|id||intransitive state valency (SV)|marks intransitive state predicate; 3.1: vo
 g05.03|c1.05|at||transitive valency, action on object (AVO)|marks causative/transitive action on accusative object; 3.1: do
 g05.04|c1.05|ak||comparative valency, compares A-ob to B-um|marks comparative predicate (e.g. wug-jo-[COMP] = is bigger than)
 g05.05|c1.05|ul||reflexive voice, acts on self|subject acts upon itself; 3.1: hi
@@ -88,13 +96,13 @@ g09.03|c1.09|zo||content question mood, asks for information|pairs with question
 g09.04|c1.09|le||polar question mood, yes/no question|asks for confirmation or tentative request; 3.1: ca
 g09.05|c1.09|ji||affirmative, yes, agreed, true|affirmative answer/interactional; 3.1: si / re
 g09.06|c1.09|pu||negative, no, disagreed|negative answer/interactional; 3.1: ko / mi
-g09.07|c1.09|to||compliant interactional, okay, will do, gladly|accepts a request/command; 3.1: ge
-g09.08|c1.09|ki||greeting interactional, hello, goodbye|social opening/closing; 3.1: po
-g10.01|c1.10|mi||1st person exclusive pronoun (I, me, we excl.)|speaker(s) excluding addressee; 3.1: fu
-g10.02|c1.10|ze||1st person inclusive pronoun (we, us incl.)|speaker(s) including addressee; 3.1: yi
-g10.03|c1.10|ke||2nd person pronoun (you)|addressee(s); 3.1: li
-g10.04|c1.10|yu||3rd person pronoun proximate (he, she, they, it)|3.1: so, bu, proximate is the 3rd person closest to the speakers point of view or default (in contrast with obviate)
-g10.05|c1.10|mo||3rd person pronoun obviate|obviate is any other third-person participant who is secondary or further removed from the focus
+g09.07|c1.09|to||compliant, okay, will do, gladly|accepts a request/command; 3.1: ge
+g09.08|c1.09|ki||greeting, hello, goodbye|social opening/closing; 3.1: po
+g10.01|c1.10|mi||1stp exclusive pronoun (I, me, we excl.)|speaker(s) excluding addressee; 3.1: fu
+g10.02|c1.10|ze||1stp inclusive pronoun (we, us incl.)|speaker(s) including addressee; 3.1: yi
+g10.03|c1.10|yu||2ndp (you)|addressee(s); 3.1: li
+g10.04|c1.10|ke||3rdp proximate (he, she, they, it)|3.1: so, bu, proximate is the 3rd person closest to the speakers point of view or default (in contrast with obviate)
+g10.05|c1.10|mo||3rdp obviate|obviate is any other third-person participant who is secondary or further removed from the focus
 g10.06|c1.10|va||indefinite pronoun (one, someone, people)|generic person; 3.1: co
 g10.07|c1.10|wa||interrogative pronoun (what, who, which)|question variable; 3.1: ka
 g10.08|c1.10|lo||demonstrative (this, that)|composes with lexical words for speaker anchored (proximal or distal), person-anchored, or multi-dimensional demonstratives; 3.1: wi
