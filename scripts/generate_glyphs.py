@@ -91,7 +91,7 @@ def render_svg(segments: List[str]) -> str:
 
 
 def main() -> None:
-    base_dir = Path(__file__).resolve().parent
+    base_dir = Path(__file__).resolve().parent.parent
     display_path = base_dir / "data" / "05-display.psv"
     grammar_path = base_dir / "data" / "02-grammar.psv"
     roots_path = base_dir / "data" / "03-roots.psv"

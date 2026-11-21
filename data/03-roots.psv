@@ -106,11 +106,11 @@ r08.10|c2.08|kek|1|fuzzy,sharp,sym|block, cube, square, brick, angular polyhedro
 r08.11|c2.08|mem|1|fuzzy,sym|same, similar, equal, parallel, peer, counterpart|tp: sama; 3.0: sam
 r08.12|c2.08|hil|1|fuzzy,sharp|different, other, altered, distinct, change, variation|tp: ante; 3.0: yig
 r08.13|c2.08|tar|1|fuzzy|number, count, quantity, math, rank|tp: nanpa; 3.0: bis
-r08.14|c1.08||1||logical and (conjunction: TT)|both A and B; 2-place truth gate; 3.1: no
-r08.15|c1.08||1||logical or (inclusive disjunction: TT, TF, FT)|A, B, or both; 2-place truth gate; 3.1: ya
-r08.16|c1.08||1||logical xor (exclusive disjunction: TF, FT)|either A or B, but not both; 2-place truth gate; 3.1: vu
-r08.17|c1.08||1||logical equiv (biconditional equivalence: TT, FF)|both A and B, or neither; 2-place truth gate
-r08.18|c1.08||1||logical nand (alternative denial: TF, FT, FF)|not both A and B (at most one); 2-place truth gate
-r08.19|c1.08||1||logical nor (joint denial: FF)|neither A nor B; 2-place truth gate
-r08.20|c1.08||1||logical imp (material implication: TT, FT, FF)|if A then B (not A without B); 2-place truth gate
-r08.21|c1.08||1||logical proj (left projection: TT, TF)|A regardless of whether B (A is true, B unconstrained); 2-place truth gate
+r08.14|c1.08|lub|1||logical and (conjunction: TT)|both A and B; 2-place truth gate; 3.1: no
+r08.15|c1.08|kum|1||logical or (inclusive disjunction: TT, TF, FT)|A, B, or both; 2-place truth gate; 3.1: ya
+r08.16|c1.08|zek|1||logical xor (exclusive disjunction: TF, FT)|either A or B, but not both; 2-place truth gate; 3.1: vu
+r08.17|c1.08|cub|1||logical equiv (biconditional equivalence: TT, FF)|both A and B, or neither; 2-place truth gate
+r08.18|c1.08|guc|1||logical nand (alternative denial: TF, FT, FF)|not both A and B (at most one); 2-place truth gate
+r08.19|c1.08|sap|1||logical nor (joint denial: FF)|neither A nor B; 2-place truth gate
+r08.20|c1.08|cer|1||logical imp (material implication: TT, FT, FF)|if A then B (not A without B); 2-place truth gate
+r08.21|c1.08|gur|1||logical proj (left projection: TT, TF)|A regardless of whether B (A is true, B unconstrained); 2-place truth gate
