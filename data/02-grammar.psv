@@ -1,122 +1,123 @@
-id|category|spelling|tags|definition|notes
-g01.01|c1.01|zu||matter lens|shifts stem to c11 (substance, natural phenomenon, raw material); 1-place postfix; 3.0: mo
-g01.02|c1.01|no||biology lens|shifts stem to c12 (living organism, body part, organic process); 1-place postfix; 3.0: gi
-g01.03|c1.01|re||motion lens|shifts stem to c13 (kinetic action, physical force, mechanical movement); 1-place postfix
-g01.04|c1.01|ro||artifact lens|shifts stem to c14 (human-made tool, vessel, shelter, technology); 1-place postfix; 3.0: ta
-g01.05|c1.01|ku||sense lens|shifts stem to c15 (sensory quality, texture, perceptible state); 1-place postfix; 3.0: na
-g01.06|c1.01|me||mind lens|shifts stem to c16 (cognition, emotion, volition, internal state); 1-place postfix; 3.0: bi
-g01.07|c1.01|ga||society lens|shifts stem to c17 (person/role, social relationship, cultural practice); 1-place postfix; 3.0: lu
-g01.08|c1.01|pe||form lens|shifts stem to c18 (spatial/temporal relation, geometry, abstract system); 1-place postfix; 3.0: re
-g02.01|c1.02|la||high degree, very, more, augment|high pole on scales (or 'more' with comparative valency g058); 3.1: jo
-g02.02|c1.02|ja||moderate degree, medium, average, equal|middle point on scales (or 'as/equal' with comparative valency g058); 3.1: tav
-g02.03|c1.02|ti||low degree, little, less, diminish|low pole on scales (or 'less' with comparative valency g058); 3.1: vi
-g02.04|c1.02|wi||absence, -less, without, zero degree|privative state (e.g. joyless, moistureless); 3.1: se
-g02.05|c1.02|go||excessive degree, too much, over-|beyond desirable/functional threshold; 3.1: zev
-g02.06|c1.02|co||insufficient degree, too little, under-, lacking|below desirable/functional threshold; counterpart to g013
-g02.07|c1.02|si||opposite, inverse, un-, counter-, anti-|polar reversal (e.g. unhappy, unsatisfactory); 3.1: je
-g02.08|c1.02|te||negation, not, non-|logical negation (e.g. not happy); 3.1: ma
-g02.09|c1.02|ya||proper name marker|marks preceding stem as a proper name/loan; 3.1: ti
-g02.10|c1.02|do||completive version|new ithkuil search -> find
-g02.11|c1.02|bu||proximal extension|new ithkuil loaf of bread -> slice of bread
-g02.12|c1.02|vu||inceptive extension|new ithkuil fire -> spark
-g02.13|c1.02|de||terminative extension|new ithkuil fire -> embers
-g02.14|c1.02|yi||coalescent affiliation|new ithkuil tree -> forest
-g02.15|c1.02|ra||representative essence|new ithkuil imagined or depicted things she died-X = died onstage or in a game. monster-X = imagined monster, monster in a dream.
-g02.16|c1.02|vo||process target|lojban participant conversion love -> beloved
-g02.17|c1.02|ho||other than|lojban 4-way negation human -> non-human, self -> other
-g02.18|c1.02|ko||metaphor|lojban explicit metaphor she died-X = was exhausted, humiliated. monster-X = horrible person 'you monster'
-g03.01|c1.03|pi||of, general compound divider (pi)|links head (left) to modifier group (right); 2-place infix; 3.1: mo
-g03.02|c1.03|ve||blend, concept-mixing compound connector|merges two clouds symmetrically; 2-place infix; 3.1: zo
-g03.03|c1.03|bi||logical and (conjunction: TT)|both A and B; 2-place truth gate; 3.1: no
-g03.04|c1.03|he||logical or (inclusive disjunction: TT, TF, FT)|A, B, or both; 2-place truth gate; 3.1: ya
-g03.05|c1.03|su||logical xor (exclusive disjunction: TF, FT)|either A or B, but not both; 2-place truth gate; 3.1: vu
-g03.06|c1.03|fo||logical equiv (biconditional equivalence: TT, FF)|both A and B, or neither; 2-place truth gate
-g03.07|c1.03|fa||logical nand (alternative denial: TF, FT, FF)|not both A and B (at most one); 2-place truth gate
-g03.08|c1.03|be||logical nor (joint denial: FF)|neither A nor B; 2-place truth gate
-g03.09|c1.03|ba||logical imp (material implication: TT, FT, FF)|if A then B (not A without B); 2-place truth gate
-g03.10|c1.03|za||logical proj (left projection: TT, TF)|A regardless of whether B (A is true, B unconstrained); 2-place truth gate
-g03.11|c1.03|ri||of (alienable possession)|head (left) is owned/acquired by right; 2-place infix; 3.1: gu
-g03.12|c1.03|hu||of (inalienable possession)|head (left) is body part, kin, or inherent part of right; 2-place infix; 3.1: fe
-g03.13|c1.03|po||of (transient possession)|head (left) is currently held/used by right; 2-place infix; 3.1: pa
-g03.14|c1.03|vi||of (associative possession)|head (left) is socially/contextually affiliated with right; 2-place infix; 3.1: hu
-g03.15|c1.03|hi||of (abstract possession)|head (left) is abstract trait/thought/state of right; 2-place infix; 3.1: tu
-g03.16|c1.03|ge||and|general insertion between two subjects
-g04.01|c1.04|es||nominative role, agent, actor, comparee|initiates action (or comparee in comparative clause); 3.1: ob
-g04.02|c1.04|om||accusative role, patient, theme, standard of comparison|undergoes action, stative subject, or 'than' object in comparison; 3.1: um
-g04.03|c1.04|os||recipient role, dative, receiver|receives transfer or communication; 3.1: ip
-g04.04|c1.04|on||beneficiary role, for the benefit of|benefits from situation; 3.1: es
-g04.05|c1.04|ok||content role, inside, contained or topic content|what is inside a vessel or discussed as topic; 3.1: as
-g04.06|c1.04|in||locative-temporal role, at, in, on, during|static location in space or time; 3.1: un
-g04.07|c1.04|ik||extent-duration role, over, for the span of|spatial extent or temporal duration; 3.1: oc
-g04.08|c1.04|ac||ablative role, from, origin, source, since|starting point in space, time, or state; 3.1: on
-g04.09|c1.04|an||allative role, to, toward, destination, until|endpoint in space, time, or state; 3.1: ec
-g04.10|c1.04|ut||perlative role, along, through, via path|path or route traversed; 3.1: ig
-g04.11|c1.04|us||manner role, -ly, in the way/manner of|how an action is performed; 3.1: ad
-g04.12|c1.04|ur||instrumental role, using, by means of, with tool|instrument or means used; 3.1: en
-g04.13|c1.04|is||comitative role, accompanying, together with|companion or co-participant; 3.1: in
-g04.14|c1.04|un||abessive role, without, lacking|what is absent in the clause; 3.1: om
-g04.15|c1.04|ot||causal role, because of, caused by, therefore|realized cause or reason (Reason Quartet 1/4); 3.1: an
-g04.16|c1.04|ob||purposive role, for the goal of, in order to|intended future motive or goal (Reason Quartet 2/4); 3.1: ap
-g04.17|c1.04|av||conditional role, given, in the event of, if|hypothetical condition (Reason Quartet 3/4)
-g04.18|c1.04|ib||concessive role, despite, in spite of, although, however|obstacle overcome (Reason Quartet 4/4)
-g04.19|c1.04|as||vocative role, direct address, O|identifies addressee; 3.1: al
-g04.20|c1.04|uv||affective role, speaker's emotional attitude|marks speaker's feeling toward clause; 3.1: ug
-g04.21|c1.04|ic||assessive role, speaker's evaluation/judgment|marks speaker's assessment of clause; 3.1: iv
-g05.01|c1.05|uc||intransitive process valency (SV)|marks intransitive verb; 3.1: vo
-g05.02|c1.05|id||intransitive state valency (SV)|marks intransitive state predicate; 3.1: vo
-g05.03|c1.05|at||transitive valency, action on object (AVO)|marks causative/transitive action on accusative object; 3.1: do
-g05.04|c1.05|ak||comparative valency, compares A-ob to B-um|marks comparative predicate (e.g. wug-jo-[COMP] = is bigger than)
-g05.05|c1.05|ul||reflexive voice, acts on self|subject acts upon itself; 3.1: hi
-g05.06|c1.05|uk||reciprocal voice, acts on each other|subjects act mutually upon one another; 3.1: ji
-g06.01|c1.06|fu||perfective aspect, completed whole|action viewed as a bounded/completed unit; 3.1: va
-g06.02|c1.06|wu||imperfective aspect, ongoing, open-ended|action lacking a defined endpoint; 3.1: mu
-g06.03|c1.06|ma||progressive aspect, actively in progress|action occurring right at reference time; 3.1: pe
-g06.04|c1.06|je||habitual aspect, regular routine, custom|action occurring regularly/habitually; 3.1: za
-g06.05|c1.06|gu||past tense|before reference/speech time; 3.1: ki
-g06.06|c1.06|nu||present tense|at reference/speech time; 3.1: ra
-g06.07|c1.06|ye||future tense|after reference/speech time; 3.1: fa
-g07.01|c1.07|li||prediction modality, will|expected/predicted occurrence; 3.1: na
-g07.02|c1.07|bo||obligation modality, ought to, supposed to|social/moral expectation or duty; 3.1: zi
-g07.03|c1.07|wo||necessity modality, must, need to|essential requirement; 3.1: fi
-g07.04|c1.07|se||advisability modality, should, beneficial to|recommended/wise course; 3.1: yo
-g07.05|c1.07|di||ability modality, can, able to|capability or skill; 3.1: yu
-g07.06|c1.07|ni||possibility modality, might, may, possible|epistemic possibility; 3.1: su
-g07.07|c1.07|da||permission modality, may, allowed to|social/deontic permission; 3.1: ri
-g07.08|c1.07|fe||desire modality, want to, wish, hope|volitional/optative desire; 3.1: fo
-g07.09|c1.07|na||hypothetical modality, suppose, would|counterfactual or hypothetical verb frame; 3.1: ja
-g08.01|c1.08|ta||direct perception evidential, witnessed|known via direct sensory experience; 3.1: ze
-g08.02|c1.08|ci||inferential evidential, inferred from evidence|known by deducing from clues/results; 3.1: cu
-g08.03|c1.08|jo||reportative evidential, hearsay, told|known via others' speech/reports; 3.1: ta
-g08.04|c1.08|ha||memory evidential, remembered, recalled|known from personal memory; 3.1: ho
-g08.05|c1.08|yo||authoritative evidential, documented, established|known from reliable records/authority; 3.1: sa
-g08.06|c1.08|sa||speculative evidential, assumed, guessed|known via intuition/assumption; 3.1: ke
-g09.01|c1.09|zi||imperative mood, command, request, let's|directs listener to act; 3.1: me
-g09.02|c1.09|du||prohibitive mood, negative imperative, don't|directs listener not to act; 3.1: bi
-g09.03|c1.09|zo||content question mood, asks for information|pairs with question pronoun ka; 3.1: zu
-g09.04|c1.09|le||polar question mood, yes/no question|asks for confirmation or tentative request; 3.1: ca
-g09.05|c1.09|ji||affirmative, yes, agreed, true|affirmative answer/interactional; 3.1: si / re
-g09.06|c1.09|pu||negative, no, disagreed|negative answer/interactional; 3.1: ko / mi
-g09.07|c1.09|to||compliant, okay, will do, gladly|accepts a request/command; 3.1: ge
-g09.08|c1.09|ki||greeting, hello, goodbye|social opening/closing; 3.1: po
-g10.01|c1.10|mi||1stp exclusive pronoun (I, me, we excl.)|speaker(s) excluding addressee; 3.1: fu
-g10.02|c1.10|ze||1stp inclusive pronoun (we, us incl.)|speaker(s) including addressee; 3.1: yi
-g10.03|c1.10|yu||2ndp (you)|addressee(s); 3.1: li
-g10.04|c1.10|ke||3rdp proximate (he, she, they, it)|3.1: so, bu, proximate is the 3rd person closest to the speakers point of view or default (in contrast with obviate)
-g10.05|c1.10|mo||3rdp obviate|obviate is any other third-person participant who is secondary or further removed from the focus
-g10.06|c1.10|va||indefinite pronoun (one, someone, people)|generic person; 3.1: co
-g10.07|c1.10|wa||interrogative pronoun (what, who, which)|question variable; 3.1: ka
-g10.08|c1.10|lo||demonstrative (this, that)|composes with lexical words for speaker anchored (proximal or distal), person-anchored, or multi-dimensional demonstratives; 3.1: wi
-g10.09|c1.10|ka||pre-anaphoric discourse pointer (before that prior statement/referent)|points back to the sentence before the preceding sentence/clause
-g10.10|c1.10|ju||anaphoric discourse pointer (that prior statement/referent)|points back to preceding sentence/clause
-g10.11|c1.10|mu||cataphoric discourse pointer (this next statement/referent)|points forward to following sentence/clause
-g10.12|c1.10|cu||existential quantifier (some, certain)|non-specific subset; 3.1: di
-g10.13|c1.10|ce||universal quantifier (all, every, each)|entirety of set; 3.1: we
-g10.14|c1.10|ca||exclusive focus quantifier (only, just, solely)|restricts to sole referent; 3.1: lu
-g10.15|c1.10|ru||distributive quantifier (per, apiece, for each)|distributes across items; 3.1: ha
-g11.01|c1.11|pa||number 0|3.0: pa
-g11.02|c1.11|we||number 1|3.0: we
-g11.03|c1.11|tu||number 2|3.0: tu
-g11.04|c1.11|gi||number 3|3.0: gi
-g11.05|c1.11|so||number 4|3.0: so
-g11.06|c1.11|lu||number 5|3.0: lu
-g11.07|c1.11|fi||number *6^|3.0: ha
+id|category|spelling|essentialness|tags|definition|notes
+g01.01|c1.01|zu|1||matter lens|shifts stem to c11 (substance, natural phenomenon, raw material); 1-place postfix; 3.0: mo
+g01.02|c1.01|no|1||biology lens|shifts stem to c12 (living organism, body part, organic process); 1-place postfix; 3.0: gi
+g01.03|c1.01|re|1||motion lens|shifts stem to c13 (kinetic action, physical force, mechanical movement); 1-place postfix
+g01.04|c1.01|ro|1||artifact lens|shifts stem to c14 (human-made tool, vessel, shelter, technology); 1-place postfix; 3.0: ta
+g01.05|c1.01|ku|1||sense lens|shifts stem to c15 (sensory quality, texture, perceptible state); 1-place postfix; 3.0: na
+g01.06|c1.01|me|1||mind lens|shifts stem to c16 (cognition, emotion, volition, internal state); 1-place postfix; 3.0: bi
+g01.07|c1.01|ga|1||society lens|shifts stem to c17 (person/role, social relationship, cultural practice); 1-place postfix; 3.0: lu
+g01.08|c1.01|pe|1||form lens|shifts stem to c18 (spatial/temporal relation, geometry, abstract system); 1-place postfix; 3.0: re
+g02.01|c1.02|la|1||high degree, very, more, augment|high pole on scales (or 'more' with comparative valency g058); 3.1: jo
+g02.02|c1.02|ja|1||moderate degree, medium, average, equal|middle point on scales (or 'as/equal' with comparative valency g058); 3.1: tav
+g02.03|c1.02|ti|1||low degree, little, less, diminish|low pole on scales (or 'less' with comparative valency g058); 3.1: vi
+g02.04|c1.02|wi|1||absence, -less, without, zero degree|privative state (e.g. joyless, moistureless); 3.1: se
+g02.05|c1.02|go|1||excessive degree, too much, over-|beyond desirable/functional threshold; 3.1: zev
+g02.06|c1.02|co|1||insufficient degree, too little, under-, lacking|below desirable/functional threshold; counterpart to g013
+g02.07|c1.02|si|1||opposite, inverse, un-, counter-, anti-|polar reversal (e.g. unhappy, unsatisfactory); 3.1: je
+g02.08|c1.02|te|1||negation, not, non-|logical negation (e.g. not happy); 3.1: ma
+g02.09|c1.02|ya|1||proper name marker|marks preceding stem as a proper name/loan; 3.1: ti
+g02.10|c1.02|do|1||completive|new ithkuil completive version search -> find
+g02.11|c1.02|bu|1||portion|new ithkuil proximal extension loaf of bread -> slice of bread
+g02.12|c1.02|vu|1||inceptive extension|new ithkuil fire -> spark
+g02.13|c1.02|de|1||terminative extension|new ithkuil fire -> embers
+g02.14|c1.02|yi|1||coalescent affiliation|new ithkuil tree -> forest
+g02.15|c1.02|ra|1||representative essence|new ithkuil imagined or depicted things she died-X = died onstage or in a game. monster-X = imagined monster, monster in a dream.
+g02.16|c1.02|vo|1||process target|lojban participant conversion love -> beloved
+g02.17|c1.02|be|1||process agent|participant conversion love -> lover
+g02.18|c1.02|ho|1||other than|lojban 4-way negation human -> non-human, self -> other
+g02.19|c1.02|ko|1||metaphor|lojban explicit metaphor she died-X = was exhausted, humiliated. monster-X = horrible person 'you monster'
+g03.01|c1.03|pi|1||pi divider of general compound|links head (left) to modifier group (right); 2-place infix; 3.1: mo
+g03.02|c1.03|ge|1||and|general insertion between two subjects
+g03.03|c1.03|ve|1||blend concept-mixing connector|merges two clouds symmetrically; 2-place infix; 3.1: zo
+g03.04|c1.03|bi|1||general connector tail specified|the nature of this connector is defined by the root word following it. used with logical connectives
+g03.05|c1.03|ri|1||possession alienable|head (left) is owned/acquired by right; 2-place infix; 3.1: gu
+g03.06|c1.03|hu|1||possession inalienable|head (left) is body part, kin, or inherent part of right; 2-place infix; 3.1: fe
+g03.07|c1.03|po|1||possession transient |head (left) is currently held/used by right; 2-place infix; 3.1: pa
+g03.08|c1.03|vi|1||possession associative |head (left) is socially/contextually affiliated with right; 2-place infix; 3.1: hu
+g03.09|c1.03|hi|1||possession abstract |head (left) is abstract trait/thought/state of right; 2-place infix; 3.1: tu
+g03.10|c1.03|ba|1||possession authorship productive |head (left) is created by right
+g03.11|c1.03|he|1||possession depictive topic |head (left) a depiction of right, or right is the topic of left [story]-of-[the noble peasant]
+g04.01|c1.04|es|1||nominative role, agent, actor, comparee|initiates action (or comparee in comparative clause); 3.1: ob
+g04.02|c1.04|om|1||accusative role, patient, theme, standard of comparison|undergoes action, stative subject, or 'than' object in comparison; 3.1: um
+g04.03|c1.04|os|1||recipient role, dative, receiver|receives transfer or communication; 3.1: ip
+g04.04|c1.04|on|1||beneficiary role, for the benefit of|benefits from situation; 3.1: es
+g04.05|c1.04|ok|1||topic aboutness|about, regarding, concerning
+g04.06|c1.04|et|1||experiencer role|conscious perceiver, feeler, or mental/sensory state holder (e.g. 'I see', 'I fear', 'I am cold')
+g04.07|c1.04|in|1||locative-temporal role, at, in, on, during|static location in space or time; 3.1: un
+g04.08|c1.04|ik|2||extent-duration role, over, for the span of|spatial extent or temporal duration; 3.1: oc
+g04.09|c1.04|ac|1||ablative role, from, origin, source, since|starting point in space, time, or state; 3.1: on
+g04.10|c1.04|an|1||allative role, to, toward, destination, until|endpoint in space, time, or state; 3.1: ec
+g04.11|c1.04|ut|2||perlative role, along, through, via path|path or route traversed; 3.1: ig
+g04.12|c1.04|us|1||manner role, -ly, in the way/manner of, like, resembling|how an action is performed (includes similative); 3.1: ad
+g04.13|c1.04|ur|1||instrumental role, using, by means of, with tool|instrument or means used; 3.1: en
+g04.14|c1.04|is|1||comitative role, accompanying, together with|companion or co-participant; 3.1: in
+g04.15|c1.04|un|1||abessive role, without, lacking, except for, excluding|what is absent or excluded in the clause (includes exclusory); 3.1: om
+g04.16|c1.04|ot|1||causal role, because of, caused by, therefore|realized cause or reason (Reason Quartet 1/4); 3.1: an
+g04.17|c1.04|ob|1||purposive role, for the goal of, in order to|intended future motive or goal (Reason Quartet 2/4); 3.1: ap
+g04.18|c1.04|av|1||conditional role, given, in the event of, if|hypothetical condition (Reason Quartet 3/4)
+g04.19|c1.04|ib|1||concessive role, despite, in spite of, although, however|obstacle overcome (Reason Quartet 4/4)
+g04.20|c1.04|as|1||vocative role, direct addressee|identifies addressee; 3.1: al
+g04.21|c1.04|uv|2||affective role, speaker's emotional attitude|marks speaker's feeling toward clause; 3.1: ug
+g04.22|c1.04|ic|2||assessive role, speaker's evaluation/judgment|marks speaker's assessment of clause; 3.1: iv
+g04.23|c1.04|oc|2||essive role, as, in the capacity of|role, status, or capacity held during the clause
+g04.24|c1.04|ov|2||perspective role, according to, from the viewpoint of, as for|frame of reference, viewpoint, or lens for the clause
+g04.25|c1.04|og|2||substitutive role, instead of, rather than, in place of|entity or event replaced by the clause
+g04.26|c1.04|af|2||consumptive role, consuming, expending, in exchange for|resource used up, spent, or traded away in the action
+g05.01|c1.05|uc|1||intransitive process valency (SV)|marks intransitive verb; 3.1: vo
+g05.02|c1.05|id|1||intransitive state valency (SV)|marks intransitive state predicate; 3.1: vo
+g05.03|c1.05|at|1||transitive valency, action on object (AVO)|marks causative/transitive action on accusative object; 3.1: do
+g05.04|c1.05|ak|1||comparative valency, compares A-ob to B-um|marks comparative predicate (e.g. wug-jo-[COMP] = is bigger than)
+g05.05|c1.05|ul|1||reflexive voice, acts on self|subject acts upon itself; 3.1: hi
+g05.06|c1.05|uk|1||reciprocal voice, acts on each other|subjects act mutually upon one another; 3.1: ji
+g06.01|c1.06|fu|1||perfective aspect, completed whole|action viewed as a bounded/completed unit; 3.1: va
+g06.02|c1.06|wu|1||imperfective aspect, ongoing, open-ended|action lacking a defined endpoint; 3.1: mu
+g06.03|c1.06|ma|1||progressive aspect, actively in progress|action occurring right at reference time; 3.1: pe
+g06.04|c1.06|je|1||habitual aspect, regular routine, custom|action occurring regularly/habitually; 3.1: za
+g06.05|c1.06|gu|1||past tense|before reference/speech time; 3.1: ki
+g06.06|c1.06|nu|1||present tense|at reference/speech time; 3.1: ra
+g06.07|c1.06|ye|1||future tense|after reference/speech time; 3.1: fa
+g07.01|c1.07|li|1||prediction modality, will|expected/predicted occurrence; 3.1: na
+g07.02|c1.07|bo|1||obligation modality, ought to, supposed to|social/moral expectation or duty; 3.1: zi
+g07.03|c1.07|wo|1||necessity modality, must, need to|essential requirement; 3.1: fi
+g07.04|c1.07|se|1||advisability modality, should, beneficial to|recommended/wise course; 3.1: yo
+g07.05|c1.07|di|1||ability modality, can, able to|capability or skill; 3.1: yu
+g07.06|c1.07|ni|1||possibility modality, might, may, possible|epistemic possibility; 3.1: su
+g07.07|c1.07|da|1||permission modality, may, allowed to|social/deontic permission; 3.1: ri
+g07.08|c1.07|fe|1||desire modality, want to, wish, hope|volitional/optative desire; 3.1: fo
+g07.09|c1.07|na|1||hypothetical modality, suppose, would|counterfactual or hypothetical verb frame; 3.1: ja
+g08.01|c1.08|ta|1||direct perception evidential, witnessed|known via direct sensory experience; 3.1: ze
+g08.02|c1.08|ci|1||inferential evidential, inferred from evidence|known by deducing from clues/results; 3.1: cu
+g08.03|c1.08|jo|1||reportative evidential, hearsay, told|known via others' speech/reports; 3.1: ta
+g08.04|c1.08|ha|1||memory evidential, remembered, recalled|known from personal memory; 3.1: ho
+g08.05|c1.08|yo|1||authoritative evidential, documented, established|known from reliable records/authority; 3.1: sa
+g08.06|c1.08|sa|1||speculative evidential, assumed, guessed|known via intuition/assumption; 3.1: ke
+g09.01|c1.09|zi|1||imperative mood, command, request, let's|directs listener to act; 3.1: me
+g09.02|c1.09|du|1||prohibitive mood, negative imperative, don't|directs listener not to act; 3.1: bi
+g09.03|c1.09|zo|1||content question mood, asks for information|pairs with question pronoun ka; 3.1: zu
+g09.04|c1.09|le|1||polar question mood, yes/no question|asks for confirmation or tentative request; 3.1: ca
+g09.05|c1.09|ji|1||affirmative, yes, agreed, true|affirmative answer/interactional; 3.1: si / re
+g09.06|c1.09|pu|1||negative, no, disagreed|negative answer/interactional; 3.1: ko / mi
+g09.07|c1.09|to|1||compliant, okay, will do, gladly|accepts a request/command; 3.1: ge
+g09.08|c1.09|ki|1||greeting, hello, goodbye|social opening/closing; 3.1: po
+g10.01|c1.10|mi|1||1stp exclusive pronoun (I, me, we excl.)|speaker(s) excluding addressee; 3.1: fu
+g10.02|c1.10|ze|1||1stp inclusive pronoun (we, us incl.)|speaker(s) including addressee; 3.1: yi
+g10.03|c1.10|yu|1||2ndp (you)|addressee(s); 3.1: li
+g10.04|c1.10|ke|1||3rdp proximate (he, she, they, it)|3.1: so, bu, proximate is the 3rd person closest to the speakers point of view or default (in contrast with obviate)
+g10.05|c1.10|mo|1||3rdp obviate|obviate is any other third-person participant who is secondary or further removed from the focus
+g10.06|c1.10|va|1||indefinite pronoun (one, someone, people)|generic person; 3.1: co
+g10.07|c1.10|wa|1||interrogative pronoun (what, who, which)|question variable; 3.1: ka
+g10.08|c1.10|lo|1||demonstrative (this, that)|composes with lexical words for speaker anchored (proximal or distal), person-anchored, or multi-dimensional demonstratives; 3.1: wi
+g10.09|c1.10|ka|1||pre-anaphoric discourse pointer (before that prior statement/referent)|points back to the sentence before the preceding sentence/clause
+g10.10|c1.10|ju|1||anaphoric discourse pointer (that prior statement/referent)|points back to preceding sentence/clause
+g10.11|c1.10|mu|1||cataphoric discourse pointer (this next statement/referent)|points forward to following sentence/clause
+g10.12|c1.10|cu|1||existential quantifier (some, certain)|non-specific subset; 3.1: di
+g10.13|c1.10|ce|1||universal quantifier (all, every, each)|entirety of set; 3.1: we
+g10.14|c1.10|ca|1||exclusive focus quantifier (only, just, solely)|restricts to sole referent; 3.1: lu
+g10.15|c1.10|ru|1||distributive quantifier (per, apiece, for each)|distributes across items; 3.1: ha
+g11.01|c1.11|pa|1||number 0|3.0: pa
+g11.02|c1.11|we|1||number 1|3.0: we
+g11.03|c1.11|tu|1||number 2|3.0: tu
+g11.04|c1.11|gi|1||number 3|3.0: gi
+g11.05|c1.11|so|1||number 4|3.0: so
+g11.06|c1.11|lu|1||number 5|3.0: lu
+g11.07|c1.11|fi|1||number *6^|3.0: ha

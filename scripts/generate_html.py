@@ -42,7 +42,7 @@ def first_two_words(definition: str) -> str:
 
 
 def main() -> None:
-    base_dir = Path(__file__).resolve().parent
+    base_dir = Path(__file__).resolve().parent.parent
     categories_path = base_dir / "data" / "01-categories.psv"
     grammar_path = base_dir / "data" / "02-grammar.psv"
     roots_path = base_dir / "data" / "03-roots.psv"
