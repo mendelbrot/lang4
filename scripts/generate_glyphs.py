@@ -2,7 +2,7 @@
 """
 Generate 14-segment style SVG glyphs for grammar and root words.
 Reads:
-  - data/05-display.psv
+  - data/00-display.psv
   - data/02-grammar.psv
   - data/03-roots.psv
 Outputs:
@@ -92,7 +92,7 @@ def render_svg(segments: List[str]) -> str:
 
 def main() -> None:
     base_dir = Path(__file__).resolve().parent.parent
-    display_path = base_dir / "data" / "05-display.psv"
+    display_path = base_dir / "data" / "00-display.psv"
     grammar_path = base_dir / "data" / "02-grammar.psv"
     roots_path = base_dir / "data" / "03-roots.psv"
     output_dir = base_dir / "glyphs"
