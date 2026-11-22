@@ -1,116 +1,116 @@
-id|category|spelling|rank|tags|definition|notes
-r01.01|c2.01|roc|1|fuzzy,soft|thing, phenomenon, object, matter, substance|tp: ijo; 3.0: lus
-r01.02|c2.01|nom|1|fuzzy,flow,soft|water, liquid, fluid, wet substance, beverage|tp: telo; 3.0: fip
-r01.03|c2.01|wur|1|fuzzy,sharp,low|rock, stone, metal, hard mineral, solid object|tp: kiwen; 3.0: pep
-r01.04|c2.01|mon|1|fuzzy,soft,low|clay, dough, paste, powder, semi-solid, clinging form|tp: ko; 3.0: ned
-r01.05|c2.01|nuv|1|fuzzy,breath,flow|air, wind, gas, atmosphere, invisible agent, spirit|tp: kon; 3.0: lun/gol
-r01.06|c2.01|yiv|1|fuzzy,breath,high|fire, heat source, chemical reaction, cooking element|tp: seli; 3.0: rag/pan
-r01.07|c2.01|sam|1|fuzzy,low,soft|earth, land, soil, ground, world, territory, outdoors|tp: ma; 3.0: gad
-r01.08|c2.01|yaf|1|fuzzy,high,flow|sun, light, brightness, glow, radiance, light source|tp: suno; 3.0: lab/dal
-r01.09|c2.01|mun|1|fuzzy,inward,soft|moon, night sky object, star, celestial body|tp: mun; 3.0: mab
-r01.10|c2.01|wat|1|fuzzy,inward,low|bump, hill, mountain, protuberance, nose, button|tp: nena; 3.0: meg
-r01.11|c2.01|ruv|1|fuzzy,flow,low|hole, pit, cave, doorway, window, orifice, loop|tp: lupa; 3.0: fuv
-r02.01|c2.02|zil|1|fuzzy,soft|body, physical form, torso, organism, physical state|tp: sijelo; 3.0: yel
-r02.02|c2.02|nev|1|fuzzy,soft,flow|plant, vegetation, herb, grass, leaf, foliage|tp: kasi; 3.0: mal
-r02.03|c2.02|yun|1|fuzzy,soft|fruit, vegetable, edible plant part, berry, nut|tp: kili; 3.0: fid
-r02.04|c2.02|mag|1|fuzzy,soft,low|fungus, mushroom, mold, lichen, spore-bearer|tp: soko (ku); 3.0: sok
-r02.05|c2.02|won|1|fuzzy,soft,flow|land animal, mammal, beast, fuzzy creature|tp: soweli; 3.0: wel
-r02.06|c2.02|fen|1|fuzzy,high,breath|bird, flying creature, winged animal|tp: waso; 3.0: wao
-r02.07|c2.02|wad|1|fuzzy,sharp,low|reptile, amphibian, scaly or creeping animal|tp: akesi; 3.0: tav
-r02.08|c2.02|yom|1|fuzzy,flow,soft|fish, marine animal, aquatic creature|tp: kala; 3.0: ked
-r02.09|c2.02|jar|1|fuzzy,high,sharp|bug, insect, ant, spider, small arthropod|tp: pipi; 3.0: mum
-r02.10|c2.02|sor|1|fuzzy,low|head, skull, upper extremity, leading part|tp: lawa; 3.0: yob
-r02.11|c2.02|nid|1|fuzzy,high|eye, ocular organ, sight organ|tp: oko (ku); 3.0: oko
-r02.12|c2.02|nuc|1|fuzzy,high,sharp|ear, hearing organ|tp: kute; 3.0: tun
-r02.13|c2.02|gum|1|fuzzy,inward,low|mouth, lips, oral cavity, jaw, beak|tp: uta; 3.0: uta
-r02.14|c2.02|yal|1|fuzzy,soft|arm, hand, tactile organ, forelimb, branch-limb|tp: luka; 3.0: uka
-r02.15|c2.02|bam|1|fuzzy,low|foot, leg, organ of locomotion, lower limb|tp: noka; 3.0: ven
-r02.16|c2.02|yuv|1|fuzzy,inward,soft|internal organ, stomach, belly, viscera, womb|tp: insa; 3.0: mem
-r02.17|c2.02|von|1|fuzzy,inward,soft|heart, pulse organ, core vitality|tp: pilin; 3.0: gin
-r02.18|c2.02|bel|1|fuzzy,flow,soft|skin, bark, peel, shell, hide, outer membrane|tp: selo; 3.0: bun/lin
-r02.19|c2.02|nos|1|fuzzy,inward,soft|eat, drink, consume, swallow, ingest, nourishment|tp: moku; 3.0: neg/yod
-r02.20|c2.02|lib|1|fuzzy,soft,breath|sleep, rest, slumber, dormant state|tp: lape; 3.0: den/pid
-r02.21|c2.02|yam|1|fuzzy,soft|sex, sexual or intimate bodily union, mate|tp: unpa; 3.0: upa
-r02.22|c2.02|lan|1|fuzzy,low,soft|dead, dying, death, lifeless, fatal|tp: moli; 3.0: wul
-r02.23|c2.02|yul|1|fuzzy,soft|female, woman, feminine, maternal|tp: meli; 3.0: mel
-r02.24|c2.02|nuf|1|fuzzy,soft|male, man, masculine, paternal|tp: mije; 3.0: men
-r02.25|c2.02|meb|1|fuzzy,soft|non-binary, transgender, gender-diverse, queer|tp: tonsi (ku); 3.0: ton
-r03.01|c2.03|ral|1|fuzzy,flow|move, motion, travel, go, shift, kinetic displacement|tp: tawa; 3.0: pim
-r03.02|c2.03|lur|1|fuzzy,flow|arrive, come, become, emerge, happen, summon|tp: kama; 3.0: mog
-r03.03|c2.03|mol|1|fuzzy,soft,inward|stay, wait, endure, remain, keep, protect, conserve|tp: awen; 3.0: wog
-r03.04|c2.03|yic|1|fuzzy,sharp|do, act, work, make, build, construct, labor|tp: pali; 3.0: fam
-r03.05|c2.03|wif|1|fuzzy,breath,flow|give, send, emit, release, put, provide, transfer|tp: pana; 3.0: fap
-r03.06|c2.03|nob|1|fuzzy,inward,soft|have, hold, carry, contain, grasp, retain|tp: jo; 3.0: tus
-r03.07|c2.03|sum|1|fuzzy,sharp,high|take, seize, grab, capture, catch, appropriate|tp: lanpan (ku); 3.0: lan
-r03.08|c2.03|sir|1|fuzzy,flow,sharp|hunt, forage, search for, pursue, gather|tp: alasa; 3.0: kog
-r03.09|c2.03|rab|1|fuzzy,sharp,high|split, cut, slice, divide, sever, chop, piece|tp: kipisi (ku); 3.0: isi
-r03.10|c2.03|mac|1|fuzzy,sharp|break, damage, shatter, botch, harm, disrupt|tp: pakala; 3.0: fis
-r03.11|c2.03|hiv|1|fuzzy,sharp|fight, battle, struggle, compete, collide, challenge|tp: utala; 3.0: gal
-r03.12|c2.03|zem|1|fuzzy,sharp,breath|open, begin, start, turn on, initiate, unlock|tp: open; 3.0: pes
-r03.13|c2.03|lun|1|fuzzy,low,inward|finish, end, close, complete, stop, extinguish|tp: pini; 3.0: gon
-r04.01|c2.04|tun|1|fuzzy,sharp|tool, implement, machine, device, apparatus|tp: ilo; 3.0: vus
-r04.02|c2.04|lad|1|fuzzy,inward,low|container, vessel, bag, box, bowl, cup, drawer|tp: poki; 3.0: kos
-r04.03|c2.04|wom|1|fuzzy,low,inward|indoor space, room, house, building, shelter, chamber|tp: tomo; 3.0: pob
-r04.04|c2.04|lom|1|fuzzy|horizontal surface, table, bed, floor, platform, stage|tp: supa; 3.0: nav
-r04.05|c2.04|wir|1|fuzzy,flow,soft|cloth, fabric, clothing, textile, curtain, privacy layer|tp: len; 3.0: len
-r04.06|c2.04|yip|1|fuzzy,soft,high|flat thin object, page, book, card, document, screen|tp: lipu; 3.0: seg
-r04.07|c2.04|kal|1|fuzzy,flow,soft|cord, string, rope, thread, hair, wire, filament|tp: linja; 3.0: yul
-r04.08|c2.04|mud|1|fuzzy,sharp|rod, stick, branch, pole, shaft, long rigid object|tp: palisa; 3.0: nig
-r04.09|c2.04|yok|1|fuzzy,soft,inward|grain, cereal, bread, pasta, rice, staple food|tp: pan; 3.0: yav
-r04.10|c2.04|ler|1|fuzzy,soft,flow|medicine, cure, remedy, medical treatment, balm|tp: misikeke (ku); 3.0: mis
-r04.11|c2.04|lut|1|fuzzy,low|money, currency, wealth, trade medium, resource store|tp: mani; 3.0: gan
-r05.01|c2.05|ran|1|fuzzy,high|see, look, watch, observe, examine, visual perception|tp: lukin; 3.0: som
-r05.02|c2.05|wev|1|fuzzy,high,flow|hear, listen, auditory perception, attend to sound|tp: kute; 3.0: tun
-r05.03|c2.05|lel|1|fuzzy,flow,breath|sound, noise, voice, resonance, acoustic vibration|tp: kalama; 3.0: sul
-r05.04|c2.05|mul|1|fuzzy,flow|color, hue, pigment, dye, chromatic quality|tp: kule; 3.0: non
-r05.05|c2.05|wil|1|fuzzy,soft,breath|white, pale, light-colored, bleached|tp: walo; 3.0: kap
-r05.06|c2.05|tom|1|fuzzy,low,inward|black, dark, unlit, shadow-colored|tp: pimeja; 3.0: kev
-r05.07|c2.05|nif|1|fuzzy,sharp,high|red, crimson, warm-hued, scarlet|tp: loje; 3.0: tes
-r05.08|c2.05|den|1|fuzzy,high,flow|yellow, amber, golden, sunlit-hued|tp: jelo; 3.0: gus
-r05.09|c2.05|nel|1|fuzzy,flow,soft|blue, green, cool-hued,viridian, azure|tp: laso; 3.0: fev/tos
-r05.10|c2.05|tet|1|fuzzy,sharp,high|cold, cool, frigid, chilled, raw/uncooked|tp: lete; 3.0: rap/kun
-r05.11|c2.05|mev|1|fuzzy,soft,high|sweet, fragrant, pleasant-tasting, cute, gentle|tp: suwi; 3.0: pap/tip/hip
-r05.12|c2.05|mut|1|fuzzy,sharp,flow|spice, seasoning, ornament, extra sensory zest|tp: namako (ku); 3.0: ako
-r05.13|c2.05|ras|1|fuzzy,sharp,low|disgusting, foul, toxic, rotting, unsanitary, filthy|tp: jaki; 3.0: wub
-r05.14|c2.05|zom|1|fuzzy,soft,sym|good, positive, harmonious, beneficial, simple, valid|tp: pona; 3.0: hol/fud
-r05.15|c2.05|yag|1|fuzzy,sharp|bad, harmful, negative, defective, problematic|tp: ike; 3.0: rum
-r05.16|c2.05|lig|1|fuzzy,high,sharp|new, fresh, young, novel, unspoiled|tp: sin; 3.0: sin/ful
-r05.17|c2.05|yef|1|fuzzy,flow|strange, unusual, eccentric, altered, intoxicated|tp: nasa; 3.0: yem
-r05.18|c2.05|lor|1|fuzzy,low|strong, powerful, intense, energetic, forceful|tp: wawa; 3.0: dun
-r05.19|c2.05|wag|1|fuzzy,high|awesome, epic, marvelous, extraordinary, sublime|tp: epiku (ku); 3.0: tag
-r06.01|c2.06|fum|1|fuzzy,inward,soft|feel, emotion, experience, intuition, internal state|tp: pilin; 3.0: tad
-r06.02|c2.06|pom|1|fuzzy,inward|know, understand, skill, wisdom, cognition, memory|tp: sona; 3.0: son
-r06.03|c2.06|wor|1|fuzzy,low|control, lead, guide, plan, regulate, govern, decide|tp: lawa; 3.0: lam
-r06.04|c2.06|sun|1|fuzzy,soft,inward|love, affection, compassion, care, deep respect|tp: olin; 3.0: sen
-r06.05|c2.06|zar|1|fuzzy,sharp,low|fear, terror, horror, dread, monster, alarm|tp: monsuta (ku); 3.0: bod/pav
-r06.06|c2.06|mim|1|fuzzy,soft,high|play, game, art, recreation, amusement, humor|tp: musi; 3.0: umi
-r06.07|c2.06|miv|1|fuzzy,breath,high|sacred, awe-inspiring, transcendent, spiritual, lofty|tp: sewi; 3.0: ewi
-r07.01|c2.07|wol|1|fuzzy,soft|person, human, somebody, conscious agent|tp: jan; 3.0: yan
-r07.02|c2.07|non|1|fuzzy,inward,sym|parent, ancestor, creator, caretaker, sustainer, origin|tp: mama; 3.0: leg
-r07.03|c2.07|mat|1|fuzzy,low,inward|group, community, society, team, company, tribe|tp: kulupu; 3.0: kua
-r07.04|c2.07|zir|1|fuzzy,flow|communicate, speak, say, language, discourse|tp: toki; 3.0: tok
-r07.05|c2.07|bim|1|fuzzy,inward|name, word, term, title, lexical identifier|tp: nimi; 3.0: nim
-r07.06|c2.07|wot|1|fuzzy,high|image, picture, symbol, mark, writing, representation|tp: sitelen; 3.0: mev
-r07.07|c2.07|fir|1|fuzzy,flow|way, path, method, custom, doctrine, tradition, system|tp: nasin; 3.0: bed
-r07.08|c2.07|ror|1|fuzzy,flow|market, trade, exchange, shop, business transaction|tp: esun; 3.0: esu
-r08.01|c2.08|tul|1|fuzzy,low|size, magnitude, scale, dimension, extent, bulk|tp: suli/lili; neutral scale root
-r08.02|c2.08|wak|1|fuzzy,flow|time, duration, moment, period, occasion, tempo|tp: tenpo; 3.0: epo
-r08.03|c2.08|rol|1|fuzzy,inward|center, inside, interior, core, midst|tp: insa; 3.0: yin
-r08.04|c2.08|ren|1|fuzzy,high|front, face, anterior, wall, foremost surface|tp: sinpin; 3.0: pin/vog
-r08.05|c2.08|wod|1|fuzzy,low|back, rear, behind, posterior|tp: monsi; 3.0: his
-r08.06|c2.08|vum|1|fuzzy,soft|side, hip, edge, vicinity, adjacency, flank|tp: poka; 3.0: ben
-r08.07|c2.08|wit|1|fuzzy,high|top, area above, summit, elevation, upper part|tp: sewi; 3.0: lub
-r08.08|c2.08|nag|1|fuzzy,low|bottom, area below, base, foundation, downward|tp: anpa; 3.0: yim/rid
-r08.09|c2.08|hum|1|fuzzy,flow,sym|round, circle, sphere, ball, wheel, cycle, loop|tp: sike; 3.0: big
-r08.10|c2.08|kek|1|fuzzy,sharp,sym|block, cube, square, brick, angular polyhedron, step|tp: leko (ku); 3.0: vav
-r08.11|c2.08|mem|1|fuzzy,sym|same, similar, equal, parallel, peer, counterpart|tp: sama; 3.0: sam
-r08.12|c2.08|hil|1|fuzzy,sharp|different, other, altered, distinct, change, variation|tp: ante; 3.0: yig
-r08.13|c2.08|tar|1|fuzzy|number, count, quantity, math, rank|tp: nanpa; 3.0: bis
-r08.14|c2.08|lub|1||logical and (conjunction: TT)|both A and B; 2-place truth gate; 3.1: no
-r08.15|c2.08|kum|1||logical or (inclusive disjunction: TT, TF, FT)|A, B, or both; 2-place truth gate; 3.1: ya
-r08.16|c2.08|zek|1||logical xor (exclusive disjunction: TF, FT)|either A or B, but not both; 2-place truth gate; 3.1: vu
-r08.17|c2.08|cub|1||logical equiv (biconditional equivalence: TT, FF)|both A and B, or neither; 2-place truth gate
-r08.18|c2.08|guc|1||logical nand (alternative denial: TF, FT, FF)|not both A and B (at most one); 2-place truth gate
-r08.19|c2.08|sap|1||logical nor (joint denial: FF)|neither A nor B; 2-place truth gate
-r08.20|c2.08|cer|1||logical imp (material implication: TT, FT, FF)|if A then B (not A without B); 2-place truth gate
-r08.21|c2.08|gur|1||logical proj (left projection: TT, TF)|A regardless of whether B (A is true, B unconstrained); 2-place truth gate
+id|category|spelling|rank|tags|short|definition|notes
+r01.01|c2.01|roc|1|fuzzy,soft||thing, phenomenon, object, matter, substance|tp: ijo; 3.0: lus
+r01.02|c2.01|nom|1|fuzzy,flow,soft||water, liquid, fluid, wet substance, beverage|tp: telo; 3.0: fip
+r01.03|c2.01|wur|1|fuzzy,sharp,low||rock, stone, metal, hard mineral, solid object|tp: kiwen; 3.0: pep
+r01.04|c2.01|mon|1|fuzzy,soft,low||clay, dough, paste, powder, semi-solid, clinging form|tp: ko; 3.0: ned
+r01.05|c2.01|nuv|1|fuzzy,breath,flow||air, wind, gas, atmosphere, invisible agent, spirit|tp: kon; 3.0: lun/gol
+r01.06|c2.01|yiv|1|fuzzy,breath,high||fire, heat source, chemical reaction, cooking element|tp: seli; 3.0: rag/pan
+r01.07|c2.01|sam|1|fuzzy,low,soft||earth, land, soil, ground, world, territory, outdoors|tp: ma; 3.0: gad
+r01.08|c2.01|yaf|1|fuzzy,high,flow||sun, light, brightness, glow, radiance, light source|tp: suno; 3.0: lab/dal
+r01.09|c2.01|mun|1|fuzzy,inward,soft||moon, night sky object, star, celestial body|tp: mun; 3.0: mab
+r01.10|c2.01|wat|1|fuzzy,inward,low||bump, hill, mountain, protuberance, nose, button|tp: nena; 3.0: meg
+r01.11|c2.01|ruv|1|fuzzy,flow,low||hole, pit, cave, doorway, window, orifice, loop|tp: lupa; 3.0: fuv
+r02.01|c2.02|zil|1|fuzzy,soft||body, physical form, torso, organism, physical state|tp: sijelo; 3.0: yel
+r02.02|c2.02|nev|1|fuzzy,soft,flow||plant, vegetation, herb, grass, leaf, foliage|tp: kasi; 3.0: mal
+r02.03|c2.02|yun|1|fuzzy,soft||fruit, vegetable, edible plant part, berry, nut|tp: kili; 3.0: fid
+r02.04|c2.02|mag|1|fuzzy,soft,low||fungus, mushroom, mold, lichen, spore-bearer|tp: soko (ku); 3.0: sok
+r02.05|c2.02|won|1|fuzzy,soft,flow||land animal, mammal, beast, fuzzy creature|tp: soweli; 3.0: wel
+r02.06|c2.02|fen|1|fuzzy,high,breath||bird, flying creature, winged animal|tp: waso; 3.0: wao
+r02.07|c2.02|wad|1|fuzzy,sharp,low||reptile, amphibian, scaly or creeping animal|tp: akesi; 3.0: tav
+r02.08|c2.02|yom|1|fuzzy,flow,soft||fish, marine animal, aquatic creature|tp: kala; 3.0: ked
+r02.09|c2.02|jar|1|fuzzy,high,sharp||bug, insect, ant, spider, small arthropod|tp: pipi; 3.0: mum
+r02.10|c2.02|sor|1|fuzzy,low||head, skull, upper extremity, leading part|tp: lawa; 3.0: yob
+r02.11|c2.02|nid|1|fuzzy,high||eye, ocular organ, sight organ|tp: oko (ku); 3.0: oko
+r02.12|c2.02|nuc|1|fuzzy,high,sharp||ear, hearing organ|tp: kute; 3.0: tun
+r02.13|c2.02|gum|1|fuzzy,inward,low||mouth, lips, oral cavity, jaw, beak|tp: uta; 3.0: uta
+r02.14|c2.02|yal|1|fuzzy,soft||arm, hand, tactile organ, forelimb, branch-limb|tp: luka; 3.0: uka
+r02.15|c2.02|bam|1|fuzzy,low||foot, leg, organ of locomotion, lower limb|tp: noka; 3.0: ven
+r02.16|c2.02|yuv|1|fuzzy,inward,soft||internal organ, stomach, belly, viscera, womb|tp: insa; 3.0: mem
+r02.17|c2.02|von|1|fuzzy,inward,soft||heart, pulse organ, core vitality|tp: pilin; 3.0: gin
+r02.18|c2.02|bel|1|fuzzy,flow,soft||skin, bark, peel, shell, hide, outer membrane|tp: selo; 3.0: bun/lin
+r02.19|c2.02|nos|1|fuzzy,inward,soft||eat, drink, consume, swallow, ingest, nourishment|tp: moku; 3.0: neg/yod
+r02.20|c2.02|lib|1|fuzzy,soft,breath||sleep, rest, slumber, dormant state|tp: lape; 3.0: den/pid
+r02.21|c2.02|yam|1|fuzzy,soft||sex, sexual or intimate bodily union, mate|tp: unpa; 3.0: upa
+r02.22|c2.02|lan|1|fuzzy,low,soft||dead, dying, death, lifeless, fatal|tp: moli; 3.0: wul
+r02.23|c2.02|yul|1|fuzzy,soft||female, woman, feminine, maternal|tp: meli; 3.0: mel
+r02.24|c2.02|nuf|1|fuzzy,soft||male, man, masculine, paternal|tp: mije; 3.0: men
+r02.25|c2.02|meb|1|fuzzy,soft||non-binary, transgender, gender-diverse, queer|tp: tonsi (ku); 3.0: ton
+r03.01|c2.03|ral|1|fuzzy,flow||move, motion, travel, go, shift, kinetic displacement|tp: tawa; 3.0: pim
+r03.02|c2.03|lur|1|fuzzy,flow||arrive, come, become, emerge, happen, summon|tp: kama; 3.0: mog
+r03.03|c2.03|mol|1|fuzzy,soft,inward||stay, wait, endure, remain, keep, protect, conserve|tp: awen; 3.0: wog
+r03.04|c2.03|yic|1|fuzzy,sharp||do, act, work, make, build, construct, labor|tp: pali; 3.0: fam
+r03.05|c2.03|wif|1|fuzzy,breath,flow||give, send, emit, release, put, provide, transfer|tp: pana; 3.0: fap
+r03.06|c2.03|nob|1|fuzzy,inward,soft||have, hold, carry, contain, grasp, retain|tp: jo; 3.0: tus
+r03.07|c2.03|sum|1|fuzzy,sharp,high||take, seize, grab, capture, catch, appropriate|tp: lanpan (ku); 3.0: lan
+r03.08|c2.03|sir|1|fuzzy,flow,sharp||hunt, forage, search for, pursue, gather|tp: alasa; 3.0: kog
+r03.09|c2.03|rab|1|fuzzy,sharp,high||split, cut, slice, divide, sever, chop, piece|tp: kipisi (ku); 3.0: isi
+r03.10|c2.03|mac|1|fuzzy,sharp||break, damage, shatter, botch, harm, disrupt|tp: pakala; 3.0: fis
+r03.11|c2.03|hiv|1|fuzzy,sharp||fight, battle, struggle, compete, collide, challenge|tp: utala; 3.0: gal
+r03.12|c2.03|zem|1|fuzzy,sharp,breath||open, begin, start, turn on, initiate, unlock|tp: open; 3.0: pes
+r03.13|c2.03|lun|1|fuzzy,low,inward||finish, end, close, complete, stop, extinguish|tp: pini; 3.0: gon
+r04.01|c2.04|tun|1|fuzzy,sharp||tool, implement, machine, device, apparatus|tp: ilo; 3.0: vus
+r04.02|c2.04|lad|1|fuzzy,inward,low||container, vessel, bag, box, bowl, cup, drawer|tp: poki; 3.0: kos
+r04.03|c2.04|wom|1|fuzzy,low,inward||indoor space, room, house, building, shelter, chamber|tp: tomo; 3.0: pob
+r04.04|c2.04|lom|1|fuzzy||horizontal surface, table, bed, floor, platform, stage|tp: supa; 3.0: nav
+r04.05|c2.04|wir|1|fuzzy,flow,soft||cloth, fabric, clothing, textile, curtain, privacy layer|tp: len; 3.0: len
+r04.06|c2.04|yip|1|fuzzy,soft,high||flat thin object, page, book, card, document, screen|tp: lipu; 3.0: seg
+r04.07|c2.04|kal|1|fuzzy,flow,soft||cord, string, rope, thread, hair, wire, filament|tp: linja; 3.0: yul
+r04.08|c2.04|mud|1|fuzzy,sharp||rod, stick, branch, pole, shaft, long rigid object|tp: palisa; 3.0: nig
+r04.09|c2.04|yok|1|fuzzy,soft,inward||grain, cereal, bread, pasta, rice, staple food|tp: pan; 3.0: yav
+r04.10|c2.04|ler|1|fuzzy,soft,flow||medicine, cure, remedy, medical treatment, balm|tp: misikeke (ku); 3.0: mis
+r04.11|c2.04|lut|1|fuzzy,low||money, currency, wealth, trade medium, resource store|tp: mani; 3.0: gan
+r05.01|c2.05|ran|1|fuzzy,high||see, look, watch, observe, examine, visual perception|tp: lukin; 3.0: som
+r05.02|c2.05|wev|1|fuzzy,high,flow||hear, listen, auditory perception, attend to sound|tp: kute; 3.0: tun
+r05.03|c2.05|lel|1|fuzzy,flow,breath||sound, noise, voice, resonance, acoustic vibration|tp: kalama; 3.0: sul
+r05.04|c2.05|mul|1|fuzzy,flow||color, hue, pigment, dye, chromatic quality|tp: kule; 3.0: non
+r05.05|c2.05|wil|1|fuzzy,soft,breath||white, pale, light-colored, bleached|tp: walo; 3.0: kap
+r05.06|c2.05|tom|1|fuzzy,low,inward||black, dark, unlit, shadow-colored|tp: pimeja; 3.0: kev
+r05.07|c2.05|nif|1|fuzzy,sharp,high||red, crimson, warm-hued, scarlet|tp: loje; 3.0: tes
+r05.08|c2.05|den|1|fuzzy,high,flow||yellow, amber, golden, sunlit-hued|tp: jelo; 3.0: gus
+r05.09|c2.05|nel|1|fuzzy,flow,soft||blue, green, cool-hued,viridian, azure|tp: laso; 3.0: fev/tos
+r05.10|c2.05|tet|1|fuzzy,sharp,high||cold, cool, frigid, chilled, raw/uncooked|tp: lete; 3.0: rap/kun
+r05.11|c2.05|mev|1|fuzzy,soft,high||sweet, fragrant, pleasant-tasting, cute, gentle|tp: suwi; 3.0: pap/tip/hip
+r05.12|c2.05|mut|1|fuzzy,sharp,flow||spice, seasoning, ornament, extra sensory zest|tp: namako (ku); 3.0: ako
+r05.13|c2.05|ras|1|fuzzy,sharp,low||disgusting, foul, toxic, rotting, unsanitary, filthy|tp: jaki; 3.0: wub
+r05.14|c2.05|zom|1|fuzzy,soft,sym||good, positive, harmonious, beneficial, simple, valid|tp: pona; 3.0: hol/fud
+r05.15|c2.05|yag|1|fuzzy,sharp||bad, harmful, negative, defective, problematic|tp: ike; 3.0: rum
+r05.16|c2.05|lig|1|fuzzy,high,sharp||new, fresh, young, novel, unspoiled|tp: sin; 3.0: sin/ful
+r05.17|c2.05|yef|1|fuzzy,flow||strange, unusual, eccentric, altered, intoxicated|tp: nasa; 3.0: yem
+r05.18|c2.05|lor|1|fuzzy,low||strong, powerful, intense, energetic, forceful|tp: wawa; 3.0: dun
+r05.19|c2.05|wag|1|fuzzy,high||awesome, epic, marvelous, extraordinary, sublime|tp: epiku (ku); 3.0: tag
+r06.01|c2.06|fum|1|fuzzy,inward,soft||feel, emotion, experience, intuition, internal state|tp: pilin; 3.0: tad
+r06.02|c2.06|pom|1|fuzzy,inward||know, understand, skill, wisdom, cognition, memory|tp: sona; 3.0: son
+r06.03|c2.06|wor|1|fuzzy,low||control, lead, guide, plan, regulate, govern, decide|tp: lawa; 3.0: lam
+r06.04|c2.06|sun|1|fuzzy,soft,inward||love, affection, compassion, care, deep respect|tp: olin; 3.0: sen
+r06.05|c2.06|zar|1|fuzzy,sharp,low||fear, terror, horror, dread, monster, alarm|tp: monsuta (ku); 3.0: bod/pav
+r06.06|c2.06|mim|1|fuzzy,soft,high||play, game, art, recreation, amusement, humor|tp: musi; 3.0: umi
+r06.07|c2.06|miv|1|fuzzy,breath,high||sacred, awe-inspiring, transcendent, spiritual, lofty|tp: sewi; 3.0: ewi
+r07.01|c2.07|wol|1|fuzzy,soft||person, human, somebody, conscious agent|tp: jan; 3.0: yan
+r07.02|c2.07|non|1|fuzzy,inward,sym||parent, ancestor, creator, caretaker, sustainer, origin|tp: mama; 3.0: leg
+r07.03|c2.07|mat|1|fuzzy,low,inward||group, community, society, team, company, tribe|tp: kulupu; 3.0: kua
+r07.04|c2.07|zir|1|fuzzy,flow||communicate, speak, say, language, discourse|tp: toki; 3.0: tok
+r07.05|c2.07|bim|1|fuzzy,inward||name, word, term, title, lexical identifier|tp: nimi; 3.0: nim
+r07.06|c2.07|wot|1|fuzzy,high||image, picture, symbol, mark, writing, representation|tp: sitelen; 3.0: mev
+r07.07|c2.07|fir|1|fuzzy,flow||way, path, method, custom, doctrine, tradition, system|tp: nasin; 3.0: bed
+r07.08|c2.07|ror|1|fuzzy,flow||market, trade, exchange, shop, business transaction|tp: esun; 3.0: esu
+r08.01|c2.08|tul|1|fuzzy,low||size, magnitude, scale, dimension, extent, bulk|tp: suli/lili; neutral scale root
+r08.02|c2.08|wak|1|fuzzy,flow||time, duration, moment, period, occasion, tempo|tp: tenpo; 3.0: epo
+r08.03|c2.08|rol|1|fuzzy,inward||center, inside, interior, core, midst|tp: insa; 3.0: yin
+r08.04|c2.08|ren|1|fuzzy,high||front, face, anterior, wall, foremost surface|tp: sinpin; 3.0: pin/vog
+r08.05|c2.08|wod|1|fuzzy,low||back, rear, behind, posterior|tp: monsi; 3.0: his
+r08.06|c2.08|vum|1|fuzzy,soft||side, hip, edge, vicinity, adjacency, flank|tp: poka; 3.0: ben
+r08.07|c2.08|wit|1|fuzzy,high||top, area above, summit, elevation, upper part|tp: sewi; 3.0: lub
+r08.08|c2.08|nag|1|fuzzy,low||bottom, area below, base, foundation, downward|tp: anpa; 3.0: yim/rid
+r08.09|c2.08|hum|1|fuzzy,flow,sym||round, circle, sphere, ball, wheel, cycle, loop|tp: sike; 3.0: big
+r08.10|c2.08|kek|1|fuzzy,sharp,sym||block, cube, square, brick, angular polyhedron, step|tp: leko (ku); 3.0: vav
+r08.11|c2.08|mem|1|fuzzy,sym||same, similar, equal, parallel, peer, counterpart|tp: sama; 3.0: sam
+r08.12|c2.08|hil|1|fuzzy,sharp||different, other, altered, distinct, change, variation|tp: ante; 3.0: yig
+r08.13|c2.08|tar|1|fuzzy||number, count, quantity, math, rank|tp: nanpa; 3.0: bis
+r08.14|c2.08|lub|1|||logical and (conjunction: TT)|both A and B; 2-place truth gate; 3.1: no
+r08.15|c2.08|kum|1|||logical or (inclusive disjunction: TT, TF, FT)|A, B, or both; 2-place truth gate; 3.1: ya
+r08.16|c2.08|zek|1|||logical xor (exclusive disjunction: TF, FT)|either A or B, but not both; 2-place truth gate; 3.1: vu
+r08.17|c2.08|cub|1|||logical equiv (biconditional equivalence: TT, FF)|both A and B, or neither; 2-place truth gate
+r08.18|c2.08|guc|1|||logical nand (alternative denial: TF, FT, FF)|not both A and B (at most one); 2-place truth gate
+r08.19|c2.08|sap|1|||logical nor (joint denial: FF)|neither A nor B; 2-place truth gate
+r08.20|c2.08|cer|1|||logical imp (material implication: TT, FT, FF)|if A then B (not A without B); 2-place truth gate
+r08.21|c2.08|gur|1|||logical proj (left projection: TT, TF)|A regardless of whether B (A is true, B unconstrained); 2-place truth gate
