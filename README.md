@@ -1,4 +1,4 @@
-# lang4
+# zir kek pe mim
 
 here's my folder structure so far, showing the columns for the files in the data folder
 
@@ -175,7 +175,61 @@ the 26 cases are organized into two ranks so learners do not have to absorb the 
 - **rank 1 (17 core cases):** the core argument roles, primary spatiotemporal cases, basic circumstantials, the reason quartet, and vocative—everything needed for fluent everyday expression.
 - **rank 2 (9 precision cases):** secondary spatial/temporal spans (`ik`, `ut`), speaker-stance markers (`uv`, `ic`), and expressive framing cases (`oc` essive, `ov` perspective, `og` substitutive, `af` consumptive) that add nuance once the core is comfortable.
 
----
+# evidentials (c1.08)
+
+## design goals: optional, practical, and timeless
+
+evidentials mark how the speaker knows what they are claiming[cite: 4]. as with the case system, the design aims for a practical middle ground: rich enough to make epistemic nuance explicit in daily speech, research, and personal writing, without forcing speakers to track hyper-granular sensory channels (like separate suffixes for seen vs. heard vs. smelled) or to mark every single sentence[cite: 3, 6].
+
+two core architectural principles shape the category:
+
+- **optionality over obligation.** unlike systems such as new ithkuil—where validation is obligatory on every assertion—`c1.08` markers are optional. an unmarked clause functions automatically as an unspecified default, keeping casual speech light and reserving evidentials for moments where the source of knowledge actually matters.
+- **epistemic stance over shifting media.** the system avoids tying markers to specific information mediums (books, websites, videos, lectures). media technologies are constantly in flux, so anchoring grammatical categories to *how knowledge is grounded* (observation, deduction, trust, lived experience) keeps the language timeless.
+
+## how evidentials fit into the grammar
+
+evidentials are clause-level unary postfixes attached to the verb complex as part of the language's 100% postfix pipeline[cite: 3, 4].
+
+- **runtime inflection, not lexical derivation.** like valency, aspect, modality, and mood, evidentials scope over the entire clause event and never create new dictionary entries[cite: 7].
+- **separated from speaker attitude.** evidentials strictly encode *information source*[cite: 4]. emotional reaction and evaluative skepticism are kept orthogonal and handled by the affective (`uv`) and assessive (`ic`) cases[cite: 3, 6].
+
+## key semantic boundaries
+
+the 7 evidentials divide epistemic territory along three main axes, each with deliberate boundary choices:
+
+### firsthand knowledge: observation (`ta`), memory (`ha`), and lived experience (`g08.07`)
+
+- **clear perception vs. fallible recall (`ta` vs. `ha`).** rather than restricting direct perception (`ta`) strictly to live, present-tense narration—which is rarely needed outside play-by-play commentary—`ta` covers clear, vivid firsthand sensory observation in both the present and recent past. memory (`ha`) is reserved for older, less vivid, or potentially fallible personal recall (*"as i remember it..."*).
+- **outside-in vs. inside-out (`ta` vs. `g08.07`).** where `ta` marks external sensory observation from the outside, the experiential evidential (`g08.07`) unifies two naturally linked "inside-out" sources: active personal participation (*living through an event in the thick of it*) and endophoric experience (*internal bodily or emotional sensations*).
+- **complementing the experiencer case (`et`).** while `et` marks a specific participant's role inside the clause[cite: 6], the experiential evidential frames the speaker's epistemic stance across the whole proposition. this allows a speaker to mark lived-through truth even when they are not the grammatical subject—a distinction especially useful in journaling and expressive writing[cite: 3, 7].
+
+### indirect knowledge: inference (`ci`) vs. intuition (`sa`)
+
+- **clue-based deduction (`ci`).** `ci` is kept strictly for conclusions drawn from observable clues, physical evidence, or results.
+- **narrowing `sa` to intuition.** an earlier "speculative/guessed" concept proved too broad, lumping experienced pattern recognition together with baseless guessing. `sa` is therefore narrowed to genuine intuition, felt sense, and tacit pattern recognition, while unfounded guesses are left to the possibility modality[cite: 7].
+
+### secondhand knowledge: hearsay (`jo`) vs. authority (`yo`)
+
+- **informal report (`jo`).** marks spoken reports, word of mouth, and informal hearsay.
+- **trusted authority (`yo`).** rather than meaning "written down," `yo` emphasizes trusted expertise, reputable sources, and established common knowledge. defining `yo` around epistemic trust rather than physical medium keeps it future-proof and allows it to absorb encyclopedic facts naturally.
+
+## what lives outside the evidential system
+
+keeping `c1.08` compact relies on letting other parts of the grammar do the work they are already built for:
+
+- **unspecified source:** handled by omitting an evidential altogether.
+- **guessing and speculation:** handled by the possibility modality (`c1.07`)[cite: 7].
+- **imaginary, fictional, or hypothetical events:** handled at the stem level by representative essence rather than spending a clause-level evidential slot[cite: 3].
+- **cultural conventions (*"it is customary / they say"*):** handled by the perspective case (`ov`) (*"from the viewpoint of our customs..."*)[cite: 6].
+- **mirativity (surprise) and doubt:** handled by the affective (`uv`) and assessive (`ic`) speaker-stance cases[cite: 3, 6].
+- **direct quotation (quotative):** rather than adding a quotative evidential that alters the internal grammar of the quoted sentence (and becomes unwieldy in nested quotes), direct quotes use the language's flat paratactic syntax—introducing the quote with the cataphoric discourse pointer (`mu`) in the accusative (`om`) and marking the speech verb with `ta` (*"she said this [direct]: [quote]"*)[cite: 2, 3, 6].
+
+## learning tiers
+
+because evidentials are optional, none are assigned to rank 1 (the essential beginner core). instead, the 7 markers are split across two tiers:
+
+- **rank 2 (4 core workhorses):** `ta` (direct), `ci` (inferential), `jo` (reportative), and `yo` (authoritative)—the high-frequency distinctions used in everyday reporting, explanation, and research.
+- **rank 3 (3 personal/expressive nuances):** `ha` (memory), `sa` (intuitive), and `g08.07` (experiential)—finer-grained personal and somatic markers that add depth to journaling, storytelling, and poetry once the core four are comfortable[cite: 3, 7].
 
 ## 4. Sound, Symbolism & Script
 
