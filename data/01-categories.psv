@@ -2,7 +2,7 @@ id|type|name|notes
 c1.01|grammar|lens|the 8 ontological domain-shifting postfixes (1-place: X-op)
 c1.02|grammar|modifier|scale, grading, polarity, and state-shifting postfixes (1-place: X-op)
 c1.03|grammar|connector|word-building linkers and possessive infixes (2-place: X-op-Y)
-c1.04|grammar|role|case, semantic roles (word-final on nouns)
+c1.04|grammar|case|case, semantic roles (word-final on nouns)
 c1.05|grammar|valency|verb transitivity, voice (word-final on verbs)
 c1.06|grammar|aspect|temporal flow, tense, internal event structure (verb/clause suffix)
 c1.07|grammar|modality|desire, ability, obligation, necessity (verb/clause suffix)
