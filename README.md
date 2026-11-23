@@ -430,3 +430,66 @@ python3 scripts/sync_examples.py to-text
 
 * Rows whose source cell is empty are skipped without modifying the target cell.
 * Rows containing an unrecognized word, ID, or invalid starred form are skipped (left unchanged) and reported with their line number, row ID, and offending token(s).
+
+
+# category system architecture
+
+the language is organized into 20 categories split cleanly into two top-level types: 12 grammatical categories (`c1.01–c1.12`) and 8 lexical domain categories (`c2.01–c2.08`). every morpheme in the language belongs to exactly one category, and category boundaries are aligned with phonological shape, syntactic arity, and scope.
+
+## phonological alignment
+
+phonotactic shape immediately signals a morpheme's structural tier before its individual meaning is even parsed:
+
+- `vc` (`c1.01–c1.02`): word-final clause-closing suffixes. `c1.01` (`case`) closes nominal phrases and `c1.02` (`valency`) closes predicates. together they form the structural spine of every clause and guarantee unambiguous word boundaries.
+- `cv` (`c1.03–c1.12`): all remaining grammatical operators—clause-level verb inflections, standalone reference stems, quantifiers and numerals, binary stem connectors, and unary stem-building postfixes.
+- `cvc` (`c2.01–c2.08`): all open-class lexical roots. roots are part-of-speech neutral and acquire nominal or verbal function only when closed by a `c1.01` or `c1.02` suffix.
+
+## top-down ordering of `c1.01–c1.12`
+
+the 12 grammatical categories are ordered from the highest syntactic level (clause structure) down to the lowest level (stem-internal word-building), creating a natural bridge directly into the 8 lexical domains (`c2.01–c2.08`):
+
+1. clause spine (`c1.01–c1.02`): `case` and `valency`, the two `vc` categories that define every argument and predicate.
+2. event and clause framing (`c1.03–c1.06`): `tense-aspect`, `modality`, `evidential`, and `mood`, moving outward in semantic scope from internal event time to speaker source and illocutionary force.
+3. nominal tracking and counting (`c1.07–c1.08`): `reference` (standalone nominal stems) and `quantity` (numerals, quantifiers, and set focus).
+4. word-building operators (`c1.09–c1.12`): `connector` (2-place `x-op-y` infixes), followed by the three 1-place `x-op` stem postfixes (`degree`, `derivation`, `domain`). placing `domain` at `c1.12` positions the 8 domain-shifting postfixes immediately before the 8 lexical domains (`c2.01–c2.08`) they map onto.
+
+## stem-level derivation vs. clause-level inflection
+
+a core architectural boundary separates word-building (`c1.09–c1.12`) from runtime clause inflection (`c1.01–c1.06`):
+
+- stem-level operators (`c1.09–c1.12`) operate inside stems to derive concepts, grade scales, shift domains, or combine roots into compounds.
+- clause-level inflections (`c1.01–c1.06`) operate on words and clauses at runtime to declare roles, transitivity, temporality, modality, evidentiality, and speech acts. they do not create dictionary entries.
+- compositional bridging: `c1.03` (`tense-aspect`) and `c1.04` (`modality`) are primarily clause-level verb suffixes, but are permitted inside nominal stems to build compositional participles without needing separate derivational affixes.
+
+## mirrored pairs across tiers
+
+several semantic concepts appear at both the stem level and the clause level by design, keeping word-internal structure cleanly separated from clause syntax:
+
+- absence: `wi` (`c1.10`, privative stem modifier, e.g. *waterless*) vs. `un` (`c1.01`, abessive clause case, e.g. *without water*).
+- accompaniment and coordination: `ge` (`c1.09`, stem-level coordinate linker *and*) vs. `is` (`c1.01`, comitative clause case *together with*).
+- topic and depiction: `he` (`c1.09`, depictive/topic possessive infix inside a noun phrase) vs. `ok` (`c1.01`, topic case for clause-level aboutness).
+
+## syntactic uniformity and edge cases
+
+most categories are syntactically uniform—every member shares the same shape, arity, and attachment slot. three deliberate exceptions are worth noting for parsers and documentation:
+
+- `c1.06` (`mood`) combines clause-attaching speech-act markers (`zi`, `du`, `le`, `zo`) with standalone conversational interactionals (`ji`, `pu`, `ki`, `to`).
+- `c1.09` (`connector`) consists of strictly 2-place `x-op-y` infixes, except that `bi` (`g09.04`, tail connector) consumes strictly one `cvc` root immediately after it to define the connecting relation before `y` begins (`x-[bi-root]-y`).
+- `c1.12` (`domain`) shares the label `domain` with the `type` column of `c2.01–c2.08`. scripts processing the categories table should check `type` (`grammar` vs. `domain`) rather than `name` when separating grammatical categories from lexical domains.
+
+## organization of the 8 lexical domains (`c2.01–c2.08`)
+
+the 8 lexical domains form a balanced `4 x 2` conceptual grid:
+
+- outer and physical world (`c2.01–c2.04`): `matter`, `biology`, `motion`, `artifact`.
+- inner, social, and abstract world (`c2.05–c2.08`): `sense`, `mind`, `society`, `form`.
+
+every `cvc` root is assigned one default home domain, and the 8 `c1.12` postfixes allow any root to be projected cleanly across the remaining 7 domains.
+
+## learning ranks across categories
+
+grammar words carry a `rank` from `1` to `3` indicating priority for a new learner rather than syntactic importance:
+
+- rank 1: essential beginner core needed to form everyday clauses, questions, basic tenses, core cases, pronouns, numerals, and primary degree/negation markers.
+- rank 2: high-utility expressive and precision tools, including secondary cases, aspects, core evidentials, domain shifts, and nuanced connectors.
+- rank 3: specialized stylistic, somatic, or fine-grained distinctions (such as personal memory and experiential evidentials, pre-anaphoric pointing, and figurative framing) that can be layered in gradually without blocking fluency.

@@ -234,3 +234,4 @@ depletable resource used up, spent, or traded away ('consuming, expending, on, i
 - **expenditure**: activated with effortful verbs with time, energy, or life nouns. marks finite personal or collective resources spent ('wrote it spending two hours, won at the cost of ten lives').
 - **trade.away**: activated with incoming or symmetric exchange verbs (e.g. buy, take, rent, trade). marks the price or item surrendered in exchange ('bought bread for five coins', 'traded a coat for a hat'). contrasts with allative (`an`), which marks the item gained when selling.
 - **sustenance**: activated with survival or feeding verbs. marks what an organism lives on ('survives on leaves').
+
