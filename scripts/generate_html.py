@@ -14,7 +14,6 @@ Outputs:
 
 import csv
 import html
-import string
 from pathlib import Path
 from typing import Dict, List
 
@@ -26,19 +25,6 @@ def load_psv(filepath: Path) -> List[Dict[str, str]]:
             {k.strip(): (v or "").strip() for k, v in row.items() if k is not None}
             for row in reader
         ]
-
-
-def first_two_words(definition: str) -> str:
-    """Extracts the first two whitespace-separated words with punctuation removed."""
-    table = str.maketrans("", "", string.punctuation)
-    cleaned_words = []
-    for token in definition.split():
-        word = token.translate(table)
-        if word:
-            cleaned_words.append(word)
-        if len(cleaned_words) == 2:
-            break
-    return " ".join(cleaned_words)
 
 
 def main() -> None:
@@ -104,9 +90,13 @@ def main() -> None:
         "      width: 76px;",
         "      padding: 6px 4px;",
         "      background-color: #000000;",
+        "      color: #ffffff;",
         "      border: 1px solid #ffffff;",
         "      border-radius: 6px;",
         "      text-align: center;",
+        "      font: inherit;",
+        "      cursor: pointer;",
+        "      appearance: none;",
         "    }",
         "    .glyph {",
         "      width: 52px;",
@@ -122,6 +112,7 @@ def main() -> None:
         "      border-radius: 4px;",
         "    }",
         "    .spelling {",
+        "      display: block;",
         "      margin-top: 6px;",
         "      font-size: 0.95rem;",
         "      font-weight: 700;",
@@ -129,10 +120,84 @@ def main() -> None:
         "      line-height: 1.2;",
         "    }",
         "    .gloss {",
+        "      display: block;",
         "      margin-top: 2px;",
         "      font-size: 0.72rem;",
         "      color: #ffffff;",
         "      line-height: 1.15;",
+        "      word-break: break-word;",
+        "    }",
+        "    .modal[hidden] {",
+        "      display: none;",
+        "    }",
+        "    .modal {",
+        "      position: fixed;",
+        "      inset: 0;",
+        "      z-index: 1000;",
+        "      background-color: #000000;",
+        "      color: #ffffff;",
+        "      display: flex;",
+        "      flex-direction: column;",
+        "      align-items: center;",
+        "      justify-content: center;",
+        "      padding: 72px 24px 32px;",
+        "      text-align: center;",
+        "      overflow-y: auto;",
+        "    }",
+        "    .modal-close {",
+        "      position: fixed;",
+        "      top: 16px;",
+        "      right: 16px;",
+        "      width: 48px;",
+        "      height: 48px;",
+        "      display: flex;",
+        "      align-items: center;",
+        "      justify-content: center;",
+        "      background-color: #000000;",
+        "      color: #ffffff;",
+        "      border: 1px solid #ffffff;",
+        "      border-radius: 6px;",
+        "      font-size: 1.75rem;",
+        "      line-height: 1;",
+        "      padding: 0;",
+        "      cursor: pointer;",
+        "    }",
+        "    .modal-content {",
+        "      display: flex;",
+        "      flex-direction: column;",
+        "      align-items: center;",
+        "      gap: 16px;",
+        "      max-width: 520px;",
+        "      width: 100%;",
+        "    }",
+        "    .modal-glyph {",
+        "      width: min(220px, 55vw);",
+        "      height: min(220px, 55vw);",
+        "      display: flex;",
+        "      align-items: center;",
+        "      justify-content: center;",
+        "    }",
+        "    .modal-glyph svg {",
+        "      width: 100%;",
+        "      height: 100%;",
+        "      display: block;",
+        "    }",
+        "    .modal-spelling {",
+        "      font-size: 2rem;",
+        "      font-weight: 700;",
+        "      color: #ffffff;",
+        "      line-height: 1.2;",
+        "    }",
+        "    .modal-short {",
+        "      font-size: 1.25rem;",
+        "      font-weight: 600;",
+        "      color: #ffffff;",
+        "      line-height: 1.3;",
+        "    }",
+        "    .modal-definition {",
+        "      font-size: 1.05rem;",
+        "      color: #ffffff;",
+        "      line-height: 1.5;",
         "      word-break: break-word;",
         "    }",
         "  </style>",
@@ -153,26 +218,89 @@ def main() -> None:
         for word in cat_words:
             spelling = word["spelling"]
             full_def = word["definition"]
-            short_def = first_two_words(full_def)
+            short_def = word["short"]
 
             svg_path = glyphs_dir / f"{spelling}.svg"
             svg_content = ""
             if svg_path.exists():
                 svg_content = svg_path.read_text(encoding="utf-8").strip()
 
-            escaped_tooltip = html.escape(f"{spelling}: {full_def}", quote=True)
+            escaped_spelling_attr = html.escape(spelling, quote=True)
+            escaped_short_attr = html.escape(short_def, quote=True)
+            escaped_def_attr = html.escape(full_def, quote=True)
             escaped_spelling = html.escape(spelling)
             escaped_short_def = html.escape(short_def)
 
-            html_parts.append(f'    <div class="word-card" title="{escaped_tooltip}">')
-            html_parts.append(f'      <div class="glyph">{svg_content}</div>')
-            html_parts.append(f'      <div class="spelling">{escaped_spelling}</div>')
-            html_parts.append(f'      <div class="gloss">{escaped_short_def}</div>')
-            html_parts.append("    </div>")
+            html_parts.append(
+                f'    <button type="button" class="word-card"'
+                f' data-spelling="{escaped_spelling_attr}"'
+                f' data-short="{escaped_short_attr}"'
+                f' data-definition="{escaped_def_attr}">'
+            )
+            html_parts.append(f'      <span class="glyph">{svg_content}</span>')
+            html_parts.append(f'      <span class="spelling">{escaped_spelling}</span>')
+            html_parts.append(f'      <span class="gloss">{escaped_short_def}</span>')
+            html_parts.append("    </button>")
 
         html_parts.append("  </div>")
 
     html_parts.extend([
+        '  <div id="word-modal" class="modal" role="dialog" aria-modal="true" hidden>',
+        '    <button type="button" id="modal-close" class="modal-close" aria-label="Close">&times;</button>',
+        '    <div class="modal-content">',
+        '      <div id="modal-glyph" class="modal-glyph"></div>',
+        '      <div id="modal-spelling" class="modal-spelling"></div>',
+        '      <div id="modal-short" class="modal-short"></div>',
+        '      <div id="modal-definition" class="modal-definition"></div>',
+        "    </div>",
+        "  </div>",
+        "  <script>",
+        "    (() => {",
+        '      const modal = document.getElementById("word-modal");',
+        '      const closeBtn = document.getElementById("modal-close");',
+        '      const modalGlyph = document.getElementById("modal-glyph");',
+        '      const modalSpelling = document.getElementById("modal-spelling");',
+        '      const modalShort = document.getElementById("modal-short");',
+        '      const modalDefinition = document.getElementById("modal-definition");',
+        "      let lastTrigger = null;",
+        "",
+        "      function openModal(card) {",
+        "        lastTrigger = card;",
+        '        const glyph = card.querySelector(".glyph");',
+        '        modalGlyph.innerHTML = glyph ? glyph.innerHTML : "";',
+        '        modalSpelling.textContent = card.dataset.spelling || "";',
+        '        modalShort.textContent = card.dataset.short || "";',
+        '        modalDefinition.textContent = card.dataset.definition || "";',
+        "        modal.hidden = false;",
+        '        document.body.style.overflow = "hidden";',
+        "        closeBtn.focus();",
+        "      }",
+        "",
+        "      function closeModal() {",
+        "        modal.hidden = true;",
+        '        document.body.style.overflow = "";',
+        "        if (lastTrigger) {",
+        "          lastTrigger.focus();",
+        "          lastTrigger = null;",
+        "        }",
+        "      }",
+        "",
+        '      document.addEventListener("click", (event) => {',
+        '        const card = event.target.closest(".word-card");',
+        "        if (card) {",
+        "          openModal(card);",
+        "        }",
+        "      });",
+        "",
+        '      closeBtn.addEventListener("click", closeModal);',
+        "",
+        '      document.addEventListener("keydown", (event) => {',
+        '        if (event.key === "Escape" && !modal.hidden) {',
+        "          closeModal();",
+        "        }",
+        "      });",
+        "    })();",
+        "  </script>",
         "</body>",
         "</html>",
         "",
