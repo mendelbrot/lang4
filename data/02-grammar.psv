@@ -85,12 +85,13 @@ g07.06|c1.07|ni|1|||possibility modality, might, may, possible|epistemic possibi
 g07.07|c1.07|da|1|||permission modality, may, allowed to|social/deontic permission; 3.1: ri
 g07.08|c1.07|fe|1|||desire modality, want to, wish, hope|volitional/optative desire; 3.1: fo
 g07.09|c1.07|na|1|||hypothetical modality, suppose, would|counterfactual or hypothetical verb frame; 3.1: ja
-g08.01|c1.08|ta|1|||direct perception evidential, witnessed|known via direct sensory experience; 3.1: ze
-g08.02|c1.08|ci|1|||inferential evidential, inferred from evidence|known by deducing from clues/results; 3.1: cu
-g08.03|c1.08|jo|1|||reportative evidential, hearsay, told|known via others' speech/reports; 3.1: ta
-g08.04|c1.08|ha|1|||memory evidential, remembered, recalled|known from personal memory; 3.1: ho
-g08.05|c1.08|yo|1|||authoritative evidential, documented, established|known from reliable records/authority; 3.1: sa
-g08.06|c1.08|sa|1|||speculative evidential, assumed, guessed|known via intuition/assumption; 3.1: ke
+g08.01|c1.08|ta|2||direct evidential|witnessed, known via clear firsthand sensory observation (present or recent past)|3.1: ze
+g08.02|c1.08|ci|2||inferential evidential|inferred, known by deducing from observable clues, evidence, or results|3.1: cu
+g08.03|c1.08|jo|2||reportative evidential|hearsay, told, known via others' speech or informal reports|3.1: ta
+g08.04|c1.08|ha|3||memory evidential|remembered, recalled, known from older or less vivid personal memory|3.1: ho
+g08.05|c1.08|yo|2||authoritative evidential|established, known from trusted expertise, reputable sources, or established common knowledge|3.1: sa
+g08.06|c1.08|sa|3||intuitive evidential|hunch, felt sense, known via intuition or tacit pattern recognition|3.1: ke
+g08.07|c1.08||3||experiential evidential|lived, felt internally, known through active personal participation or internal bodily/emotional experience|
 g09.01|c1.09|zi|1|||imperative mood, command, request, let's|directs listener to act; 3.1: me
 g09.02|c1.09|du|1|||prohibitive mood, negative imperative, don't|directs listener not to act; 3.1: bi
 g09.03|c1.09|zo|1|||content question mood, asks for information|pairs with question pronoun ka; 3.1: zu
