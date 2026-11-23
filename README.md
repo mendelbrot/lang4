@@ -392,3 +392,41 @@ The language's 20 consonants map onto a zero-gap $5 \times 4$ featural coordinat
 
 
 * **De-Biasing Against English:** Vocabulary design is anchored against cross-linguistic datasets (such as CLICS and SIL Semantic Domains) rather than English dictionaries alone, preventing English idioms and polysemy from quietly dictating the root inventory.
+
+---
+
+# Example Formula Translation
+
+To keep example sentences in `data/04-examples.psv` resilient to future spelling changes, each row pairs a `zirkekpemim` text column with an ID-based `formula` column. The two columns are linked by an exact 1-to-1 token bijection derived from `data/02-grammar.psv` and `data/03-roots.psv`.
+
+## Bijection Rules
+
+Both `zirkekpemim` and `formula` are space-separated sequences of tokens:
+
+* **Roots & Grammar Words:** Each word maps directly to its immutable ID (`nom` ↔ `r01.02`, `mi` ↔ `g10.01`, `es` ↔ `g04.01`).
+* **Starred Grammar Words (`x`-Derivation):** Prefixing a grammar ID with `*` maps to its `x`-derived `CVC` form based on syllable shape (vowels are `a, e, i, o, u`):
+  * `CV` ↔ `CVx` (e.g., `vux` ↔ `*g02.12`)
+  * `VC` ↔ `xVC` (e.g., `xes` ↔ `*g04.01`)
+* **Punctuation:** Special punctuation tokens map to uppercase codes (currently `.` ↔ `PRD`, defined in `PUNCT_TO_CODE` in `scripts/sync_examples.py`).
+
+### Example
+
+```text
+zirkekpemim: nom    mi     es     vux     id     .
+formula:     r01.02 g10.01 g04.01 *g02.12 g05.02 PRD
+```
+
+## Syncing with `scripts/sync_examples.py`
+
+Write examples in `zirkekpemim`, then generate their `formula` entries; later, if spellings change in `02-grammar.psv` or `03-roots.psv`, regenerate `zirkekpemim` from `formula`:
+
+```bash
+# Overwrite formula from zirkekpemim
+python3 scripts/sync_examples.py to-formula
+
+# Overwrite zirkekpemim from formula
+python3 scripts/sync_examples.py to-text
+```
+
+* Rows whose source cell is empty are skipped without modifying the target cell.
+* Rows containing an unrecognized word, ID, or invalid starred form are skipped (left unchanged) and reported with their line number, row ID, and offending token(s).
