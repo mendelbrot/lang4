@@ -1,15 +1,16 @@
 id|type|name|notes
-c1.01|grammar|lens|the 8 ontological domain-shifting postfixes (1-place: X-op)
-c1.02|grammar|modifier|scale, grading, polarity, and state-shifting postfixes (1-place: X-op)
-c1.03|grammar|connector|word-building linkers and possessive infixes (2-place: X-op-Y)
-c1.04|grammar|case|case, semantic roles (word-final on nouns)
-c1.05|grammar|valency|verb transitivity, voice (word-final on verbs)
-c1.06|grammar|aspect|temporal flow, tense, internal event structure (verb/clause suffix)
-c1.07|grammar|modality|desire, ability, obligation, necessity (verb/clause suffix)
-c1.08|grammar|evidential|information source (verb/clause suffix)
-c1.09|grammar|mood|speech acts, questions, commands, interactionals (clause/standalone)
-c1.10|grammar|reference|pronouns, discourse pointers, quantifiers
-c1.11|grammar|number|mathematical (and grammatical) number, numerals
+c1.01|grammar|case|case, semantic roles (word-final VC on nouns)
+c1.02|grammar|valency|verb transitivity, voice (word-final VC on verbs)
+c1.03|grammar|tense-aspect|temporal flow, tense, internal event structure (verb/clause suffix)
+c1.04|grammar|modality|desire, ability, obligation, necessity (verb/clause suffix)
+c1.05|grammar|evidential|information source (verb/clause suffix)
+c1.06|grammar|mood|speech acts, questions, commands, interactionals (clause/standalone)
+c1.07|grammar|reference|pronouns, demonstratives, discourse pointers
+c1.08|grammar|quantity|numerals (base-6) and grammatical quantifiers
+c1.09|grammar|connector|word-building linkers and possessive infixes (2-place: X-op-Y)
+c1.10|grammar|degree|scale, grading, and polarity postfixes (1-place: X-op)
+c1.11|grammar|derivation|phase, configuration, participant, and framing postfixes (1-place: X-op)
+c1.12|grammar|domain|the 8 ontological domain-shifting postfixes (1-place: X-op)
 c2.01|domain|matter|physical world, materials, elements, weather
 c2.02|domain|biology|living organisms, anatomy, bodily functions
 c2.03|domain|motion|motion, mechanics, physical forces, actions
