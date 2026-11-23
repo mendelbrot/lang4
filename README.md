@@ -80,12 +80,7 @@ Three lexical principles grow out of this metaphor:
 
 Roots have no built-in noun, verb, or adjective class. A word's grammatical function is determined strictly by its closing block—a **semantic role** makes it a noun phrase, a **valency marker** makes it a predicate, and placing a root after a head makes it a modifier. Dummy part-of-speech converters (like English *-ness* or *-ful*) are eliminated.
 
-### A 100% Postfix Unary Pipeline
-
-Every unary operator in the language—domain lenses, stem modifiers, semantic roles, valency, aspect, modality, evidentials, and mood—attaches **after** the stem it modifies (`X-op`).
-
-* **Bracket-Free Precedence:** Operators apply strictly left-to-right, so block order unambiguously encodes scope without needing parentheses or closing particles.
-
+### space free word divisions
 
 * **High-Contrast Word Onsets:** Because lexical roots are `CVC` and modifiers are `CV`, content words always begin with a high-contrast `CVC` anchor rather than repetitive prefixes.
 
@@ -118,6 +113,139 @@ Rather than nesting clauses inside clauses, the language links standalone clause
 * **Subtext Made Explicit:** Pragmatic nuances that English hides inside vague adverbs (like *"really"* or *"just"*) are surfaced cleanly through dedicated **evidentials**, **moods**, and **affective/assessive** semantic roles.
 
 * **General Number & Base-6 Math:** Bare nouns are number-neutral; quantity is specified only when relevant using base-6 numbers, degree modifiers, or quantifiers.
+
+## Composition
+
+### Philosophy & Guiding Trade-Offs
+
+Composition is the engine of the language. Rather than coining a new root every time a translation hits a gap, the language maintains a compact inventory of roughly 300–700 atomic roots and relies extensively on combining them to express everything else. The guiding mental model is a set of **wooden letter blocks**: each atomic morpheme is a single, self-contained syllable that snaps together in a row to build larger meanings.
+
+This design aims for a deliberate middle ground between two extremes:
+
+* **Toki Pona** demonstrates how playful, expressive, and learnable heavy composition can be, but its minimal lexicon can feel too sparse for sustained precision.
+
+
+* **Ithkuil** offers extraordinary philosophical depth and conceptual precision, but its complexity makes it difficult to learn and it does not rely on playful word-building.
+
+
+
+This system is a **work in progress**, and it is intentionally **not** designed to function like a rigid mathematical or chemical formula. While the compositional rules strive for an algebraic elegance, natural language is not a compiler. Attempting to eliminate all ambiguity—through rigid numbered place structures or mandatory closing terminators, as in Lojban—adds heavy cognitive overhead in real-time speech. Accepting a degree of natural linguistic ambiguity is a deliberate trade-off: it is the cost of keeping the root inventory small while unlocking creativity, poetic nuance, and fluent expressiveness.
+
+Equally important is **restraint**. The compositional machinery exists to support precision when a thought genuinely demands it, not to encourage towering, over-engineered compounds. In practice, some of the most elegant words in the language will be the simplest ones—making light, sparing use of these rules and letting context do its share of the work.
+
+---
+
+### Uncertainty Clouds & Multiple Construals
+
+Atomic roots are not narrow, one-to-one translations of English words; each root represents a continuous semantic field—an **"uncertainty cloud"**—covering a cluster of related senses. Stacking roots together narrows those clouds at each intersection, landing on more concrete referents.
+
+Because composition is generative and perspective-driven, the system embraces two natural consequences:
+
+* **Multiple Valid Construals:** A single concept does not require a single "correct" formula. A concept may settle on a **canonical** everyday compound while still allowing **alternative or poetic** framings that highlight a different facet of the idea.
+
+
+* **Productive Phrases vs. Lexicalized Compounds:** Any two blocks *can* combine on the fly to form a transparent, one-off description. Only established, non-obvious, or culturally anchored combinations need to be recorded as lexicalized dictionary entries.
+
+
+
+---
+
+### Core Architectural Choices
+
+#### 1. Zero Inherent Parts of Speech
+
+Roots do not belong to fixed noun, verb, or adjective classes. A word's grammatical function is determined strictly by its position and its closing block: a **semantic role** closes a noun phrase, a **valency marker** closes a predicate, and a root placed after a head acts as a modifier. Because grammatical role is structural rather than lexical, dummy part-of-speech converters (like English *-ness* or *-ful*) are unnecessary.
+
+#### 2. Organizing Operators by Arity and Scope
+
+Word-building grammar is divided along two clean axes—**arity** (how many blocks an operator acts on) and **scope** (whether it builds a lexical stem or frames a clause):
+
+* **Stem-Level Operators** build new concepts and compounds:
+* **1-Place Unary Postfixes:** Ontological **domain lenses** (`c01`) and scale/polarity/state **modifiers** (`c02`).
+
+
+* **2-Place Binary Connectors:** The **divider** (`OF`), symmetric **blend** (`BLEND`), **Boolean truth gates** (`AND`, `OR`, `XOR`, etc.), and **possessives** (`c03`).
+
+
+
+
+* **Clause-Level Inflections** (roles, valency, aspect, modality, evidentials, mood) frame how a finished stem participates in a sentence rather than creating new dictionary words.
+
+
+
+#### 3. A 100% Postfix Unary Pipeline (`X-op`)
+
+Every unary operator in the language—including the 8 ontological domain lenses—attaches **after** the stem it modifies. Making domain lenses postfix rather than prefix was a key architectural trade-off with three major payoffs:
+
+* **Left-to-Right Precedence:** Stacking unary operators strictly to the right encodes scope automatically without parentheses (e.g., `bitter-MIND-VERY` vs. `bitter-VERY-MIND`).
+
+
+* **High-Contrast Word Onsets:** Because lexical roots are CVC and operators are CV, every content word begins immediately with a distinct, concrete CVC root rather than repetitive CV prefixes—improving speech clarity and mirroring how metaphor is processed (concrete image first, domain shift second).
+
+
+* **Visual Silhouette:** In the 14-segment script, placing full-height CVC roots first, top-weighted CV operators in the middle, and bottom-weighted VC endings last gives every word a consistent left-to-right visual contour.
+
+
+
+#### 4. Head-Initial Stacking vs. Symmetric Blending
+
+By default, juxtaposing two roots (`A-B`) is strictly **head-initial**: `A` is the head, and `B` modifies it (`bird-fish` = a fish-like bird; `fish-bird` = a bird-like fish).
+
+While head-initial stacking is fast and intuitive, it always forces the speaker to subordinate one concept to the other. The symmetric **blend** connector (`BLEND`) provides a commutative (*dvandva*) escape hatch for true hybrids, alloys, intermediate gradients (colors, tastes, emotions), and fused actions where neither root is subordinate. It stays strictly distinct from logical **`AND`**:
+
+* **`A-B-AND`** = two distinct things grouped together (e.g., *red and white*, striped).
+
+
+* **`A-B-BLEND`** = one unified concept fusing both natures (e.g., *pink*, blended).
+
+
+
+---
+
+### Precedence & Grouping: The Hybrid Model
+
+Designing grouping rules for compounds presents a classic trade-off between **infix notation (`xRy`)** and **postfix / Reverse Polish notation (`xyR`)**:
+
+* **Pure Postfix (`xyR`)** is algebraically unambiguous without brackets, but deeply nested expressions strain human working memory, pile connectors up at the end of a word, and collide with unmarked juxtaposition (`A-B`), which acts as an invisible binary operator.
+* **Pure Infix (`xRy`)** is much easier to compose and parse in real time (especially for chained relations like possession), but requires explicit precedence rules or grouping particles whenever modifiers nest.
+
+To capture the strengths of both without forcing speakers to track deep stacks or closing brackets, the language uses a **hybrid 6-rule precedence system** (from tightest binding to widest scope):
+
+| Priority | Mechanism | Pattern | Behavior & Scope |
+| --- | --- | --- | --- |
+| **1 (Tightest)** | **Unary Modifiers** | `X-mod` | Binds tightly to the immediately preceding unit (a single root, or an already-closed `xyR` binary unit).
+| **2** | **Tight Binary Connectors** | `X-Y-conn` | Local `xyR` pairing (`BLEND`, `AND`, `OR`, etc.) that grabs only the two immediately preceding units and fuses them into one block before juxtaposition occurs. |
+| **3** | **Unmarked Juxtaposition** | `A-B` | Default head-initial modification between adjacent blocks (`B` modifies `A`).
+| **4** | **The Divider (`OF`)** | `A-OF-B-C` | Works like Toki Pona *pi*: links the head on the left to a multi-block modifier group on the right.
+| **5** | **Scope-Expanded Connectors & Modifiers** | `A-B-OF-conn-C-D` `A-B-OF-mod` | Placing `OF` before a connector turns it into a macro-infix acting on the full compounds before and after it. Placing `OF` before a unary modifier widens its scope to the entire preceding compound. |
+| **6 (Widest)** | **Doubled Divider (`OF-OF`)** | `A-OF-B-OF-OF-C-D` | Repeating the divider creates a **wider outer cut**, allowing a speaker to divide an already-divided compound on the fly without pre-planning or closing brackets. |
+
+#### Working Examples *(Using Conceptual Glosses)*
+
+* **Local `xyR` pairing + Juxtaposition (Rules 2 & 3):**
+> `bird-fish-BLEND-organism-machine-BLEND` $\rightarrow$ *"bio-mechanical fish-bird"*
+> Each `BLEND` tightly fuses the two roots immediately before it (`[bird-fish-BLEND]` and `[organism-machine-BLEND]`), allowing the second block to modify the first without needing a divider.
+
+
+* **Unary modifier on a closed `xyR` blend (Rules 1 & 2):**
+> `red-white-VERY-BLEND` $\rightarrow$ *"light pink"* *(red blended with very-white)*
+> `red-white-BLEND-VERY` $\rightarrow$ *"very pink"* *(`VERY` acts on the already-closed `[red-white-BLEND]` unit)*
+
+
+* **Widening a unary modifier or lens with `OF` (Rule 5):**
+> `wave-storm-MIND` $\rightarrow$ *"wave of [mental-storm]"* *(tight Rule 1)*
+> `wave-storm-OF-MIND` $\rightarrow$ *"emotional rollercoaster / mental [storm-wave]"* *(`OF-MIND` shifts the entire preceding compound into the mind domain)*
+> 
+> 
+
+
+* **Widening a binary connector with `OF` (Rule 5):**
+> `practice-spirit-OF-BLEND-system-machine` $\rightarrow$ *"techno-spirituality"* *(blends the full compound `[practice-spirit]` with `[system-machine]`)*
+
+
+* **Outer cut with the doubled divider (Rule 6):**
+> `cup-OF-water-hot-OF-OF-wood-hard` $\rightarrow$ *"hardwood teacup"* *(`OF-OF` makes a wider outer cut over the already-divided `[cup-OF-water-hot]`)*
+
 
 # cases (c1.04)
 
