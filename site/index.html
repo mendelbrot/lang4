@@ -12,8 +12,9 @@
       box-sizing: border-box;
     }
     body {
-      margin: 0;
-      padding: 16px;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 16px 16px 84px;
       background-color: #000000;
       color: #ffffff;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -88,17 +89,25 @@
       background-color: #000000;
       color: #ffffff;
       display: flex;
+      justify-content: center;
+      overflow-y: auto;
+    }
+    .modal-frame {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      min-height: 100%;
+      display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 72px 24px 32px;
       text-align: center;
-      overflow-y: auto;
     }
     .modal-close {
       position: fixed;
       top: 16px;
-      right: 16px;
+      right: max(16px, calc((100vw - 800px) / 2 + 16px));
       width: 48px;
       height: 48px;
       display: flex;
@@ -127,6 +136,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      border: 1px solid #ffffff;
+      border-radius: 6px;
+      overflow: hidden;
     }
     .modal-glyph svg {
       width: 100%;
@@ -151,10 +163,50 @@
       line-height: 1.5;
       word-break: break-word;
     }
+    .nav-fab {
+      position: fixed;
+      bottom: 16px;
+      right: max(16px, calc((100vw - 800px) / 2 + 16px));
+      z-index: 500;
+      width: 52px;
+      height: 52px;
+      background-color: #000000;
+      border: 1px solid #ffffff;
+      border-radius: 6px;
+      overflow: hidden;
+      opacity: 0.75;
+    }
+    .nav-fab:hover,
+    .nav-fab:focus-within {
+      opacity: 1;
+    }
+    .nav-fab-icon {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+    .nav-fab-icon svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .nav-select {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+      background-color: #000000;
+      color: #ffffff;
+    }
   </style>
 </head>
 <body>
-  <h2>case</h2>
+  <h2 id="case">case</h2>
   <div class="category-row">
     <button type="button" class="word-card" data-spelling="es" data-short="nominative case" data-definition="volitional agent, actor, comparee">
       <span class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
@@ -526,7 +578,7 @@
       <span class="gloss">assessive case</span>
     </button>
   </div>
-  <h2>valency</h2>
+  <h2 id="valency">valency</h2>
   <div class="category-row">
     <button type="button" class="word-card" data-spelling="uc" data-short="intransitive process" data-definition="marks intransitive process verb (SV)">
       <span class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
@@ -611,7 +663,7 @@
       <span class="gloss">reciprocal</span>
     </button>
   </div>
-  <h2>tense-aspect</h2>
+  <h2 id="tense-aspect">tense-aspect</h2>
   <div class="category-row">
     <button type="button" class="word-card" data-spelling="gu" data-short="past tense" data-definition="before reference or speech time">
       <span class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
@@ -715,7 +767,7 @@
       <span class="gloss">habitual aspect</span>
     </button>
   </div>
-  <h2>modality</h2>
+  <h2 id="modality">modality</h2>
   <div class="category-row">
     <button type="button" class="word-card" data-spelling="fe" data-short="desire modality" data-definition="want to, wish, hope, volitional or optative desire">
       <span class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
@@ -846,7 +898,7 @@
       <span class="gloss">hypothetical modality</span>
     </button>
   </div>
-  <h2>evidential</h2>
+  <h2 id="evidential">evidential</h2>
   <div class="category-row">
     <button type="button" class="word-card" data-spelling="ta" data-short="direct evidential" data-definition="witnessed, known via clear firsthand sensory observation (present or recent past)">
       <span class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
@@ -950,7 +1002,7 @@
       <span class="gloss">authoritative evidential</span>
     </button>
   </div>
-  <h2>mood</h2>
+  <h2 id="mood">mood</h2>
   <div class="category-row">
     <button type="button" class="word-card" data-spelling="zi" data-short="imperative mood" data-definition="command, request, let&#x27;s, directs listener to act">
       <span class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
@@ -1065,7 +1117,7 @@
       <span class="gloss">compliant</span>
     </button>
   </div>
-  <h2>reference</h2>
+  <h2 id="reference">reference</h2>
   <div class="category-row">
     <button type="button" class="word-card" data-spelling="mi" data-short="1p exclusive" data-definition="1st person exclusive pronoun (i, me, we excl.), speaker(s) excluding addressee">
       <span class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
@@ -1213,22 +1265,8 @@
       <span class="spelling">mu</span>
       <span class="gloss">cataphoric pointer</span>
     </button>
-    <button type="button" class="word-card" data-spelling="ka" data-short="pre-anaphoric pointer" data-definition="before that prior statement or referent, points back to the sentence before the preceding sentence or clause">
-      <span class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
-  <rect width="100" height="100" fill="black" />
-  <g stroke="white" stroke-width="6" stroke-linecap="round">
-    <line x1="90" y1="10" x2="90" y2="50" />
-    <line x1="50" y1="10" x2="50" y2="50" />
-    <line x1="10" y1="50" x2="50" y2="50" />
-    <line x1="90" y1="50" x2="50" y2="50" />
-    <line x1="50" y1="90" x2="50" y2="50" />
-  </g>
-</svg></span>
-      <span class="spelling">ka</span>
-      <span class="gloss">pre-anaphoric pointer</span>
-    </button>
   </div>
-  <h2>quantity</h2>
+  <h2 id="quantity">quantity</h2>
   <div class="category-row">
     <button type="button" class="word-card" data-spelling="pa" data-short="zero" data-definition="number 0">
       <span class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
@@ -1399,7 +1437,7 @@
       <span class="gloss">additive focus</span>
     </button>
   </div>
-  <h2>connector</h2>
+  <h2 id="connector">connector</h2>
   <div class="category-row">
     <button type="button" class="word-card" data-spelling="pi" data-short="compound divider" data-definition="pi divider of general compound, links head (left) to modifier group (right), 2-place infix">
       <span class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
@@ -1443,7 +1481,7 @@
       <span class="spelling">ve</span>
       <span class="gloss">concept blend</span>
     </button>
-    <button type="button" class="word-card" data-spelling="bi" data-short="tail connector" data-definition="general connector whose nature is defined by the root word following it, used with logical connectives">
+    <button type="button" class="word-card" data-spelling="bi" data-short="grammar mark" data-definition="marks a grammatical word that has its nature defined by the root word immediately following it, used with logical connectives">
       <span class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
   <rect width="100" height="100" fill="black" />
   <g stroke="white" stroke-width="6" stroke-linecap="round">
@@ -1455,7 +1493,7 @@
   </g>
 </svg></span>
       <span class="spelling">bi</span>
-      <span class="gloss">tail connector</span>
+      <span class="gloss">grammar mark</span>
     </button>
     <button type="button" class="word-card" data-spelling="ri" data-short="alienable possession" data-definition="head (left) is owned or acquired by right, 2-place infix">
       <span class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
@@ -1556,7 +1594,7 @@
       <span class="gloss">depictive possession</span>
     </button>
   </div>
-  <h2>degree</h2>
+  <h2 id="degree">degree</h2>
   <div class="category-row">
     <button type="button" class="word-card" data-spelling="la" data-short="high degree" data-definition="very, more, augment, high pole on scales (or &#x27;more&#x27; with comparative valency g02.04)">
       <span class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
@@ -1686,7 +1724,7 @@
       <span class="gloss">other than</span>
     </button>
   </div>
-  <h2>derivation</h2>
+  <h2 id="derivation">derivation</h2>
   <div class="category-row">
     <button type="button" class="word-card" data-spelling="do" data-short="completive" data-definition="completive version, goal-reached outcome (e.g. search -&gt; find)">
       <span class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
@@ -1831,8 +1869,22 @@
       <span class="spelling">ko</span>
       <span class="gloss">metaphor</span>
     </button>
+    <button type="button" class="word-card" data-spelling="ne" data-short="clause head" data-definition="marks the main head of the clause. used with linked clauses. the head of the framed clause takes on a role in the main clause.">
+      <span class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <rect width="100" height="100" fill="black" />
+  <g stroke="white" stroke-width="6" stroke-linecap="round">
+    <line x1="10" y1="10" x2="90" y2="10" />
+    <line x1="90" y1="10" x2="90" y2="50" />
+    <line x1="50" y1="10" x2="50" y2="50" />
+    <line x1="10" y1="50" x2="50" y2="50" />
+    <line x1="50" y1="90" x2="50" y2="50" />
+  </g>
+</svg></span>
+      <span class="spelling">ne</span>
+      <span class="gloss">clause head</span>
+    </button>
   </div>
-  <h2>domain</h2>
+  <h2 id="domain">domain</h2>
   <div class="category-row">
     <button type="button" class="word-card" data-spelling="zu" data-short="matter domain" data-definition="shifts stem to c2.01 (substance, natural phenomenon, raw material), 1-place postfix">
       <span class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
@@ -1948,7 +2000,7 @@
       <span class="gloss">form domain</span>
     </button>
   </div>
-  <h2>matter</h2>
+  <h2 id="matter">matter</h2>
   <div class="category-row">
     <button type="button" class="word-card" data-spelling="roc" data-short="thing" data-definition="thing, phenomenon, object, matter, substance">
       <span class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
@@ -2133,7 +2185,7 @@
       <span class="gloss">hole</span>
     </button>
   </div>
-  <h2>biology</h2>
+  <h2 id="biology">biology</h2>
   <div class="category-row">
     <button type="button" class="word-card" data-spelling="zil" data-short="body" data-definition="body, physical form, torso, organism, physical state">
       <span class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
@@ -2546,7 +2598,7 @@
       <span class="gloss">non-binary</span>
     </button>
   </div>
-  <h2>motion</h2>
+  <h2 id="motion">motion</h2>
   <div class="category-row">
     <button type="button" class="word-card" data-spelling="ral" data-short="move" data-definition="move, motion, travel, go, shift, kinetic displacement">
       <span class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
@@ -2758,7 +2810,7 @@
       <span class="gloss">finish</span>
     </button>
   </div>
-  <h2>artifact</h2>
+  <h2 id="artifact">artifact</h2>
   <div class="category-row">
     <button type="button" class="word-card" data-spelling="tun" data-short="tool" data-definition="tool, implement, machine, device, apparatus">
       <span class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
@@ -2930,7 +2982,7 @@
       <span class="gloss">money</span>
     </button>
   </div>
-  <h2>sense</h2>
+  <h2 id="sense">sense</h2>
   <div class="category-row">
     <button type="button" class="word-card" data-spelling="ran" data-short="see" data-definition="see, look, watch, observe, examine, visual perception">
       <span class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
@@ -3236,7 +3288,7 @@
       <span class="gloss">awesome</span>
     </button>
   </div>
-  <h2>mind</h2>
+  <h2 id="mind">mind</h2>
   <div class="category-row">
     <button type="button" class="word-card" data-spelling="fum" data-short="feel" data-definition="feel, emotion, experience, intuition, internal state">
       <span class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
@@ -3356,7 +3408,7 @@
       <span class="gloss">sacred</span>
     </button>
   </div>
-  <h2>society</h2>
+  <h2 id="society">society</h2>
   <div class="category-row">
     <button type="button" class="word-card" data-spelling="wol" data-short="person" data-definition="person, human, somebody, conscious agent">
       <span class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
@@ -3485,7 +3537,7 @@
       <span class="gloss">market</span>
     </button>
   </div>
-  <h2>form</h2>
+  <h2 id="form">form</h2>
   <div class="category-row">
     <button type="button" class="word-card" data-spelling="tul" data-short="size" data-definition="size, magnitude, scale, dimension, extent, bulk">
       <span class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
@@ -3817,13 +3869,56 @@
       <span class="gloss">logical proj</span>
     </button>
   </div>
+  <div class="nav-fab">
+    <span class="nav-fab-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <rect width="100" height="100" fill="black" />
+  <g stroke="white" stroke-width="6" stroke-linecap="round">
+    <line x1="10" y1="10" x2="90" y2="10" />
+    <line x1="10" y1="10" x2="10" y2="50" />
+    <line x1="90" y1="10" x2="90" y2="50" />
+    <line x1="50" y1="10" x2="50" y2="50" />
+    <line x1="10" y1="50" x2="50" y2="50" />
+    <line x1="90" y1="50" x2="50" y2="50" />
+    <line x1="50" y1="90" x2="50" y2="50" />
+    <line x1="10" y1="90" x2="90" y2="90" />
+  </g>
+</svg></span>
+    <select id="section-nav" class="nav-select">
+      <optgroup label="grammar">
+        <option value="case">case</option>
+        <option value="valency">valency</option>
+        <option value="tense-aspect">tense-aspect</option>
+        <option value="modality">modality</option>
+        <option value="evidential">evidential</option>
+        <option value="mood">mood</option>
+        <option value="reference">reference</option>
+        <option value="quantity">quantity</option>
+        <option value="connector">connector</option>
+        <option value="degree">degree</option>
+        <option value="derivation">derivation</option>
+        <option value="domain">domain</option>
+      </optgroup>
+      <optgroup label="domain">
+        <option value="matter">matter</option>
+        <option value="biology">biology</option>
+        <option value="motion">motion</option>
+        <option value="artifact">artifact</option>
+        <option value="sense">sense</option>
+        <option value="mind">mind</option>
+        <option value="society">society</option>
+        <option value="form">form</option>
+      </optgroup>
+    </select>
+  </div>
   <div id="word-modal" class="modal" role="dialog" aria-modal="true" hidden>
-    <button type="button" id="modal-close" class="modal-close" aria-label="Close">&times;</button>
-    <div class="modal-content">
-      <div id="modal-glyph" class="modal-glyph"></div>
-      <div id="modal-spelling" class="modal-spelling"></div>
-      <div id="modal-short" class="modal-short"></div>
-      <div id="modal-definition" class="modal-definition"></div>
+    <div class="modal-frame">
+      <button type="button" id="modal-close" class="modal-close" aria-label="Close">&times;</button>
+      <div class="modal-content">
+        <div id="modal-glyph" class="modal-glyph"></div>
+        <div id="modal-spelling" class="modal-spelling"></div>
+        <div id="modal-short" class="modal-short"></div>
+        <div id="modal-definition" class="modal-definition"></div>
+      </div>
     </div>
   </div>
   <script>
@@ -3834,6 +3929,7 @@
       const modalSpelling = document.getElementById("modal-spelling");
       const modalShort = document.getElementById("modal-short");
       const modalDefinition = document.getElementById("modal-definition");
+      const sectionNav = document.getElementById("section-nav");
       let lastTrigger = null;
 
       function openModal(card) {
@@ -3871,6 +3967,21 @@
           closeModal();
         }
       });
+
+      if (sectionNav) {
+        sectionNav.addEventListener("change", () => {
+          const targetId = sectionNav.value;
+          if (!targetId) {
+            return;
+          }
+          const target = document.getElementById(targetId);
+          if (target) {
+            window.location.hash = targetId;
+            target.scrollIntoView();
+          }
+          sectionNav.selectedIndex = 0;
+        });
+      }
     })();
   </script>
 </body>

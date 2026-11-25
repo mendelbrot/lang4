@@ -61,8 +61,9 @@ def main() -> None:
         "      box-sizing: border-box;",
         "    }",
         "    body {",
-        "      margin: 0;",
-        "      padding: 16px;",
+        "      max-width: 800px;",
+        "      margin: 0 auto;",
+        "      padding: 16px 16px 84px;",
         "      background-color: #000000;",
         "      color: #ffffff;",
         "      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;",
@@ -137,17 +138,25 @@ def main() -> None:
         "      background-color: #000000;",
         "      color: #ffffff;",
         "      display: flex;",
+        "      justify-content: center;",
+        "      overflow-y: auto;",
+        "    }",
+        "    .modal-frame {",
+        "      position: relative;",
+        "      width: 100%;",
+        "      max-width: 800px;",
+        "      min-height: 100%;",
+        "      display: flex;",
         "      flex-direction: column;",
         "      align-items: center;",
         "      justify-content: center;",
         "      padding: 72px 24px 32px;",
         "      text-align: center;",
-        "      overflow-y: auto;",
         "    }",
         "    .modal-close {",
         "      position: fixed;",
         "      top: 16px;",
-        "      right: 16px;",
+        "      right: max(16px, calc((100vw - 800px) / 2 + 16px));",
         "      width: 48px;",
         "      height: 48px;",
         "      display: flex;",
@@ -176,6 +185,9 @@ def main() -> None:
         "      display: flex;",
         "      align-items: center;",
         "      justify-content: center;",
+        "      border: 1px solid #ffffff;",
+        "      border-radius: 6px;",
+        "      overflow: hidden;",
         "    }",
         "    .modal-glyph svg {",
         "      width: 100%;",
@@ -200,19 +212,66 @@ def main() -> None:
         "      line-height: 1.5;",
         "      word-break: break-word;",
         "    }",
+        "    .nav-fab {",
+        "      position: fixed;",
+        "      bottom: 16px;",
+        "      right: max(16px, calc((100vw - 800px) / 2 + 16px));",
+        "      z-index: 500;",
+        "      width: 52px;",
+        "      height: 52px;",
+        "      background-color: #000000;",
+        "      border: 1px solid #ffffff;",
+        "      border-radius: 6px;",
+        "      overflow: hidden;",
+        "      opacity: 0.75;",
+        "    }",
+        "    .nav-fab:hover,",
+        "    .nav-fab:focus-within {",
+        "      opacity: 1;",
+        "    }",
+        "    .nav-fab-icon {",
+        "      width: 100%;",
+        "      height: 100%;",
+        "      display: flex;",
+        "      align-items: center;",
+        "      justify-content: center;",
+        "      pointer-events: none;",
+        "    }",
+        "    .nav-fab-icon svg {",
+        "      width: 100%;",
+        "      height: 100%;",
+        "      display: block;",
+        "    }",
+        "    .nav-select {",
+        "      position: absolute;",
+        "      inset: 0;",
+        "      width: 100%;",
+        "      height: 100%;",
+        "      opacity: 0;",
+        "      cursor: pointer;",
+        "      background-color: #000000;",
+        "      color: #ffffff;",
+        "    }",
         "  </style>",
         "</head>",
         "<body>",
     ]
 
+    nav_groups: Dict[str, List[str]] = {}
+
     for cat in categories:
         cat_id = cat["id"]
-        cat_name = html.escape(cat["name"])
+        cat_raw_name = cat["name"]
+        cat_name = html.escape(cat_raw_name)
+        cat_slug = html.escape(cat_raw_name, quote=True)
         cat_words = words_by_category.get(cat_id, [])
         if not cat_words:
             continue
 
-        html_parts.append(f"  <h2>{cat_name}</h2>")
+        cat_type = cat.get("type", "") or "sections"
+        nav_groups.setdefault(cat_type, []).append(cat_raw_name)
+
+        html_parts.append(f'  <h2 id="{cat_slug}">{cat_name}</h2>')
         html_parts.append('  <div class="category-row">')
 
         for word in cat_words:
@@ -244,14 +303,33 @@ def main() -> None:
 
         html_parts.append("  </div>")
 
+    mat_svg_path = glyphs_dir / "mat.svg"
+    mat_svg_content = mat_svg_path.read_text(encoding="utf-8").strip() if mat_svg_path.exists() else ""
+
+    html_parts.append('  <div class="nav-fab">')
+    html_parts.append(f'    <span class="nav-fab-icon" aria-hidden="true">{mat_svg_content}</span>')
+    html_parts.append('    <select id="section-nav" class="nav-select">')
+    for group_name, section_names in nav_groups.items():
+        escaped_group = html.escape(group_name, quote=True)
+        html_parts.append(f'      <optgroup label="{escaped_group}">')
+        for sec_name in section_names:
+            escaped_sec_val = html.escape(sec_name, quote=True)
+            escaped_sec_label = html.escape(sec_name)
+            html_parts.append(f'        <option value="{escaped_sec_val}">{escaped_sec_label}</option>')
+        html_parts.append("      </optgroup>")
+    html_parts.append("    </select>")
+    html_parts.append("  </div>")
+
     html_parts.extend([
         '  <div id="word-modal" class="modal" role="dialog" aria-modal="true" hidden>',
-        '    <button type="button" id="modal-close" class="modal-close" aria-label="Close">&times;</button>',
-        '    <div class="modal-content">',
-        '      <div id="modal-glyph" class="modal-glyph"></div>',
-        '      <div id="modal-spelling" class="modal-spelling"></div>',
-        '      <div id="modal-short" class="modal-short"></div>',
-        '      <div id="modal-definition" class="modal-definition"></div>',
+        '    <div class="modal-frame">',
+        '      <button type="button" id="modal-close" class="modal-close" aria-label="Close">&times;</button>',
+        '      <div class="modal-content">',
+        '        <div id="modal-glyph" class="modal-glyph"></div>',
+        '        <div id="modal-spelling" class="modal-spelling"></div>',
+        '        <div id="modal-short" class="modal-short"></div>',
+        '        <div id="modal-definition" class="modal-definition"></div>',
+        "      </div>",
         "    </div>",
         "  </div>",
         "  <script>",
@@ -262,6 +340,7 @@ def main() -> None:
         '      const modalSpelling = document.getElementById("modal-spelling");',
         '      const modalShort = document.getElementById("modal-short");',
         '      const modalDefinition = document.getElementById("modal-definition");',
+        '      const sectionNav = document.getElementById("section-nav");',
         "      let lastTrigger = null;",
         "",
         "      function openModal(card) {",
@@ -299,6 +378,21 @@ def main() -> None:
         "          closeModal();",
         "        }",
         "      });",
+        "",
+        "      if (sectionNav) {",
+        '        sectionNav.addEventListener("change", () => {',
+        "          const targetId = sectionNav.value;",
+        "          if (!targetId) {",
+        "            return;",
+        "          }",
+        "          const target = document.getElementById(targetId);",
+        "          if (target) {",
+        "            window.location.hash = targetId;",
+        "            target.scrollIntoView();",
+        "          }",
+        "          sectionNav.selectedIndex = 0;",
+        "        });",
+        "      }",
         "    })();",
         "  </script>",
         "</body>",
