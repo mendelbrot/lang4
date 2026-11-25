@@ -308,8 +308,7 @@ def main() -> None:
 
     html_parts.append('  <div class="nav-fab">')
     html_parts.append(f'    <span class="nav-fab-icon" aria-hidden="true">{mat_svg_content}</span>')
-    html_parts.append('    <select id="section-nav" class="nav-select" aria-label="Jump to section">')
-    html_parts.append('      <option value="" selected disabled>Jump to section...</option>')
+    html_parts.append('    <select id="section-nav" class="nav-select">')
     for group_name, section_names in nav_groups.items():
         escaped_group = html.escape(group_name, quote=True)
         html_parts.append(f'      <optgroup label="{escaped_group}">')
