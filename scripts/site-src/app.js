@@ -8,7 +8,11 @@
   const modalSpelling = document.getElementById("modal-spelling");
   const modalShort = document.getElementById("modal-short");
   const modalDefinition = document.getElementById("modal-definition");
-  const sectionNav = document.getElementById("section-nav");
+
+  const sectionModal = document.getElementById("section-modal");
+  const sectionNavOpen = document.getElementById("section-nav-open");
+  const sectionModalClose = document.getElementById("section-modal-close");
+
   let lastTrigger = null;
 
   function openModal(card) {
@@ -35,8 +39,31 @@
     }
   }
 
+  function openSectionModal() {
+    if (!sectionModal) {
+      return;
+    }
+    sectionModal.hidden = false;
+    document.body.style.overflow = "hidden";
+    if (sectionModalClose) {
+      sectionModalClose.focus();
+    }
+  }
+
+  function closeSectionModal() {
+    if (!sectionModal || sectionModal.hidden) {
+      return;
+    }
+    sectionModal.hidden = true;
+    document.body.style.overflow = "";
+    if (sectionNavOpen) {
+      sectionNavOpen.blur();
+    }
+  }
+
   function showPage() {
     closeModal();
+    closeSectionModal();
     const rawHash = decodeURIComponent(window.location.hash.replace(/^#/, ""));
     const targetSlug = pageMap.has(rawHash) ? rawHash : "home";
 
@@ -60,6 +87,19 @@
     const card = event.target.closest(".word-card");
     if (card) {
       openModal(card);
+      return;
+    }
+
+    const chip = event.target.closest(".section-chip");
+    if (chip) {
+      const targetId = chip.dataset.sectionTarget;
+      closeSectionModal();
+      if (targetId) {
+        const target = document.getElementById(`words-${targetId}`);
+        if (target) {
+          target.scrollIntoView();
+        }
+      }
     }
   });
 
@@ -67,23 +107,22 @@
     closeBtn.addEventListener("click", closeModal);
   }
 
+  if (sectionNavOpen) {
+    sectionNavOpen.addEventListener("click", openSectionModal);
+  }
+
+  if (sectionModalClose) {
+    sectionModalClose.addEventListener("click", closeSectionModal);
+  }
+
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && modal && !modal.hidden) {
+    if (event.key !== "Escape") {
+      return;
+    }
+    if (modal && !modal.hidden) {
       closeModal();
+    } else if (sectionModal && !sectionModal.hidden) {
+      closeSectionModal();
     }
   });
-
-  if (sectionNav) {
-    sectionNav.addEventListener("change", () => {
-      const targetId = sectionNav.value;
-      if (!targetId) {
-        return;
-      }
-      const target = document.getElementById(`words-${targetId}`);
-      if (target) {
-        target.scrollIntoView();
-      }
-      sectionNav.selectedIndex = 0;
-    });
-  }
 })();

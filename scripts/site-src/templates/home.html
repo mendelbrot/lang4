@@ -1,15 +1,40 @@
 <section class="page" data-page="home" data-title="zirkekpemim" hidden>
   <h1 class="page-title">zirkekpemim</h1>
   <ul class="toc-list">
-{% for item in toc_pages %}
     <li>
-      <a href="#{{ item.slug }}">
-        <span class="toc-name">{{ item.title }}</span>
-        {% if item.meta %}
-        <span class="toc-meta">{{ item.meta }}</span>
-        {% endif %}
+      <a href="#{{ about_page.slug }}">
+        <span class="toc-name">{{ about_page.title }}</span>
       </a>
     </li>
+{% for group_name, group_cats in nav_groups.items() %}
+    <li class="toc-group-item">
+      <details class="toc-group">
+        <summary class="toc-summary">
+          <span class="toc-name">{{ group_name }}</span>
+          <span class="toc-meta">{{ group_cats | length }}</span>
+        </summary>
+        <ul class="toc-sublist">
+{% for cat in group_cats %}
+          <li>
+            <a href="#{{ cat.slug }}">
+              <span class="toc-name">{{ cat.name }}</span>
+            </a>
+          </li>
 {% endfor %}
+        </ul>
+      </details>
+    </li>
+{% endfor %}
+    <li>
+      <a href="#{{ sounds_page.slug }}">
+        <span class="toc-name">{{ sounds_page.title }}</span>
+      </a>
+    </li>
+    <li>
+      <a href="#words">
+        <span class="toc-name">words</span>
+        <span class="toc-meta">{{ word_count }} words</span>
+      </a>
+    </li>
   </ul>
 </section>

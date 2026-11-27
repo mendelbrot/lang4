@@ -292,7 +292,14 @@ def main() -> None:
     category_tpl = env.get_template("category.html")
     words_tpl = env.get_template("words.html")
 
-    rendered_pages.append(home_tpl.render(toc_pages=ordered_pages))
+    rendered_pages.append(
+        home_tpl.render(
+            about_page=about_page,
+            sounds_page=sounds_page,
+            nav_groups=nav_groups,
+            word_count=len(words),
+        )
+    )
 
     for page in ordered_pages:
         kind = page["kind"]
