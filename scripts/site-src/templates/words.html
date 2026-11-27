@@ -17,9 +17,7 @@
   </div>
   {% endfor %}
 
-  <button type="button" id="section-nav-open" class="nav-fab" aria-label="jump to category">
-    <span class="nav-fab-icon" aria-hidden="true">{{ glyph("mat") }}</span>
-  </button>
+  <button type="button" id="section-nav-open" class="nav-fab" aria-label="jump to category"></button>
 
   <div id="section-modal" class="modal" role="dialog" aria-modal="true" aria-label="jump to category" hidden>
     <div class="modal-frame section-modal-frame">
@@ -28,11 +26,13 @@
         {% for group_name, group_cats in nav_groups.items() %}
         <div class="section-group">
           <h3 class="section-group-title">{{ group_name }}</h3>
-          <div class="section-chips">
+          <ul class="toc-sublist">
             {% for cat in group_cats %}
-            <button type="button" class="section-chip" data-section-target="{{ cat.slug }}">{{ cat.name }}</button>
+            <li>
+              <button type="button" class="section-chip" data-section-target="{{ cat.slug }}">{{ cat.name }}</button>
+            </li>
             {% endfor %}
-          </div>
+          </ul>
         </div>
         {% endfor %}
       </div>
