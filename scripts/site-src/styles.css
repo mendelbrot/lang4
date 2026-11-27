@@ -144,16 +144,25 @@ code {
 .toc-sublist {
   list-style: none;
   margin: 0;
-  padding: 0 0 0 20px;
+  padding: 10px 8px;
   border-top: 1px solid #ffffff;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+@media (min-width: 560px) {
+  .toc-sublist {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 .toc-sublist li {
-  border-bottom: 1px solid #ffffff;
+  border: 1px solid #ffffff;
 }
 
-.toc-sublist li:last-child {
-  border-bottom: none;
+.toc-sublist li a {
+  padding: 8px 10px;
 }
 
 /* prose & markdown content */
