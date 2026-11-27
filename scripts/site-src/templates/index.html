@@ -26,6 +26,14 @@
 {{ rendered_page | safe }}
 {% endfor %}
 
+  <button type="button" id="theme-toggle" class="nav-fab theme-fab" aria-label="toggle color theme"></button>
+  <button type="button" id="section-nav-open" class="nav-fab" aria-label="open jump menu" hidden></button>
+
+  <div id="glyph-popup" class="glyph-popup" role="tooltip" hidden>
+    <span id="glyph-popup-spelling" class="glyph-popup-spelling"></span><br>
+    <span id="glyph-popup-short" class="glyph-popup-short"></span>
+  </div>
+
   <div id="word-modal" class="modal" role="dialog" aria-modal="true" hidden>
     <div class="modal-frame">
       <button type="button" id="modal-close" class="modal-close" aria-label="close">&times;</button>
@@ -35,6 +43,17 @@
         <div id="modal-short" class="modal-short"></div>
         <div id="modal-definition" class="modal-definition"></div>
       </div>
+    </div>
+  </div>
+
+  <div id="section-modal" class="modal section-modal" role="dialog" aria-modal="true" aria-label="jump menu" hidden>
+    <div class="modal-frame section-modal-frame">
+      <div class="modal-top-left">
+        <button type="button" id="section-modal-home" class="modal-action-btn">home</button>
+        <button type="button" id="section-modal-top" class="modal-action-btn">top</button>
+      </div>
+      <button type="button" id="section-modal-close" class="modal-close" aria-label="close">&times;</button>
+      <div id="section-modal-content" class="section-modal-content"></div>
     </div>
   </div>
 

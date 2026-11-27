@@ -75,6 +75,9 @@ def load_svg_symbols(glyphs_dir: Path) -> Tuple[List[Dict[str, str]], set]:
         if not match:
             continue
         attrs, inner = match.group(1), match.group(2).strip()
+        inner = inner.replace('fill="black"', 'fill="var(--glyph-bg, black)"').replace(
+            'stroke="white"', 'stroke="var(--glyph-fg, white)"'
+        )
         vb_match = VIEWBOX_RE.search(attrs)
         viewbox = vb_match.group(1) if vb_match else "0 0 100 100"
         symbols.append({"name": name, "viewbox": viewbox, "inner": inner})
@@ -105,6 +108,9 @@ def main() -> None:
     # Load structured data
     categories = load_psv(data_dir / "01-categories.psv")
     words = load_psv(data_dir / "02-grammar.psv") + load_psv(data_dir / "03-roots.psv")
+    words_by_spelling: Dict[str, Dict[str, str]] = {
+        w["spelling"]: w for w in words if w.get("spelling")
+    }
     examples_list = load_psv(data_dir / "04-examples.psv")
     connections = load_psv(data_dir / "05-word-example-connections.psv")
 
@@ -133,15 +139,24 @@ def main() -> None:
             f'<use href="#glyph-{safe}"/></svg>'
         )
 
-    def render_script(text: str) -> Markup:
+    def render_script(text: str, interactive: bool = False) -> Markup:
         parts: List[str] = []
         for token in text.strip().split():
             if token in available_glyphs:
                 safe = html.escape(token, quote=True)
-                parts.append(
+                svg = (
                     f'<svg class="script-glyph" viewBox="0 0 100 100" role="img" aria-label="{safe}">'
                     f'<use href="#glyph-{safe}"/></svg>'
                 )
+                if interactive:
+                    word_info = words_by_spelling.get(token, {})
+                    safe_short = html.escape(word_info.get("short", ""), quote=True)
+                    parts.append(
+                        f'<button type="button" class="script-glyph-btn" '
+                        f'data-spelling="{safe}" data-short="{safe_short}">{svg}</button>'
+                    )
+                else:
+                    parts.append(svg)
             else:
                 parts.append(f'<span class="script-token">{html.escape(token)}</span>')
         return Markup(f'<span class="script-inline">{"".join(parts)}</span>')
@@ -319,7 +334,6 @@ def main() -> None:
                 words_tpl.render(
                     page=page,
                     categories=category_entries,
-                    nav_groups=nav_groups,
                 )
             )
 
