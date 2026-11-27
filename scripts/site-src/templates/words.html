@@ -1,0 +1,41 @@
+{% extends "page.html" %}
+{% block page_class %}words-page{% endblock %}
+{% block content %}
+  {% for cat in categories %}
+  <h2 id="words-{{ cat.slug }}">{{ cat.name }}</h2>
+  <div class="category-row">
+    {% for word in cat.words %}
+    <button type="button" class="word-card"
+      data-spelling="{{ word.spelling }}"
+      data-short="{{ word.short }}"
+      data-definition="{{ word.definition }}">
+      <span class="glyph">{{ glyph(word.spelling) }}</span>
+      <span class="spelling">{{ word.spelling }}</span>
+      <span class="gloss">{{ word.short }}</span>
+    </button>
+    {% endfor %}
+  </div>
+  {% endfor %}
+
+  <button type="button" id="section-nav-open" class="nav-fab" aria-label="jump to category">
+    <span class="nav-fab-icon" aria-hidden="true">{{ glyph("mat") }}</span>
+  </button>
+
+  <div id="section-modal" class="modal" role="dialog" aria-modal="true" aria-label="jump to category" hidden>
+    <div class="modal-frame section-modal-frame">
+      <button type="button" id="section-modal-close" class="modal-close" aria-label="close">&times;</button>
+      <div class="section-modal-content">
+        {% for group_name, group_cats in nav_groups.items() %}
+        <div class="section-group">
+          <h3 class="section-group-title">{{ group_name }}</h3>
+          <div class="section-chips">
+            {% for cat in group_cats %}
+            <button type="button" class="section-chip" data-section-target="{{ cat.slug }}">{{ cat.name }}</button>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

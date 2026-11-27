@@ -1,0 +1,21 @@
+{% macro nav_bar(page, extra_class="") %}
+  <nav class="page-nav {{ extra_class }}" aria-label="page navigation">
+    <a href="#">home</a>
+    {% if page.prev %}
+    <a href="#{{ page.prev.slug }}">prev: {{ page.prev.title }}</a>
+    {% else %}
+    <span class="nav-disabled">prev</span>
+    {% endif %}
+    {% if page.next %}
+    <a href="#{{ page.next.slug }}">next: {{ page.next.title }}</a>
+    {% else %}
+    <span class="nav-disabled">next</span>
+    {% endif %}
+  </nav>
+{% endmacro %}
+<section class="page {% block page_class %}{% endblock %}" data-page="{{ page.slug }}" data-title="{{ page.title }}" hidden>
+{{ nav_bar(page) }}
+  <h1 class="page-title">{{ page.title }}</h1>
+{% block content %}{% endblock %}
+{{ nav_bar(page, "page-nav--bottom") }}
+</section>

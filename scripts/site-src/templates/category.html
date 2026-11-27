@@ -1,0 +1,43 @@
+{% extends "page.html" %}
+{% block content %}
+  {% if category_intro_html %}
+  <div class="category-intro prose">
+{{ category_intro_html | safe }}
+  </div>
+  {% endif %}
+
+  {% for word in words %}
+  <div class="word-entry">
+    <div class="word-box">
+      <div class="word-box-header">
+        <div class="word-box-glyph">{{ glyph(word.spelling) }}</div>
+        <div class="word-box-spelling">{{ word.spelling }}</div>
+        <div class="word-box-short">{{ word.short }}</div>
+      </div>
+      <div class="word-box-def">{{ word.definition }}</div>
+      {% if word.expanded_html %}
+      <div class="word-box-expanded prose">
+{{ word.expanded_html | safe }}
+      </div>
+      {% endif %}
+    </div>
+
+    {% if word.examples %}
+    <div class="word-examples">
+      {% for ex in word.examples %}
+      <div class="example-box">
+        <div class="example-cell example-english">{{ ex.english }}</div>
+        <div class="example-cell example-script">{% if ex.zirkekpemim %}{{ script(ex.zirkekpemim) }}{% endif %}</div>
+        <div class="example-cell example-latin">{{ ex.zirkekpemim }}</div>
+        <div class="example-cell example-highlights">
+          {% for h in ex.highlights %}
+          <div class="example-highlight-line">{{ h }}</div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+  {% endfor %}
+{% endblock %}
