@@ -109,7 +109,8 @@ code {
   text-decoration: none;
 }
 
-.toc-list a:hover {
+.toc-list a:hover,
+.toc-sublist button:hover {
   background-color: #141414;
   opacity: 1;
 }
@@ -161,14 +162,8 @@ code {
   padding: 10px 8px;
   border-top: 1px solid #ffffff;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
-}
-
-@media (min-width: 560px) {
-  .toc-sublist {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
 }
 
 .toc-sublist li {
@@ -177,8 +172,18 @@ code {
   overflow: hidden;
 }
 
-.toc-sublist li a {
+.toc-sublist li a,
+.toc-sublist li button {
+  display: block;
+  width: 100%;
   padding: 8px 10px;
+  background-color: transparent;
+  color: inherit;
+  border: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  appearance: none;
 }
 
 /* prose & markdown content */
@@ -521,10 +526,10 @@ code {
   width: 72px;
   height: 72px;
   padding: 0;
-  background-color: #000000;
+  background-color: transparent;
   color: #ffffff;
   border: 1px solid #ffffff;
-  border-radius: 6px;
+  border-radius: 50%;
   overflow: hidden;
   opacity: 0.50;
   cursor: pointer;
@@ -565,33 +570,7 @@ code {
 }
 
 .section-group-title {
-  margin: 0 0 12px 0;
+  margin: 0 0 8px 0;
   font-size: 1.15rem;
   font-weight: 600;
-  border-bottom: 1px solid #ffffff;
-  padding-bottom: 4px;
-}
-
-.section-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.section-chip {
-  padding: 8px 14px;
-  background-color: #000000;
-  color: #ffffff;
-  border: 1px solid #ffffff;
-  border-radius: 6px;
-  font: inherit;
-  font-size: 0.95rem;
-  cursor: pointer;
-  appearance: none;
-}
-
-.section-chip:hover,
-.section-chip:focus-visible {
-  background-color: #ffffff;
-  color: #000000;
 }

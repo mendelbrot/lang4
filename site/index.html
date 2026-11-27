@@ -116,7 +116,8 @@ code {
   text-decoration: none;
 }
 
-.toc-list a:hover {
+.toc-list a:hover,
+.toc-sublist button:hover {
   background-color: #141414;
   opacity: 1;
 }
@@ -168,14 +169,8 @@ code {
   padding: 10px 8px;
   border-top: 1px solid #ffffff;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
-}
-
-@media (min-width: 560px) {
-  .toc-sublist {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
 }
 
 .toc-sublist li {
@@ -184,8 +179,18 @@ code {
   overflow: hidden;
 }
 
-.toc-sublist li a {
+.toc-sublist li a,
+.toc-sublist li button {
+  display: block;
+  width: 100%;
   padding: 8px 10px;
+  background-color: transparent;
+  color: inherit;
+  border: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  appearance: none;
 }
 
 /* prose & markdown content */
@@ -528,10 +533,10 @@ code {
   width: 72px;
   height: 72px;
   padding: 0;
-  background-color: #000000;
+  background-color: transparent;
   color: #ffffff;
   border: 1px solid #ffffff;
-  border-radius: 6px;
+  border-radius: 50%;
   overflow: hidden;
   opacity: 0.50;
   cursor: pointer;
@@ -572,35 +577,9 @@ code {
 }
 
 .section-group-title {
-  margin: 0 0 12px 0;
+  margin: 0 0 8px 0;
   font-size: 1.15rem;
   font-weight: 600;
-  border-bottom: 1px solid #ffffff;
-  padding-bottom: 4px;
-}
-
-.section-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.section-chip {
-  padding: 8px 14px;
-  background-color: #000000;
-  color: #ffffff;
-  border: 1px solid #ffffff;
-  border-radius: 6px;
-  font: inherit;
-  font-size: 0.95rem;
-  cursor: pointer;
-  appearance: none;
-}
-
-.section-chip:hover,
-.section-chip:focus-visible {
-  background-color: #ffffff;
-  color: #000000;
 }
 
   </style>
@@ -8917,9 +8896,7 @@ code {
     </button>
   </div>
 
-  <button type="button" id="section-nav-open" class="nav-fab" aria-label="jump to category">
-    <span class="nav-fab-icon" aria-hidden="true"><svg viewBox="0 0 100 100" role="img" aria-label="mat"><use href="#glyph-mat"/></svg></span>
-  </button>
+  <button type="button" id="section-nav-open" class="nav-fab" aria-label="jump to category"></button>
 
   <div id="section-modal" class="modal" role="dialog" aria-modal="true" aria-label="jump to category" hidden>
     <div class="modal-frame section-modal-frame">
@@ -8927,33 +8904,73 @@ code {
       <div class="section-modal-content">
         <div class="section-group">
           <h3 class="section-group-title">grammar</h3>
-          <div class="section-chips">
-            <button type="button" class="section-chip" data-section-target="case">case</button>
-            <button type="button" class="section-chip" data-section-target="valency">valency</button>
-            <button type="button" class="section-chip" data-section-target="tense-aspect">tense-aspect</button>
-            <button type="button" class="section-chip" data-section-target="modality">modality</button>
-            <button type="button" class="section-chip" data-section-target="evidential">evidential</button>
-            <button type="button" class="section-chip" data-section-target="mood">mood</button>
-            <button type="button" class="section-chip" data-section-target="reference">reference</button>
-            <button type="button" class="section-chip" data-section-target="quantity">quantity</button>
-            <button type="button" class="section-chip" data-section-target="connector">connector</button>
-            <button type="button" class="section-chip" data-section-target="degree">degree</button>
-            <button type="button" class="section-chip" data-section-target="derivation">derivation</button>
-            <button type="button" class="section-chip" data-section-target="domain">domain</button>
-          </div>
+          <ul class="toc-sublist">
+            <li>
+              <button type="button" class="section-chip" data-section-target="case">case</button>
+            </li>
+            <li>
+              <button type="button" class="section-chip" data-section-target="valency">valency</button>
+            </li>
+            <li>
+              <button type="button" class="section-chip" data-section-target="tense-aspect">tense-aspect</button>
+            </li>
+            <li>
+              <button type="button" class="section-chip" data-section-target="modality">modality</button>
+            </li>
+            <li>
+              <button type="button" class="section-chip" data-section-target="evidential">evidential</button>
+            </li>
+            <li>
+              <button type="button" class="section-chip" data-section-target="mood">mood</button>
+            </li>
+            <li>
+              <button type="button" class="section-chip" data-section-target="reference">reference</button>
+            </li>
+            <li>
+              <button type="button" class="section-chip" data-section-target="quantity">quantity</button>
+            </li>
+            <li>
+              <button type="button" class="section-chip" data-section-target="connector">connector</button>
+            </li>
+            <li>
+              <button type="button" class="section-chip" data-section-target="degree">degree</button>
+            </li>
+            <li>
+              <button type="button" class="section-chip" data-section-target="derivation">derivation</button>
+            </li>
+            <li>
+              <button type="button" class="section-chip" data-section-target="domain">domain</button>
+            </li>
+          </ul>
         </div>
         <div class="section-group">
           <h3 class="section-group-title">domain</h3>
-          <div class="section-chips">
-            <button type="button" class="section-chip" data-section-target="matter">matter</button>
-            <button type="button" class="section-chip" data-section-target="biology">biology</button>
-            <button type="button" class="section-chip" data-section-target="motion">motion</button>
-            <button type="button" class="section-chip" data-section-target="artifact">artifact</button>
-            <button type="button" class="section-chip" data-section-target="sense">sense</button>
-            <button type="button" class="section-chip" data-section-target="mind">mind</button>
-            <button type="button" class="section-chip" data-section-target="society">society</button>
-            <button type="button" class="section-chip" data-section-target="form">form</button>
-          </div>
+          <ul class="toc-sublist">
+            <li>
+              <button type="button" class="section-chip" data-section-target="matter">matter</button>
+            </li>
+            <li>
+              <button type="button" class="section-chip" data-section-target="biology">biology</button>
+            </li>
+            <li>
+              <button type="button" class="section-chip" data-section-target="motion">motion</button>
+            </li>
+            <li>
+              <button type="button" class="section-chip" data-section-target="artifact">artifact</button>
+            </li>
+            <li>
+              <button type="button" class="section-chip" data-section-target="sense">sense</button>
+            </li>
+            <li>
+              <button type="button" class="section-chip" data-section-target="mind">mind</button>
+            </li>
+            <li>
+              <button type="button" class="section-chip" data-section-target="society">society</button>
+            </li>
+            <li>
+              <button type="button" class="section-chip" data-section-target="form">form</button>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
