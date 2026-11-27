@@ -13,7 +13,7 @@
     {% endif %}
   </nav>
 {% endmacro %}
-<section class="page {% block page_class %}{% endblock %}" data-page="{{ page.slug }}" data-title="{{ page.title }}" hidden>
+<section class="page {% block page_class %}{% endblock %}" data-page="{{ page.slug }}" data-title="{{ page.title }}"{% block page_attrs %}{% endblock %} hidden>
 {{ nav_bar(page) }}
   <h1 class="page-title">{{ page.title }}</h1>
 {% block content %}{% endblock %}

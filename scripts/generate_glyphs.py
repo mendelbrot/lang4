@@ -79,8 +79,8 @@ def render_svg(segments: List[str]) -> str:
     """Renders the SVG string for a list of segments."""
     lines = [
         '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">',
-        '  <rect width="100" height="100" fill="black" />',
-        '  <g stroke="white" stroke-width="6" stroke-linecap="round">',
+        '  <rect width="100" height="100" fill="var(--glyph-bg, black)" />',
+        '  <g stroke="var(--glyph-fg, white)" stroke-width="6" stroke-linecap="round">',
     ]
     for seg in segments:
         x1, y1, x2, y2 = parse_segment(seg)

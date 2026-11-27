@@ -1,4 +1,5 @@
 {% extends "page.html" %}
+{% block page_attrs %} data-jump="category"{% endblock %}
 {% block content %}
   {% if category_intro_html %}
   <div class="category-intro prose">
@@ -7,7 +8,7 @@
   {% endif %}
 
   {% for word in words %}
-  <div class="word-entry">
+  <div class="word-entry" id="word-{{ word.spelling }}" data-jump-label="{{ word.short }}">
     <div class="word-box">
       <div class="word-box-header">
         <div class="word-box-glyph">{{ glyph(word.spelling) }}</div>
@@ -27,7 +28,7 @@
       {% for ex in word.examples %}
       <div class="example-box">
         <div class="example-cell example-english">{{ ex.english }}</div>
-        <div class="example-cell example-script">{% if ex.zirkekpemim %}{{ script(ex.zirkekpemim) }}{% endif %}</div>
+        <div class="example-cell example-script">{% if ex.zirkekpemim %}{{ script(ex.zirkekpemim, interactive=True) }}{% endif %}</div>
         <div class="example-cell example-latin">{{ ex.zirkekpemim }}</div>
         <div class="example-cell example-highlights">
           {% for h in ex.highlights %}
