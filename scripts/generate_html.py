@@ -1,21 +1,34 @@
 #!/usr/bin/env python3
 """
-Generate a self-contained static index.html displaying all language words
-grouped by category with inline SVG glyphs, spelling, and short definitions.
+Generate a self-contained single-file site/index.html for zirkekpemim.
 
 Reads:
   - data/01-categories.psv
   - data/02-grammar.psv
   - data/03-roots.psv
-  - glyphs/<spelling>.svg
+  - data/04-examples.psv
+  - data/05-word-example-connections.psv
+  - data/site-content/pages/*.md
+  - data/site-content/definitions/categories/*.md
+  - data/site-content/definitions/words/*.md
+  - glyphs/*.svg
+  - scripts/site-src/{styles.css,app.js,templates/*}
 Outputs:
   - site/index.html
 """
 
 import csv
 import html
+import re
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, Optional, Tuple
+
+from jinja2 import Environment, FileSystemLoader
+from markdown_it import MarkdownIt
+from markupsafe import Markup
+
+SVG_OPEN_RE = re.compile(r"<svg\b([^>]*)>(.*)</svg>", re.DOTALL | re.IGNORECASE)
+VIEWBOX_RE = re.compile(r'viewBox="([^"]+)"', re.IGNORECASE)
 
 
 def load_psv(filepath: Path) -> List[Dict[str, str]]:
@@ -27,381 +40,299 @@ def load_psv(filepath: Path) -> List[Dict[str, str]]:
         ]
 
 
+def slugify(text: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
+
+
+def parse_frontmatter(text: str) -> Tuple[Dict[str, str], str]:
+    """Parse simple key: value YAML frontmatter from a markdown file."""
+    lines = text.splitlines()
+    if not lines or lines[0].strip() != "---":
+        return {}, text
+    meta: Dict[str, str] = {}
+    end_idx = None
+    for i in range(1, len(lines)):
+        if lines[i].strip() == "---":
+            end_idx = i
+            break
+        if ":" in lines[i]:
+            k, v = lines[i].split(":", 1)
+            meta[k.strip()] = v.strip()
+    if end_idx is None:
+        return {}, text
+    body = "\n".join(lines[end_idx + 1 :]).lstrip("\n")
+    return meta, body
+
+
+def load_svg_symbols(glyphs_dir: Path) -> Tuple[List[Dict[str, str]], set]:
+    """Read glyphs/*.svg and extract inner markup + viewBox for <symbol> deduplication."""
+    symbols: List[Dict[str, str]] = []
+    available: set = set()
+    for svg_path in sorted(glyphs_dir.glob("*.svg")):
+        name = svg_path.stem
+        raw = svg_path.read_text(encoding="utf-8").strip()
+        match = SVG_OPEN_RE.search(raw)
+        if not match:
+            continue
+        attrs, inner = match.group(1), match.group(2).strip()
+        vb_match = VIEWBOX_RE.search(attrs)
+        viewbox = vb_match.group(1) if vb_match else "0 0 100 100"
+        symbols.append({"name": name, "viewbox": viewbox, "inner": inner})
+        available.add(name)
+    return symbols, available
+
+
+def load_definitions_dir(dirpath: Path) -> Dict[str, Tuple[Dict[str, str], str]]:
+    """Load id-short.md files keyed by frontmatter `id` (fallback: filename prefix before '-')."""
+    result: Dict[str, Tuple[Dict[str, str], str]] = {}
+    if not dirpath.exists():
+        return result
+    for md_path in sorted(dirpath.glob("*.md")):
+        meta, body = parse_frontmatter(md_path.read_text(encoding="utf-8"))
+        item_id = meta.get("id") or md_path.stem.split("-", 1)[0]
+        result[item_id] = (meta, body)
+    return result
+
+
 def main() -> None:
     base_dir = Path(__file__).resolve().parent.parent
-    categories_path = base_dir / "data" / "01-categories.psv"
-    grammar_path = base_dir / "data" / "02-grammar.psv"
-    roots_path = base_dir / "data" / "03-roots.psv"
+    data_dir = base_dir / "data"
+    content_dir = data_dir / "site-content"
+    src_dir = Path(__file__).resolve().parent / "site-src"
     glyphs_dir = base_dir / "glyphs"
     output_path = base_dir / "site" / "index.html"
 
-    categories = load_psv(categories_path)
-    words = load_psv(grammar_path) + load_psv(roots_path)
+    # Load structured data
+    categories = load_psv(data_dir / "01-categories.psv")
+    words = load_psv(data_dir / "02-grammar.psv") + load_psv(data_dir / "03-roots.psv")
+    examples_list = load_psv(data_dir / "04-examples.psv")
+    connections = load_psv(data_dir / "05-word-example-connections.psv")
 
-    words_by_category: Dict[str, List[Dict[str, str]]] = {
-        cat["id"]: [] for cat in categories
-    }
+    # Load markdown definitions
+    cat_defs = load_definitions_dir(content_dir / "definitions" / "categories")
+    word_defs = load_definitions_dir(content_dir / "definitions" / "words")
+
+    # Load SVG sprite symbols
+    svg_symbols, available_glyphs = load_svg_symbols(glyphs_dir)
+
+    # Set up Jinja + Markdown
+    env = Environment(
+        loader=FileSystemLoader(str(src_dir / "templates")),
+        autoescape=True,
+        trim_blocks=True,
+        lstrip_blocks=True,
+    )
+    md = MarkdownIt("commonmark", {"html": True})
+
+    def render_glyph(spelling: str) -> Markup:
+        if spelling not in available_glyphs:
+            return Markup("")
+        safe = html.escape(spelling, quote=True)
+        return Markup(
+            f'<svg viewBox="0 0 100 100" role="img" aria-label="{safe}">'
+            f'<use href="#glyph-{safe}"/></svg>'
+        )
+
+    def render_script(text: str) -> Markup:
+        parts: List[str] = []
+        for token in text.strip().split():
+            if token in available_glyphs:
+                safe = html.escape(token, quote=True)
+                parts.append(
+                    f'<svg class="script-glyph" viewBox="0 0 100 100" role="img" aria-label="{safe}">'
+                    f'<use href="#glyph-{safe}"/></svg>'
+                )
+            else:
+                parts.append(f'<span class="script-token">{html.escape(token)}</span>')
+        return Markup(f'<span class="script-inline">{"".join(parts)}</span>')
+
+    env.globals["glyph"] = render_glyph
+    env.globals["script"] = render_script
+
+    def render_markdown(md_source: str) -> str:
+        """Render Jinja expressions inside Markdown, then convert Markdown to HTML."""
+        expanded = env.from_string(md_source).render()
+        return md.render(expanded).strip()
+
+    # Build example lookup + word -> examples mapping
+    examples_by_id: Dict[str, Dict[str, str]] = {ex["id"]: ex for ex in examples_list}
+    highlights_by_example: Dict[str, List[str]] = {}
+    example_ids_by_word: Dict[str, List[str]] = {}
+
+    for conn in connections:
+        word_id = conn.get("word", "")
+        ex_id = conn.get("example", "")
+        highlight = conn.get("highlight", "")
+        if not ex_id:
+            continue
+        if highlight:
+            hl_list = highlights_by_example.setdefault(ex_id, [])
+            if highlight not in hl_list:
+                hl_list.append(highlight)
+        if word_id:
+            ex_list = example_ids_by_word.setdefault(word_id, [])
+            if ex_id not in ex_list:
+                ex_list.append(ex_id)
+
+    # Group words by category
+    words_by_category: Dict[str, List[Dict[str, object]]] = {cat["id"]: [] for cat in categories}
     for word in words:
         cat_id = word.get("category", "")
-        if cat_id in words_by_category:
-            words_by_category[cat_id].append(word)
+        if cat_id not in words_by_category:
+            continue
+        word_id = word["id"]
+        expanded_html = ""
+        if word_id in word_defs:
+            expanded_html = render_markdown(word_defs[word_id][1])
 
-    html_parts = [
-        "<!DOCTYPE html>",
-        '<html lang="en">',
-        "<head>",
-        '  <meta charset="utf-8">',
-        '  <meta name="viewport" content="width=device-width, initial-scale=1">',
-        "  <title>lang4</title>",
-        "  <style>",
-        "    :root {",
-        "      color-scheme: dark;",
-        "    }",
-        "    * {",
-        "      box-sizing: border-box;",
-        "    }",
-        "    body {",
-        "      max-width: 800px;",
-        "      margin: 0 auto;",
-        "      padding: 16px 16px 136px;",
-        "      background-color: #000000;",
-        "      color: #ffffff;",
-        "      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;",
-        "    }",
-        "    h2 {",
-        "      margin: 24px 0 10px 0;",
-        "      font-size: 1.15rem;",
-        "      font-weight: 600;",
-        "      color: #ffffff;",
-        "      border-bottom: 1px solid #ffffff;",
-        "      padding-bottom: 4px;",
-        "    }",
-        "    h2:first-of-type {",
-        "      margin-top: 4px;",
-        "    }",
-        "    .category-row {",
-        "      display: flex;",
-        "      flex-wrap: wrap;",
-        "      gap: 10px;",
-        "    }",
-        "    .word-card {",
-        "      display: flex;",
-        "      flex-direction: column;",
-        "      align-items: center;",
-        "      width: 76px;",
-        "      padding: 6px 4px;",
-        "      background-color: #000000;",
-        "      color: #ffffff;",
-        "      border: 1px solid #ffffff;",
-        "      border-radius: 6px;",
-        "      text-align: center;",
-        "      font: inherit;",
-        "      cursor: pointer;",
-        "      appearance: none;",
-        "    }",
-        "    .glyph {",
-        "      width: 52px;",
-        "      height: 52px;",
-        "      display: flex;",
-        "      align-items: center;",
-        "      justify-content: center;",
-        "    }",
-        "    .glyph svg {",
-        "      width: 100%;",
-        "      height: 100%;",
-        "      display: block;",
-        "      border-radius: 4px;",
-        "    }",
-        "    .spelling {",
-        "      display: block;",
-        "      margin-top: 6px;",
-        "      font-size: 0.95rem;",
-        "      font-weight: 700;",
-        "      color: #ffffff;",
-        "      line-height: 1.2;",
-        "    }",
-        "    .gloss {",
-        "      display: block;",
-        "      margin-top: 2px;",
-        "      font-size: 0.72rem;",
-        "      color: #ffffff;",
-        "      line-height: 1.15;",
-        "      word-break: break-word;",
-        "    }",
-        "    .modal[hidden] {",
-        "      display: none;",
-        "    }",
-        "    .modal {",
-        "      position: fixed;",
-        "      inset: 0;",
-        "      z-index: 1000;",
-        "      background-color: #000000;",
-        "      color: #ffffff;",
-        "      display: flex;",
-        "      justify-content: center;",
-        "      overflow-y: auto;",
-        "    }",
-        "    .modal-frame {",
-        "      position: relative;",
-        "      width: 100%;",
-        "      max-width: 800px;",
-        "      min-height: 100%;",
-        "      display: flex;",
-        "      flex-direction: column;",
-        "      align-items: center;",
-        "      justify-content: center;",
-        "      padding: 72px 24px 32px;",
-        "      text-align: center;",
-        "    }",
-        "    .modal-close {",
-        "      position: fixed;",
-        "      top: 16px;",
-        "      right: max(16px, calc((100vw - 800px) / 2 + 16px));",
-        "      width: 48px;",
-        "      height: 48px;",
-        "      display: flex;",
-        "      align-items: center;",
-        "      justify-content: center;",
-        "      background-color: #000000;",
-        "      color: #ffffff;",
-        "      border: 1px solid #ffffff;",
-        "      border-radius: 6px;",
-        "      font-size: 1.75rem;",
-        "      line-height: 1;",
-        "      padding: 0;",
-        "      cursor: pointer;",
-        "    }",
-        "    .modal-content {",
-        "      display: flex;",
-        "      flex-direction: column;",
-        "      align-items: center;",
-        "      gap: 16px;",
-        "      max-width: 520px;",
-        "      width: 100%;",
-        "    }",
-        "    .modal-glyph {",
-        "      width: min(220px, 55vw);",
-        "      height: min(220px, 55vw);",
-        "      display: flex;",
-        "      align-items: center;",
-        "      justify-content: center;",
-        "      border: 1px solid #ffffff;",
-        "      border-radius: 6px;",
-        "      overflow: hidden;",
-        "    }",
-        "    .modal-glyph svg {",
-        "      width: 100%;",
-        "      height: 100%;",
-        "      display: block;",
-        "    }",
-        "    .modal-spelling {",
-        "      font-size: 2rem;",
-        "      font-weight: 700;",
-        "      color: #ffffff;",
-        "      line-height: 1.2;",
-        "    }",
-        "    .modal-short {",
-        "      font-size: 1.25rem;",
-        "      font-weight: 600;",
-        "      color: #ffffff;",
-        "      line-height: 1.3;",
-        "    }",
-        "    .modal-definition {",
-        "      font-size: 1.05rem;",
-        "      color: #ffffff;",
-        "      line-height: 1.5;",
-        "      word-break: break-word;",
-        "    }",
-        "    .nav-fab {",
-        "      position: fixed;",
-        "      bottom: calc(100vh / 2 - 36px);",
-        "      right: calc(100vw / 2 - 36px);",
-        "      z-index: 500;",
-        "      width: 72px;",
-        "      height: 72px;",
-        "      background-color: #000000;",
-        "      border: 1px solid #ffffff;",
-        "      border-radius: 6px;",
-        "      overflow: hidden;",
-        "      opacity: 0.50;",
-        "    }",
-        "    .nav-fab:hover,",
-        "    .nav-fab:focus-within {",
-        "      opacity: 1;",
-        "    }",
-        "    .nav-fab-icon {",
-        "      width: 100%;",
-        "      height: 100%;",
-        "      display: flex;",
-        "      align-items: center;",
-        "      justify-content: center;",
-        "      pointer-events: none;",
-        "    }",
-        "    .nav-fab-icon svg {",
-        "      width: 100%;",
-        "      height: 100%;",
-        "      display: block;",
-        "    }",
-        "    .nav-select {",
-        "      position: absolute;",
-        "      inset: 0;",
-        "      width: 100%;",
-        "      height: 100%;",
-        "      opacity: 0;",
-        "      cursor: pointer;",
-        "      background-color: #000000;",
-        "      color: #ffffff;",
-        "    }",
-        "  </style>",
-        "</head>",
-        "<body>",
-    ]
+        word_examples = []
+        for ex_id in example_ids_by_word.get(word_id, []):
+            ex = examples_by_id.get(ex_id)
+            if not ex:
+                continue
+            word_examples.append({
+                "id": ex_id,
+                "english": ex.get("english", ""),
+                "zirkekpemim": ex.get("zirkekpemim", ""),
+                "highlights": highlights_by_example.get(ex_id, []),
+            })
 
-    nav_groups: Dict[str, List[str]] = {}
+        words_by_category[cat_id].append({
+            "id": word_id,
+            "spelling": word.get("spelling", ""),
+            "short": word.get("short", ""),
+            "definition": word.get("definition", ""),
+            "expanded_html": expanded_html,
+            "examples": word_examples,
+        })
 
+    # Prepare category objects (only non-empty categories)
+    category_entries = []
+    nav_groups: Dict[str, List[Dict[str, object]]] = {}
     for cat in categories:
         cat_id = cat["id"]
-        cat_raw_name = cat["name"]
-        cat_name = html.escape(cat_raw_name)
-        cat_slug = html.escape(cat_raw_name, quote=True)
         cat_words = words_by_category.get(cat_id, [])
         if not cat_words:
             continue
-
+        cat_name = cat["name"]
+        cat_slug = slugify(cat_name)
         cat_type = cat.get("type", "") or "sections"
-        nav_groups.setdefault(cat_type, []).append(cat_raw_name)
+        intro_html = render_markdown(cat_defs[cat_id][1]) if cat_id in cat_defs else ""
+        entry = {
+            "id": cat_id,
+            "name": cat_name,
+            "slug": cat_slug,
+            "type": cat_type,
+            "intro_html": intro_html,
+            "words": cat_words,
+        }
+        category_entries.append(entry)
+        nav_groups.setdefault(cat_type, []).append(entry)
 
-        html_parts.append(f'  <h2 id="{cat_slug}">{cat_name}</h2>')
-        html_parts.append('  <div class="category-row">')
+    # Load static markdown pages
+    def load_md_page(path: Path, default_slug: str, default_title: str) -> Dict[str, str]:
+        if path.exists():
+            meta, body = parse_frontmatter(path.read_text(encoding="utf-8"))
+            return {
+                "slug": meta.get("slug") or default_slug,
+                "title": meta.get("title") or default_title,
+                "body_html": render_markdown(body),
+            }
+        return {"slug": default_slug, "title": default_title, "body_html": "<p>todo</p>"}
 
-        for word in cat_words:
-            spelling = word["spelling"]
-            full_def = word["definition"]
-            short_def = word["short"]
+    about_page = load_md_page(content_dir / "pages" / "about.md", "about", "about")
+    sounds_page = load_md_page(
+        content_dir / "pages" / "sounds-and-writing.md",
+        "sounds-and-writing",
+        "sounds and writing",
+    )
 
-            svg_path = glyphs_dir / f"{spelling}.svg"
-            svg_content = ""
-            if svg_path.exists():
-                svg_content = svg_path.read_text(encoding="utf-8").strip()
+    # Build ordered page list for TOC + prev/next links
+    ordered_pages: List[Dict[str, object]] = []
+    ordered_pages.append({
+        "kind": "content",
+        "slug": about_page["slug"],
+        "title": about_page["title"],
+        "meta": "",
+        "body_html": about_page["body_html"],
+    })
+    for cat in category_entries:
+        ordered_pages.append({
+            "kind": "category",
+            "slug": cat["slug"],
+            "title": cat["name"],
+            "meta": cat["type"],
+            "category": cat,
+        })
+    ordered_pages.append({
+        "kind": "content",
+        "slug": sounds_page["slug"],
+        "title": sounds_page["title"],
+        "meta": "",
+        "body_html": sounds_page["body_html"],
+    })
+    ordered_pages.append({
+        "kind": "words",
+        "slug": "words",
+        "title": "words",
+        "meta": f"{len(words)} words",
+    })
 
-            escaped_spelling_attr = html.escape(spelling, quote=True)
-            escaped_short_attr = html.escape(short_def, quote=True)
-            escaped_def_attr = html.escape(full_def, quote=True)
-            escaped_spelling = html.escape(spelling)
-            escaped_short_def = html.escape(short_def)
+    # Attach prev / next references
+    for i, page in enumerate(ordered_pages):
+        prev_page: Optional[Dict[str, object]] = ordered_pages[i - 1] if i > 0 else None
+        next_page: Optional[Dict[str, object]] = ordered_pages[i + 1] if i + 1 < len(ordered_pages) else None
+        page["prev"] = {"slug": prev_page["slug"], "title": prev_page["title"]} if prev_page else None
+        page["next"] = {"slug": next_page["slug"], "title": next_page["title"]} if next_page else None
 
-            html_parts.append(
-                f'    <button type="button" class="word-card"'
-                f' data-spelling="{escaped_spelling_attr}"'
-                f' data-short="{escaped_short_attr}"'
-                f' data-definition="{escaped_def_attr}">'
+    # Render all pages
+    rendered_pages: List[str] = []
+    home_tpl = env.get_template("home.html")
+    content_tpl = env.get_template("content_page.html")
+    category_tpl = env.get_template("category.html")
+    words_tpl = env.get_template("words.html")
+
+    rendered_pages.append(home_tpl.render(toc_pages=ordered_pages))
+
+    for page in ordered_pages:
+        kind = page["kind"]
+        if kind == "content":
+            rendered_pages.append(content_tpl.render(page=page, body_html=page["body_html"]))
+        elif kind == "category":
+            cat = page["category"]
+            rendered_pages.append(
+                category_tpl.render(
+                    page=page,
+                    category_intro_html=cat["intro_html"],
+                    words=cat["words"],
+                )
             )
-            html_parts.append(f'      <span class="glyph">{svg_content}</span>')
-            html_parts.append(f'      <span class="spelling">{escaped_spelling}</span>')
-            html_parts.append(f'      <span class="gloss">{escaped_short_def}</span>')
-            html_parts.append("    </button>")
+        elif kind == "words":
+            rendered_pages.append(
+                words_tpl.render(
+                    page=page,
+                    categories=category_entries,
+                    nav_groups=nav_groups,
+                )
+            )
 
-        html_parts.append("  </div>")
+    # Assemble final single-file index.html
+    css = (src_dir / "styles.css").read_text(encoding="utf-8")
+    js = (src_dir / "app.js").read_text(encoding="utf-8")
+    index_tpl = env.get_template("index.html")
+    final_html = index_tpl.render(
+        css=css,
+        js=js,
+        svg_symbols=svg_symbols,
+        rendered_pages=rendered_pages,
+    )
 
-    mat_svg_path = glyphs_dir / "mat.svg"
-    mat_svg_content = mat_svg_path.read_text(encoding="utf-8").strip() if mat_svg_path.exists() else ""
-
-    html_parts.append('  <div class="nav-fab">')
-    html_parts.append(f'    <span class="nav-fab-icon" aria-hidden="true">{mat_svg_content}</span>')
-    html_parts.append('    <select id="section-nav" class="nav-select">')
-    for group_name, section_names in nav_groups.items():
-        escaped_group = html.escape(group_name, quote=True)
-        html_parts.append(f'      <optgroup label="{escaped_group}">')
-        for sec_name in section_names:
-            escaped_sec_val = html.escape(sec_name, quote=True)
-            escaped_sec_label = html.escape(sec_name)
-            html_parts.append(f'        <option value="{escaped_sec_val}">{escaped_sec_label}</option>')
-        html_parts.append("      </optgroup>")
-    html_parts.append("    </select>")
-    html_parts.append("  </div>")
-
-    html_parts.extend([
-        '  <div id="word-modal" class="modal" role="dialog" aria-modal="true" hidden>',
-        '    <div class="modal-frame">',
-        '      <button type="button" id="modal-close" class="modal-close" aria-label="Close">&times;</button>',
-        '      <div class="modal-content">',
-        '        <div id="modal-glyph" class="modal-glyph"></div>',
-        '        <div id="modal-spelling" class="modal-spelling"></div>',
-        '        <div id="modal-short" class="modal-short"></div>',
-        '        <div id="modal-definition" class="modal-definition"></div>',
-        "      </div>",
-        "    </div>",
-        "  </div>",
-        "  <script>",
-        "    (() => {",
-        '      const modal = document.getElementById("word-modal");',
-        '      const closeBtn = document.getElementById("modal-close");',
-        '      const modalGlyph = document.getElementById("modal-glyph");',
-        '      const modalSpelling = document.getElementById("modal-spelling");',
-        '      const modalShort = document.getElementById("modal-short");',
-        '      const modalDefinition = document.getElementById("modal-definition");',
-        '      const sectionNav = document.getElementById("section-nav");',
-        "      let lastTrigger = null;",
-        "",
-        "      function openModal(card) {",
-        "        lastTrigger = card;",
-        '        const glyph = card.querySelector(".glyph");',
-        '        modalGlyph.innerHTML = glyph ? glyph.innerHTML : "";',
-        '        modalSpelling.textContent = card.dataset.spelling || "";',
-        '        modalShort.textContent = card.dataset.short || "";',
-        '        modalDefinition.textContent = card.dataset.definition || "";',
-        "        modal.hidden = false;",
-        '        document.body.style.overflow = "hidden";',
-        "        closeBtn.focus();",
-        "      }",
-        "",
-        "      function closeModal() {",
-        "        modal.hidden = true;",
-        '        document.body.style.overflow = "";',
-        "        if (lastTrigger) {",
-        "          lastTrigger.focus();",
-        "          lastTrigger = null;",
-        "        }",
-        "      }",
-        "",
-        '      document.addEventListener("click", (event) => {',
-        '        const card = event.target.closest(".word-card");',
-        "        if (card) {",
-        "          openModal(card);",
-        "        }",
-        "      });",
-        "",
-        '      closeBtn.addEventListener("click", closeModal);',
-        "",
-        '      document.addEventListener("keydown", (event) => {',
-        '        if (event.key === "Escape" && !modal.hidden) {',
-        "          closeModal();",
-        "        }",
-        "      });",
-        "",
-        "      if (sectionNav) {",
-        '        sectionNav.addEventListener("change", () => {',
-        "          const targetId = sectionNav.value;",
-        "          if (!targetId) {",
-        "            return;",
-        "          }",
-        "          const target = document.getElementById(targetId);",
-        "          if (target) {",
-        "            window.location.hash = targetId;",
-        "            target.scrollIntoView();",
-        "          }",
-        "          sectionNav.selectedIndex = 0;",
-        "        });",
-        "      }",
-        "    })();",
-        "  </script>",
-        "</body>",
-        "</html>",
-        "",
-    ])
-
-    output_path.write_text("\n".join(html_parts), encoding="utf-8")
-    print(f"Generated {output_path} with {len(words)} words across {len(categories)} categories.")
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(final_html, encoding="utf-8")
+    print(
+        f"Generated {output_path} ({len(final_html):,} bytes) with "
+        f"{len(ordered_pages) + 1} pages, {len(words)} words, {len(svg_symbols)} SVG symbols."
+    )
 
 
 if __name__ == "__main__":

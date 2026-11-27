@@ -1,0 +1,32 @@
+{% extends "page.html" %}
+{% block page_class %}words-page{% endblock %}
+{% block content %}
+  {% for cat in categories %}
+  <h2 id="words-{{ cat.slug }}">{{ cat.name }}</h2>
+  <div class="category-row">
+    {% for word in cat.words %}
+    <button type="button" class="word-card"
+      data-spelling="{{ word.spelling }}"
+      data-short="{{ word.short }}"
+      data-definition="{{ word.definition }}">
+      <span class="glyph">{{ glyph(word.spelling) }}</span>
+      <span class="spelling">{{ word.spelling }}</span>
+      <span class="gloss">{{ word.short }}</span>
+    </button>
+    {% endfor %}
+  </div>
+  {% endfor %}
+
+  <div class="nav-fab">
+    <span class="nav-fab-icon" aria-hidden="true">{{ glyph("mat") }}</span>
+    <select id="section-nav" class="nav-select" aria-label="jump to category">
+      {% for group_name, group_cats in nav_groups.items() %}
+      <optgroup label="{{ group_name }}">
+        {% for cat in group_cats %}
+        <option value="{{ cat.slug }}">{{ cat.name }}</option>
+        {% endfor %}
+      </optgroup>
+      {% endfor %}
+    </select>
+  </div>
+{% endblock %}

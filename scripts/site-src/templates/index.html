@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>zirkekpemim</title>
+  <style>
+{{ css }}
+  </style>
+  <noscript>
+    <style>
+      .page[hidden] { display: block !important; }
+    </style>
+  </noscript>
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true">
+    <defs>
+{% for sym in svg_symbols %}
+      <symbol id="glyph-{{ sym.name }}" viewBox="{{ sym.viewbox }}">{{ sym.inner | safe }}</symbol>
+{% endfor %}
+    </defs>
+  </svg>
+
+{% for rendered_page in rendered_pages %}
+{{ rendered_page | safe }}
+{% endfor %}
+
+  <div id="word-modal" class="modal" role="dialog" aria-modal="true" hidden>
+    <div class="modal-frame">
+      <button type="button" id="modal-close" class="modal-close" aria-label="close">&times;</button>
+      <div class="modal-content">
+        <div id="modal-glyph" class="modal-glyph"></div>
+        <div id="modal-spelling" class="modal-spelling"></div>
+        <div id="modal-short" class="modal-short"></div>
+        <div id="modal-definition" class="modal-definition"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+{{ js }}
+  </script>
+</body>
+</html>

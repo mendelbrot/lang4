@@ -1,0 +1,15 @@
+<section class="page" data-page="home" data-title="zirkekpemim" hidden>
+  <h1 class="page-title">zirkekpemim</h1>
+  <ul class="toc-list">
+{% for item in toc_pages %}
+    <li>
+      <a href="#{{ item.slug }}">
+        <span class="toc-name">{{ item.title }}</span>
+        {% if item.meta %}
+        <span class="toc-meta">{{ item.meta }}</span>
+        {% endif %}
+      </a>
+    </li>
+{% endfor %}
+  </ul>
+</section>
