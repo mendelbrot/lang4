@@ -19,7 +19,7 @@ body {
   padding: 16px 16px 96px;
   background-color: #000000;
   color: #ffffff;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.5;
 }
 
@@ -52,7 +52,7 @@ code {
   display: none;
 }
 
-/* page header &amp; nav */
+/* page header & nav */
 .page-nav {
   display: flex;
   align-items: center;
@@ -116,7 +116,7 @@ code {
   opacity: 0.75;
 }
 
-/* prose &amp; markdown content */
+/* prose & markdown content */
 .prose p {
   margin: 0 0 12px 0;
 }
@@ -8851,28 +8851,28 @@ code {
   </div>
 
   <script>
-(() =&gt; {
-  const pages = Array.from(document.querySelectorAll(&#34;.page[data-page]&#34;));
-  const pageMap = new Map(pages.map((el) =&gt; [el.dataset.page, el]));
+(() => {
+  const pages = Array.from(document.querySelectorAll(".page[data-page]"));
+  const pageMap = new Map(pages.map((el) => [el.dataset.page, el]));
 
-  const modal = document.getElementById(&#34;word-modal&#34;);
-  const closeBtn = document.getElementById(&#34;modal-close&#34;);
-  const modalGlyph = document.getElementById(&#34;modal-glyph&#34;);
-  const modalSpelling = document.getElementById(&#34;modal-spelling&#34;);
-  const modalShort = document.getElementById(&#34;modal-short&#34;);
-  const modalDefinition = document.getElementById(&#34;modal-definition&#34;);
-  const sectionNav = document.getElementById(&#34;section-nav&#34;);
+  const modal = document.getElementById("word-modal");
+  const closeBtn = document.getElementById("modal-close");
+  const modalGlyph = document.getElementById("modal-glyph");
+  const modalSpelling = document.getElementById("modal-spelling");
+  const modalShort = document.getElementById("modal-short");
+  const modalDefinition = document.getElementById("modal-definition");
+  const sectionNav = document.getElementById("section-nav");
   let lastTrigger = null;
 
   function openModal(card) {
     lastTrigger = card;
-    const glyph = card.querySelector(&#34;.glyph&#34;);
-    modalGlyph.innerHTML = glyph ? glyph.innerHTML : &#34;&#34;;
-    modalSpelling.textContent = card.dataset.spelling || &#34;&#34;;
-    modalShort.textContent = card.dataset.short || &#34;&#34;;
-    modalDefinition.textContent = card.dataset.definition || &#34;&#34;;
+    const glyph = card.querySelector(".glyph");
+    modalGlyph.innerHTML = glyph ? glyph.innerHTML : "";
+    modalSpelling.textContent = card.dataset.spelling || "";
+    modalShort.textContent = card.dataset.short || "";
+    modalDefinition.textContent = card.dataset.definition || "";
     modal.hidden = false;
-    document.body.style.overflow = &#34;hidden&#34;;
+    document.body.style.overflow = "hidden";
     closeBtn.focus();
   }
 
@@ -8881,7 +8881,7 @@ code {
       return;
     }
     modal.hidden = true;
-    document.body.style.overflow = &#34;&#34;;
+    document.body.style.overflow = "";
     if (lastTrigger) {
       lastTrigger.focus();
       lastTrigger = null;
@@ -8890,44 +8890,44 @@ code {
 
   function showPage() {
     closeModal();
-    const rawHash = decodeURIComponent(window.location.hash.replace(/^#/, &#34;&#34;));
-    const targetSlug = pageMap.has(rawHash) ? rawHash : &#34;home&#34;;
+    const rawHash = decodeURIComponent(window.location.hash.replace(/^#/, ""));
+    const targetSlug = pageMap.has(rawHash) ? rawHash : "home";
 
     for (const page of pages) {
       page.hidden = page.dataset.page !== targetSlug;
     }
 
     const active = pageMap.get(targetSlug);
-    const title = active ? active.dataset.title : &#34;&#34;;
-    document.title = targetSlug === &#34;home&#34; || !title
-      ? &#34;zirkekpemim&#34;
+    const title = active ? active.dataset.title : "";
+    document.title = targetSlug === "home" || !title
+      ? "zirkekpemim"
       : `zirkekpemim — ${title}`;
 
     window.scrollTo(0, 0);
   }
 
-  window.addEventListener(&#34;hashchange&#34;, showPage);
+  window.addEventListener("hashchange", showPage);
   showPage();
 
-  document.addEventListener(&#34;click&#34;, (event) =&gt; {
-    const card = event.target.closest(&#34;.word-card&#34;);
+  document.addEventListener("click", (event) => {
+    const card = event.target.closest(".word-card");
     if (card) {
       openModal(card);
     }
   });
 
   if (closeBtn) {
-    closeBtn.addEventListener(&#34;click&#34;, closeModal);
+    closeBtn.addEventListener("click", closeModal);
   }
 
-  document.addEventListener(&#34;keydown&#34;, (event) =&gt; {
-    if (event.key === &#34;Escape&#34; &amp;&amp; modal &amp;&amp; !modal.hidden) {
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && modal && !modal.hidden) {
       closeModal();
     }
   });
 
   if (sectionNav) {
-    sectionNav.addEventListener(&#34;change&#34;, () =&gt; {
+    sectionNav.addEventListener("change", () => {
       const targetId = sectionNav.value;
       if (!targetId) {
         return;
