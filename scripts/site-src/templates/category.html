@@ -8,7 +8,7 @@
   {% endif %}
 
   {% for word in words %}
-  <div class="word-entry" id="word-{{ word.spelling }}" data-jump-label="{{ word.short }}">
+  <div class="word-entry" id="word-{{ word.id }}" data-jump-label="{{ word.short }}">
     <div class="word-box">
       <div class="word-box-header">
         <div class="word-box-glyph">{{ glyph(word.spelling) }}</div>

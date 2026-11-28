@@ -29,6 +29,13 @@ from markupsafe import Markup
 
 SVG_OPEN_RE = re.compile(r"<svg\b([^>]*)>(.*)</svg>", re.DOTALL | re.IGNORECASE)
 VIEWBOX_RE = re.compile(r'viewBox="([^"]+)"', re.IGNORECASE)
+ID_SPLIT_RE = re.compile(r"(\d+)")
+LINE_TOKEN_RE = re.compile(r"_|\.|[A-Z][a-z]*|[a-z]+|[0-9]+|\S")
+VOWELS = frozenset("aeiou")
+
+
+def id_sort_key(item_id: str) -> List[object]:
+    return [int(part) if part.isdigit() else part for part in ID_SPLIT_RE.split(item_id)]
 
 
 def load_psv(filepath: Path) -> List[Dict[str, str]]:
@@ -38,6 +45,32 @@ def load_psv(filepath: Path) -> List[Dict[str, str]]:
             {k.strip(): (v or "").strip() for k, v in row.items() if k is not None}
             for row in reader
         ]
+
+
+def index_by_id(rows: List[Dict[str, str]], source_name: str) -> Dict[str, Dict[str, str]]:
+    """Sort rows by natural `id` order and return an `id`-keyed dictionary."""
+    by_id: Dict[str, Dict[str, str]] = {}
+    for row in sorted(rows, key=lambda r: id_sort_key(r.get("id", ""))):
+        row_id = row.get("id", "")
+        if not row_id:
+            raise ValueError(f"Empty id in {source_name}")
+        if row_id in by_id:
+            raise ValueError(f"Duplicate id {row_id!r} in {source_name}")
+        by_id[row_id] = row
+    return by_id
+
+
+def x_transform_grammar(spelling: str, word_id: str) -> str:
+    """Convert CV -> CVx and VC -> xVC for x-transformed grammar words."""
+    if len(spelling) != 2:
+        raise ValueError(f"Expected 2-letter grammar spelling for {word_id}, got {spelling!r}")
+    first_is_vowel = spelling[0] in VOWELS
+    second_is_vowel = spelling[1] in VOWELS
+    if not first_is_vowel and second_is_vowel:
+        return f"{spelling}x"
+    if first_is_vowel and not second_is_vowel:
+        return f"x{spelling}"
+    raise ValueError(f"Grammar spelling {spelling!r} ({word_id}) is neither CV nor VC")
 
 
 def slugify(text: str) -> str:
@@ -105,20 +138,34 @@ def main() -> None:
     glyphs_dir = base_dir / "glyphs"
     output_path = base_dir / "site" / "index.html"
 
-    # Load structured data
-    categories = load_psv(data_dir / "01-categories.psv")
-    words = load_psv(data_dir / "02-grammar.psv") + load_psv(data_dir / "03-roots.psv")
-    words_by_spelling: Dict[str, Dict[str, str]] = {
-        w["spelling"]: w for w in words if w.get("spelling")
-    }
-    examples_list = load_psv(data_dir / "04-examples.psv")
+    # Load structured data keyed & ordered by id
+    categories_by_id = index_by_id(load_psv(data_dir / "01-categories.psv"), "01-categories.psv")
+    grammar_by_id = index_by_id(load_psv(data_dir / "02-grammar.psv"), "02-grammar.psv")
+    roots_by_id = index_by_id(load_psv(data_dir / "03-roots.psv"), "03-roots.psv")
+    overlap_ids = set(grammar_by_id) & set(roots_by_id)
+    if overlap_ids:
+        raise ValueError(f"Duplicate word IDs across grammar and roots: {sorted(overlap_ids)}")
+    words_by_id: Dict[str, Dict[str, str]] = {**grammar_by_id, **roots_by_id}
+    examples_by_id = index_by_id(load_psv(data_dir / "04-examples.psv"), "04-examples.psv")
     connections = load_psv(data_dir / "05-word-example-connections.psv")
 
-    # Load markdown definitions
+    # Build orthographic spelling -> short gloss map (including x-transformed grammar words)
+    gloss_by_spelling: Dict[str, str] = {}
+    for word in words_by_id.values():
+        sp = word.get("spelling", "")
+        if sp:
+            gloss_by_spelling[sp] = word.get("short", "")
+    for word_id, word in grammar_by_id.items():
+        sp = word.get("spelling", "")
+        if sp:
+            x_sp = x_transform_grammar(sp, word_id)
+            gloss_by_spelling[x_sp] = f"{word.get('short', '')}\n(x-transformed)"
+
+    # Load markdown definitions (keyed by id)
     cat_defs = load_definitions_dir(content_dir / "definitions" / "categories")
     word_defs = load_definitions_dir(content_dir / "definitions" / "words")
 
-    # Load SVG sprite symbols
+    # Load SVG sprite symbols (keyed by spelling / special name)
     svg_symbols, available_glyphs = load_svg_symbols(glyphs_dir)
 
     # Set up Jinja + Markdown
@@ -132,6 +179,12 @@ def main() -> None:
 
     def render_glyph(spelling: str) -> Markup:
         if spelling not in available_glyphs:
+            if "_PAKALA" in available_glyphs:
+                safe = html.escape(spelling, quote=True)
+                return Markup(
+                    f'<svg viewBox="0 0 100 100" role="img" aria-label="{safe} (pakala)">'
+                    f'<use href="#glyph-_PAKALA"/></svg>'
+                )
             return Markup("")
         safe = html.escape(spelling, quote=True)
         return Markup(
@@ -139,27 +192,64 @@ def main() -> None:
             f'<use href="#glyph-{safe}"/></svg>'
         )
 
-    def render_script(text: str, interactive: bool = False) -> Markup:
+    def render_script_line(line: str, interactive: bool) -> str:
         parts: List[str] = []
-        for token in text.strip().split():
-            if token in available_glyphs:
-                safe = html.escape(token, quote=True)
+        for raw_token in LINE_TOKEN_RE.findall(line):
+            if raw_token == ".":
+                if "_DASH" in available_glyphs:
+                    parts.append(
+                        '<svg class="script-glyph" viewBox="0 0 100 100" role="img" aria-label=".">'
+                        '<use href="#glyph-_DASH"/></svg>'
+                    )
+                continue
+            if raw_token == "_":
+                if "_SPACE" in available_glyphs:
+                    parts.append(
+                        '<svg class="script-glyph" viewBox="0 0 100 100" aria-hidden="true">'
+                        '<use href="#glyph-_SPACE"/></svg>'
+                    )
+                continue
+
+            lookup = raw_token.lower()
+            if lookup in available_glyphs and not lookup.startswith("_"):
+                safe_sp = html.escape(lookup, quote=True)
                 svg = (
-                    f'<svg class="script-glyph" viewBox="0 0 100 100" role="img" aria-label="{safe}">'
-                    f'<use href="#glyph-{safe}"/></svg>'
+                    f'<svg class="script-glyph" viewBox="0 0 100 100" role="img" aria-label="{safe_sp}">'
+                    f'<use href="#glyph-{safe_sp}"/></svg>'
                 )
                 if interactive:
-                    word_info = words_by_spelling.get(token, {})
-                    safe_short = html.escape(word_info.get("short", ""), quote=True)
+                    safe_short = html.escape(gloss_by_spelling.get(lookup, ""), quote=True)
                     parts.append(
                         f'<button type="button" class="script-glyph-btn" '
-                        f'data-spelling="{safe}" data-short="{safe_short}">{svg}</button>'
+                        f'data-spelling="{safe_sp}" data-short="{safe_short}">{svg}</button>'
                     )
                 else:
                     parts.append(svg)
             else:
-                parts.append(f'<span class="script-token">{html.escape(token)}</span>')
-        return Markup(f'<span class="script-inline">{"".join(parts)}</span>')
+                display_tok = lookup if raw_token.isalpha() else raw_token
+                safe_tok = html.escape(display_tok, quote=True)
+                svg = (
+                    f'<svg class="script-glyph" viewBox="0 0 100 100" role="img" aria-label="{safe_tok} (pakala)">'
+                    f'<use href="#glyph-_PAKALA"/></svg>'
+                )
+                if interactive:
+                    parts.append(
+                        f'<button type="button" class="script-glyph-btn" '
+                        f'data-spelling="{safe_tok}" data-short="pakala">{svg}</button>'
+                    )
+                else:
+                    parts.append(svg)
+        return f'<span class="script-inline">{"".join(parts)}</span>'
+
+    def render_script(text: str, interactive: bool = False) -> Markup:
+        normalized = text.replace("\\n", "\n").strip(" \t\r")
+        if not normalized:
+            return Markup("")
+        lines = normalized.split("\n")
+        if len(lines) == 1:
+            return Markup(render_script_line(lines[0], interactive))
+        rendered_lines = "".join(render_script_line(line, interactive) for line in lines)
+        return Markup(f'<span class="script-lines">{rendered_lines}</span>')
 
     env.globals["glyph"] = render_glyph
     env.globals["script"] = render_script
@@ -169,8 +259,7 @@ def main() -> None:
         expanded = env.from_string(md_source).render()
         return md.render(expanded).strip()
 
-    # Build example lookup + word -> examples mapping
-    examples_by_id: Dict[str, Dict[str, str]] = {ex["id"]: ex for ex in examples_list}
+    # Build word_id -> example_ids and example_id -> highlights mappings
     highlights_by_example: Dict[str, List[str]] = {}
     example_ids_by_word: Dict[str, List[str]] = {}
 
@@ -189,13 +278,14 @@ def main() -> None:
             if ex_id not in ex_list:
                 ex_list.append(ex_id)
 
-    # Group words by category
-    words_by_category: Dict[str, List[Dict[str, object]]] = {cat["id"]: [] for cat in categories}
-    for word in words:
+    # Group words by category id (preserving natural word id order)
+    words_by_category: Dict[str, List[Dict[str, object]]] = {
+        cat_id: [] for cat_id in categories_by_id
+    }
+    for word_id, word in words_by_id.items():
         cat_id = word.get("category", "")
         if cat_id not in words_by_category:
             continue
-        word_id = word["id"]
         expanded_html = ""
         if word_id in word_defs:
             expanded_html = render_markdown(word_defs[word_id][1])
@@ -207,8 +297,8 @@ def main() -> None:
                 continue
             word_examples.append({
                 "id": ex_id,
-                "english": ex.get("english", ""),
-                "zirkekpemim": ex.get("zirkekpemim", ""),
+                "english": ex.get("english", "").replace("\\n", "\n"),
+                "zirkekpemim": ex.get("zirkekpemim", "").replace("\\n", "\n"),
                 "highlights": highlights_by_example.get(ex_id, []),
             })
 
@@ -221,11 +311,10 @@ def main() -> None:
             "examples": word_examples,
         })
 
-    # Prepare category objects (only non-empty categories)
+    # Prepare category objects (ordered by cat.id, only non-empty categories)
     category_entries = []
     nav_groups: Dict[str, List[Dict[str, object]]] = {}
-    for cat in categories:
-        cat_id = cat["id"]
+    for cat_id, cat in categories_by_id.items():
         cat_words = words_by_category.get(cat_id, [])
         if not cat_words:
             continue
@@ -256,6 +345,11 @@ def main() -> None:
         return {"slug": default_slug, "title": default_title, "body_html": "<p>todo</p>"}
 
     about_page = load_md_page(content_dir / "pages" / "about.md", "about", "about")
+    overview_page = load_md_page(
+        content_dir / "pages" / "structural-overview.md",
+        "structural-overview",
+        "structural overview",
+    )
     sounds_page = load_md_page(
         content_dir / "pages" / "sounds-and-writing.md",
         "sounds-and-writing",
@@ -270,6 +364,13 @@ def main() -> None:
         "title": about_page["title"],
         "meta": "",
         "body_html": about_page["body_html"],
+    })
+    ordered_pages.append({
+        "kind": "content",
+        "slug": overview_page["slug"],
+        "title": overview_page["title"],
+        "meta": "",
+        "body_html": overview_page["body_html"],
     })
     for cat in category_entries:
         ordered_pages.append({
@@ -290,7 +391,7 @@ def main() -> None:
         "kind": "words",
         "slug": "words",
         "title": "words",
-        "meta": f"{len(words)} words",
+        "meta": f"{len(words_by_id)} words",
     })
 
     # Attach prev / next references
@@ -307,12 +408,20 @@ def main() -> None:
     category_tpl = env.get_template("category.html")
     words_tpl = env.get_template("words.html")
 
+    nav_group_word_counts: Dict[str, int] = {
+        group_name: sum(len(cat["words"]) for cat in group_cats)
+        for group_name, group_cats in nav_groups.items()
+    }
+
     rendered_pages.append(
         home_tpl.render(
             about_page=about_page,
+            overview_page=overview_page,
             sounds_page=sounds_page,
             nav_groups=nav_groups,
-            word_count=len(words),
+            nav_group_word_counts=nav_group_word_counts,
+            word_count=len(words_by_id),
+            category_count=len(category_entries),
         )
     )
 
@@ -352,7 +461,7 @@ def main() -> None:
     output_path.write_text(final_html, encoding="utf-8")
     print(
         f"Generated {output_path} ({len(final_html):,} bytes) with "
-        f"{len(ordered_pages) + 1} pages, {len(words)} words, {len(svg_symbols)} SVG symbols."
+        f"{len(ordered_pages) + 1} pages, {len(words_by_id)} words, {len(svg_symbols)} SVG symbols."
     )
 
 
