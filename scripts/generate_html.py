@@ -345,6 +345,11 @@ def main() -> None:
         return {"slug": default_slug, "title": default_title, "body_html": "<p>todo</p>"}
 
     about_page = load_md_page(content_dir / "pages" / "about.md", "about", "about")
+    overview_page = load_md_page(
+        content_dir / "pages" / "structural-overview.md",
+        "structural-overview",
+        "structural overview",
+    )
     sounds_page = load_md_page(
         content_dir / "pages" / "sounds-and-writing.md",
         "sounds-and-writing",
@@ -359,6 +364,13 @@ def main() -> None:
         "title": about_page["title"],
         "meta": "",
         "body_html": about_page["body_html"],
+    })
+    ordered_pages.append({
+        "kind": "content",
+        "slug": overview_page["slug"],
+        "title": overview_page["title"],
+        "meta": "",
+        "body_html": overview_page["body_html"],
     })
     for cat in category_entries:
         ordered_pages.append({
@@ -396,12 +408,20 @@ def main() -> None:
     category_tpl = env.get_template("category.html")
     words_tpl = env.get_template("words.html")
 
+    nav_group_word_counts: Dict[str, int] = {
+        group_name: sum(len(cat["words"]) for cat in group_cats)
+        for group_name, group_cats in nav_groups.items()
+    }
+
     rendered_pages.append(
         home_tpl.render(
             about_page=about_page,
+            overview_page=overview_page,
             sounds_page=sounds_page,
             nav_groups=nav_groups,
+            nav_group_word_counts=nav_group_word_counts,
             word_count=len(words_by_id),
+            category_count=len(category_entries),
         )
     )
 

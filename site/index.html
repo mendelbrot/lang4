@@ -7,6 +7,7 @@
   <style>
 :root {
   color-scheme: dark;
+  --page-max-width: 625px;
   --bg: #000000;
   --fg: #ffffff;
   --hover-bg: #141414;
@@ -26,7 +27,7 @@
 }
 
 body {
-  max-width: 800px;
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 16px 16px 96px;
   background-color: var(--bg);
@@ -528,7 +529,7 @@ code {
 .modal-frame {
   position: relative;
   width: 100%;
-  max-width: 800px;
+  max-width: var(--page-max-width);
   min-height: 100%;
   display: flex;
   flex-direction: column;
@@ -541,7 +542,7 @@ code {
 .modal-top-left {
   position: fixed;
   top: 16px;
-  left: max(16px, calc((100% - 800px) / 2 + 16px));
+  left: max(16px, calc((100% - var(--page-max-width)) / 2 + 16px));
   display: flex;
   align-items: center;
   gap: 8px;
@@ -567,7 +568,7 @@ code {
 .modal-close {
   position: fixed;
   top: 16px;
-  right: max(16px, calc((100% - 800px) / 2 + 16px));
+  right: max(16px, calc((100% - var(--page-max-width)) / 2 + 16px));
   width: 48px;
   height: 48px;
   display: flex;
@@ -666,7 +667,7 @@ code {
 .theme-fab {
   bottom: 32px;
   right: auto;
-  left: max(32px, calc((100% - 800px) / 2 + 32px));
+  left: max(32px, calc((100% - var(--page-max-width)) / 2 + 32px));
 }
 
 .section-modal {
@@ -4304,11 +4305,16 @@ code {
         <span class="toc-name">about</span>
       </a>
     </li>
+    <li>
+      <a href="#structural-overview">
+        <span class="toc-name">structural overview</span>
+      </a>
+    </li>
     <li class="toc-group-item">
       <details class="toc-group">
         <summary class="toc-summary">
           <span class="toc-name">grammar</span>
-          <span class="toc-meta">12</span>
+          <span class="toc-meta">124 / 12</span>
         </summary>
         <ul class="toc-sublist">
           <li>
@@ -4378,7 +4384,7 @@ code {
       <details class="toc-group">
         <summary class="toc-summary">
           <span class="toc-name">domain</span>
-          <span class="toc-meta">8</span>
+          <span class="toc-meta">115 / 8</span>
         </summary>
         <ul class="toc-sublist">
           <li>
@@ -4432,7 +4438,7 @@ code {
     <li>
       <a href="#words">
         <span class="toc-name">words</span>
-        <span class="toc-meta">239 words</span>
+        <span class="toc-meta">239 / 20</span>
       </a>
     </li>
   </ul>
@@ -4441,7 +4447,7 @@ code {
   <nav class="page-nav " aria-label="page navigation">
     <a href="#">home</a>
     <span class="nav-disabled">prev</span>
-    <a href="#case">next: case</a>
+    <a href="#structural-overview">next: structural overview</a>
   </nav>
 
   <h1 class="page-title">about</h1>
@@ -4451,6 +4457,24 @@ code {
   <nav class="page-nav page-nav--bottom" aria-label="page navigation">
     <a href="#">home</a>
     <span class="nav-disabled">prev</span>
+    <a href="#structural-overview">next: structural overview</a>
+  </nav>
+
+</section>
+<section class="page " data-page="structural-overview" data-title="structural overview" hidden>
+  <nav class="page-nav " aria-label="page navigation">
+    <a href="#">home</a>
+    <a href="#about">prev: about</a>
+    <a href="#case">next: case</a>
+  </nav>
+
+  <h1 class="page-title">structural overview</h1>
+  <div class="prose">
+<p>todo</p>
+  </div>
+  <nav class="page-nav page-nav--bottom" aria-label="page navigation">
+    <a href="#">home</a>
+    <a href="#about">prev: about</a>
     <a href="#case">next: case</a>
   </nav>
 
@@ -4458,7 +4482,7 @@ code {
 <section class="page " data-page="case" data-title="case" data-jump="category" hidden>
   <nav class="page-nav " aria-label="page navigation">
     <a href="#">home</a>
-    <a href="#about">prev: about</a>
+    <a href="#structural-overview">prev: structural overview</a>
     <a href="#valency">next: valency</a>
   </nav>
 
@@ -5622,7 +5646,7 @@ code {
   </div>
   <nav class="page-nav page-nav--bottom" aria-label="page navigation">
     <a href="#">home</a>
-    <a href="#about">prev: about</a>
+    <a href="#structural-overview">prev: structural overview</a>
     <a href="#valency">next: valency</a>
   </nav>
 

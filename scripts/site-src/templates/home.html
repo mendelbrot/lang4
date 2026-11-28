@@ -7,12 +7,17 @@
         <span class="toc-name">{{ about_page.title }}</span>
       </a>
     </li>
+    <li>
+      <a href="#{{ overview_page.slug }}">
+        <span class="toc-name">{{ overview_page.title }}</span>
+      </a>
+    </li>
 {% for group_name, group_cats in nav_groups.items() %}
     <li class="toc-group-item">
       <details class="toc-group">
         <summary class="toc-summary">
           <span class="toc-name">{{ group_name }}</span>
-          <span class="toc-meta">{{ group_cats | length }}</span>
+          <span class="toc-meta">{{ nav_group_word_counts[group_name] }} / {{ group_cats | length }}</span>
         </summary>
         <ul class="toc-sublist">
 {% for cat in group_cats %}
@@ -34,7 +39,7 @@
     <li>
       <a href="#words">
         <span class="toc-name">words</span>
-        <span class="toc-meta">{{ word_count }} words</span>
+        <span class="toc-meta">{{ word_count }} / {{ category_count }}</span>
       </a>
     </li>
   </ul>

@@ -1,5 +1,6 @@
 :root {
   color-scheme: dark;
+  --page-max-width: 625px;
   --bg: #000000;
   --fg: #ffffff;
   --hover-bg: #141414;
@@ -19,7 +20,7 @@
 }
 
 body {
-  max-width: 800px;
+  max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 16px 16px 96px;
   background-color: var(--bg);
@@ -521,7 +522,7 @@ code {
 .modal-frame {
   position: relative;
   width: 100%;
-  max-width: 800px;
+  max-width: var(--page-max-width);
   min-height: 100%;
   display: flex;
   flex-direction: column;
@@ -534,7 +535,7 @@ code {
 .modal-top-left {
   position: fixed;
   top: 16px;
-  left: max(16px, calc((100% - 800px) / 2 + 16px));
+  left: max(16px, calc((100% - var(--page-max-width)) / 2 + 16px));
   display: flex;
   align-items: center;
   gap: 8px;
@@ -560,7 +561,7 @@ code {
 .modal-close {
   position: fixed;
   top: 16px;
-  right: max(16px, calc((100% - 800px) / 2 + 16px));
+  right: max(16px, calc((100% - var(--page-max-width)) / 2 + 16px));
   width: 48px;
   height: 48px;
   display: flex;
@@ -659,7 +660,7 @@ code {
 .theme-fab {
   bottom: 32px;
   right: auto;
-  left: max(32px, calc((100% - 800px) / 2 + 32px));
+  left: max(32px, calc((100% - var(--page-max-width)) / 2 + 32px));
 }
 
 .section-modal {
