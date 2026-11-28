@@ -3,7 +3,7 @@
 {% block page_attrs %} data-jump="words"{% endblock %}
 {% block content %}
   {% for cat in categories %}
-  <h2 id="words-{{ cat.slug }}" data-jump-group="{{ cat.type }}" data-jump-label="{{ cat.name }}">{{ cat.name }}</h2>
+  <h2 id="words-{{ cat.id }}" data-jump-group="{{ cat.type }}" data-jump-label="{{ cat.name }}">{{ cat.name }}</h2>
   <div class="category-row">
     {% for word in cat.words %}
     <button type="button" class="word-card"

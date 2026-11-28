@@ -232,12 +232,24 @@ code {
 }
 
 /* inline script rendering */
+.script-lines {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  vertical-align: middle;
+}
+
 .script-inline {
   display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 4px;
   vertical-align: middle;
+}
+
+.script-lines .script-inline:empty {
+  min-height: 28px;
 }
 
 .script-glyph {
@@ -289,8 +301,12 @@ code {
   border-radius: 6px;
   font-size: 0.9rem;
   line-height: 1.35;
-  white-space: nowrap;
   max-width: calc(100vw - 32px);
+}
+
+.glyph-popup-spelling,
+.glyph-popup-short {
+  white-space: pre;
 }
 
 .glyph-popup-spelling {
@@ -396,8 +412,13 @@ code {
   height: 34px;
 }
 
+.example-english {
+  white-space: pre-wrap;
+}
+
 .example-latin {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  white-space: pre-wrap;
 }
 
 .example-highlights {
@@ -636,9 +657,9 @@ code {
 }
 
 .theme-fab {
-  bottom: 16px;
+  bottom: 32px;
   right: auto;
-  left: max(16px, calc((100% - 800px) / 2 + 16px));
+  left: max(32px, calc((100% - 800px) / 2 + 32px));
 }
 
 .section-modal {
